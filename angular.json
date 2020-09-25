@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "idealwork"
+    }
+  },
+  "defaultProject": "idealwork",
+  "cli": {
+    "analytics": "d2737d41-26fb-4b22-b0ad-2d3c991aad17"
+  }
 }
