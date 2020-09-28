@@ -1,0 +1,56 @@
+/* Style the navigation menu */
+.topnav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1fr;
+    overflow: hidden;
+    position: relative;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  /* Hide the links inside the navigation menu (except for logo/home) */
+  .topnav #myLinks {
+    display: none;
+  }
+  
+  /* Style navigation menu links */
+  .topnav a {
+    color: black;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 30px;
+    display: block;
+  }
+
+  #myLinks {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+
+    #links {
+      position: absolute;
+      top: 20%;
+      width: 100%;
+      padding: 10%;
+    }
+
+    .fa-times {
+      position: absolute;
+      right: 10%;
+      top: 10%;
+    }
+
+    a {
+      border-bottom: solid 2px black;
+      width: 60%;
+      margin-bottom: 10%;
+    }
+  }
+  
+  /* Add a grey background color on mouse-over */
+  .topnav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
