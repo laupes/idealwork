@@ -1,0 +1,93 @@
+#intestazione-soluzioni {
+    font-family: 'Roboto Condensed', sans-serif;
+    letter-spacing: 2px;
+    padding: 5%;
+
+    h1 {
+        font-weight: 400;
+    }
+
+    p {
+        font-family: 'Roboto', sans-serif;
+        font-size: 18px;
+        color: grey;
+    }
+}
+
+.soluzione {
+    width: 100vw;
+    height: 250px;
+    display: flex;
+    font-family: 'Roboto Condensed', sans-serif;
+
+    .immagine-soluzione {
+        width: 60%;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .titolo-soluzione {
+        color: white;
+        width: 40%;
+        position: relative;
+    
+        h1 {
+            position: absolute;
+            bottom: 5%;
+            right: 15%;
+            font-size: 25px;
+            border-top: solid 2px white;
+            text-align: right;
+            font-weight: 300;
+            letter-spacing: 2px;
+            width: 70%;
+            padding-top: 7px;
+        }
+    }
+}
+
+@media screen and (min-width:651px) {
+    .soluzione {
+        padding-left: 5%;
+        padding-right: 5%;
+
+        .titolo-soluzione {
+            width: 30%;
+        }
+    }
+}
+
+@media screen and (min-width:950px) {
+    .soluzione {
+        height: 300px;
+    }
+}
+
+@media screen and (min-width:1300px) {
+    .soluzione {
+        height: 320px;
+        padding-right: 30%;
+
+        .immagine-soluzione {
+            width: 60%;
+        }
+        .titolo-soluzione {
+            width: 30%;
+        }
+    }
+}
+
+
+@media screen and (min-width:1380px) {
+    .soluzione {
+        height: 350px;
+        padding-right: 40%;
+
+        .immagine-soluzione {
+            width: 50%;
+        }
+        .titolo-soluzione {
+            width: 30%;
+        }
+    }
+}
