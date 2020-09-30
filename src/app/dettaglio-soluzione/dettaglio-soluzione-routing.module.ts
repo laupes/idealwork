@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ColoriComponent } from './colori/colori.component';
 import { TitoloComponent } from './titolo/titolo.component';
 import { OpzioneComponent } from './opzione/opzione.component';
+import { EsempioComponent } from './esempio/esempio.component';
 
 const routes: Routes = [
     {
@@ -18,6 +19,10 @@ const routes: Routes = [
           component: OpzioneComponent,
           pathMatch: 'full'
         },
+        { path: 'dettaglio-soluzione',
+          component: EsempioComponent,
+          pathMatch: 'full'
+        }
       ],
     }
 ];
