@@ -27,11 +27,9 @@
     display: grid;
     grid-template-columns: 50% 50%;
     gap: 0% 10%;
-    // flex-flow: row wrap;
-    // justify-content: space-evenly;
     box-shadow: 0 0 15px rgba(0,0,0,0.2);
-    padding: 10% 10%;
-    margin: 5% 5%;
+    padding: 2% 5%;
+    margin: 2% 5%;
     font-family: 'Roboto Condensed', sans-serif;
     letter-spacing: 2px;
 
@@ -59,21 +57,25 @@
     .colori-link {
         width: 70%;
     }
+    
+    .lista-colori {
+        width: 66%;
+    }
 }
 
 @media screen and (min-width:1000px) {
     .lista-colori {
         display: grid;
         grid-template-columns: 25% 25% 25%;
-        padding: 5% 10%;
+        padding: 5% 5%;
     }
 }
 
 @media screen and (min-width:1300px) {
     .lista-colori {
         display: grid;
-        grid-template-columns: 20% 20% 20% 20%;
-        padding: 3% 10%;
+        grid-template-columns: 18% 18% 18% 18%;
+        padding: 3% 5%;
     }
 }
 
@@ -82,10 +84,22 @@
     .colori-link {
         width: 65%;
     }
+
+    .lista-colori {
+        padding: 2% 5%;
+        gap: 0% 8%;
+        width: 61%;
+    }
 }
 
 @media screen and (min-width:1765px) {
     .colori-link {
         width: 55%;
+    }
+
+    .lista-colori {
+        padding: 2% 5%;
+        gap: 0% 10%;
+        width: 51%;
     }
 }
