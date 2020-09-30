@@ -7,9 +7,13 @@
   },
   "files": [
     "src/main.ts",
-    "src/polyfills.ts"
+    "src/polyfills.ts",
+    // "src/zone-flags.ts",
+    // "node_modules/jqwidgets-scripts/jqwidgets-ts/angular_jqxbargauge.ts"
   ],
   "include": [
-    "src/**/*.d.ts"
+    "src/**/*.d.ts",
+    "../node_modules/@wtw/**/*"
+    // "node_modules/jqwidgets-scripts/jqwidgets-ts/**/*.ts"
   ]
 }
