@@ -15,7 +15,7 @@
 }
 
 .soluzione {
-    width: 100vw;
+    //width: 100vw;
     height: 250px;
     display: flex;
     font-family: 'Roboto Condensed', sans-serif;
@@ -66,25 +66,10 @@
 @media screen and (min-width:1300px) {
     .soluzione {
         height: 320px;
-        padding-right: 30%;
+        padding-right: 10%;
 
         .immagine-soluzione {
             width: 60%;
-        }
-        .titolo-soluzione {
-            width: 30%;
-        }
-    }
-}
-
-
-@media screen and (min-width:1380px) {
-    .soluzione {
-        height: 350px;
-        padding-right: 40%;
-
-        .immagine-soluzione {
-            width: 50%;
         }
         .titolo-soluzione {
             width: 30%;
