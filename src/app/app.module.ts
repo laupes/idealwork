@@ -8,6 +8,8 @@ import { SoluzioniModule } from './soluzioni/soluzioni.module';
 import { DettaglioSoluzioneModule } from './dettaglio-soluzione/dettaglio-soluzione.module';
 import { ChildrenOutletContexts } from '@angular/router';
 
+import { OwlModule } from 'ngx-owl-carousel';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,7 +19,8 @@ import { ChildrenOutletContexts } from '@angular/router';
     BrowserModule,
     AppRoutingModule,
     SoluzioniModule,
-    DettaglioSoluzioneModule
+    DettaglioSoluzioneModule,
+    OwlModule
   ],
   providers: [
     ChildrenOutletContexts

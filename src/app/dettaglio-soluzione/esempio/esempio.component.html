@@ -5,5 +5,12 @@
         graffiante che si crea con materiali robusti, forti, 
         potenti, come il cemento.
     </p>
-
 </div>
+
+<owl-carousel [options]="mySlideOptions" [items]="mySlideImages" [carouselClasses]="['owl-theme', 'sliding']" >
+    <div class="item" *ngFor="let image of mySlideImages;let i = index">
+    <div>
+        <img src={{image}}/>
+    </div>
+    </div>
+</owl-carousel>
