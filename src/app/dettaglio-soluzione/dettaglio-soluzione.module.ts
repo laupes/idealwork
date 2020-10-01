@@ -8,6 +8,7 @@ import { OpzioneComponent } from './opzione/opzione.component';
 import { EsempioComponent } from './esempio/esempio.component';
 
 import { RouterModule } from '@angular/router';
+import { OwlModule } from 'ngx-owl-carousel';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { RouterModule } from '@angular/router';
   imports: [
     DettaglioSoluzioneRoutingModule,
     CommonModule,
-    RouterModule
+    RouterModule,
+    OwlModule
   ],
   exports: [
     TitoloComponent,
