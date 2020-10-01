@@ -5,6 +5,7 @@ import { ColoriComponent } from './colori/colori.component';
 import { TitoloComponent } from './titolo/titolo.component';
 import { OpzioneComponent } from './opzione/opzione.component';
 import { EsempioComponent } from './esempio/esempio.component';
+import { ScaricaAppComponent } from './scarica-app/scarica-app.component';
 
 const routes: Routes = [
     {
@@ -21,6 +22,10 @@ const routes: Routes = [
         },
         { path: 'dettaglio-soluzione',
           component: EsempioComponent,
+          pathMatch: 'full'
+        },
+        { path: 'dettaglio-soluzione',
+          component: ScaricaAppComponent,
           pathMatch: 'full'
         }
       ],

@@ -6,6 +6,7 @@ import { TitoloComponent } from './titolo/titolo.component';
 import { ColoriComponent } from './colori/colori.component';
 import { OpzioneComponent } from './opzione/opzione.component';
 import { EsempioComponent } from './esempio/esempio.component';
+import { ScaricaAppComponent } from './scarica-app/scarica-app.component';
 
 import { RouterModule } from '@angular/router';
 import { OwlModule } from 'ngx-owl-carousel';
@@ -15,7 +16,9 @@ import { OwlModule } from 'ngx-owl-carousel';
   declarations: [
     TitoloComponent, 
     ColoriComponent, 
-    OpzioneComponent, EsempioComponent
+    OpzioneComponent, 
+    EsempioComponent, 
+    ScaricaAppComponent
   ],
   imports: [
     DettaglioSoluzioneRoutingModule,
@@ -25,7 +28,10 @@ import { OwlModule } from 'ngx-owl-carousel';
   ],
   exports: [
     TitoloComponent,
-    ColoriComponent
+    ColoriComponent,
+    OpzioneComponent,
+    EsempioComponent,
+    ScaricaAppComponent
   ]
 })
 export class DettaglioSoluzioneModule { }

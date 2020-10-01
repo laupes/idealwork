@@ -1,0 +1,36 @@
+.scarica-app {
+    background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),
+    url(/assets/img/dettaglio-soluzioni/sfondo-app.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Roboto Condensed', sans-serif;
+    letter-spacing: 2px;
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    padding-top: 20%;
+
+    h1, h2, .scarica-app-links {
+        padding-left: 5%;
+    }
+
+    h2 {
+        text-transform: uppercase;
+        font-size: 25px;
+        margin-top: 5%;
+    }
+
+    .scarica-app-links {
+        display: flex;
+        
+        a>img {
+            width: 200px;
+            margin-right: 10px;
+            margin-top: 15%;
+        }
+    }
+
+    .mockup-app {
+        max-width: 100%;
+        margin-top: 15%;
+    }
+}
