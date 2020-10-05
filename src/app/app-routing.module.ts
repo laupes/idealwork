@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DettaglioSoluzioneModule } from './dettaglio-soluzione/dettaglio-soluzione.module';
 import { SoluzioniModule } from './soluzioni/soluzioni.module';
+import { CategorieProdottoModule } from './categorie-prodotto/categorie-prodotto.module';
 
 const routes: Routes = [
   {
@@ -28,6 +29,7 @@ const routes: Routes = [
   imports: [
     DettaglioSoluzioneModule,
     SoluzioniModule,
+    CategorieProdottoModule,
     RouterModule.forRoot(routes)
   ],
   exports: [RouterModule]

@@ -6,22 +6,22 @@ import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
 import { SoluzioniModule } from './soluzioni/soluzioni.module';
 import { DettaglioSoluzioneModule } from './dettaglio-soluzione/dettaglio-soluzione.module';
+import { CategorieProdottoModule } from './categorie-prodotto/categorie-prodotto.module';
 import { ChildrenOutletContexts } from '@angular/router';
 
 import { OwlModule } from 'ngx-owl-carousel';
-import { CategorieProdottoComponent } from './titolo/categorie-prodotto/categorie-prodotto.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
-    CategorieProdottoComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     SoluzioniModule,
     DettaglioSoluzioneModule,
+    CategorieProdottoModule,
     OwlModule
   ],
   providers: [
