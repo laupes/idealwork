@@ -1,0 +1,17 @@
+.titolo-categorie-soluzione {
+    display: flex;
+    background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.5)),
+    url("/assets/img/categorie-prodotto/posatori.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    align-items: center;
+    height: 20vh;
+
+    h1 {
+        font-family: 'Roboto Condensed', sans-serif;
+        font-weight: 400;
+        letter-spacing: 5px;
+        margin: 10%;
+        color: white;
+    }
+}
