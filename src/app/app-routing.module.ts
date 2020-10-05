@@ -17,6 +17,10 @@ const routes: Routes = [
   {
     path: 'dettaglio-soluzione',
     loadChildren: 'src/app/dettaglio-soluzione/dettaglio-soluzione.module#DettaglioSoluzioneModule'
+  },
+  {
+    path: 'categorie-prodotto',
+    loadChildren: 'src/app/categorie-prodotto/categorie-prodotto.module#CategorieProdottoModule'
   }
 ];
 
