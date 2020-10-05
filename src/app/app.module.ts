@@ -7,6 +7,7 @@ import { MenuComponent } from './menu/menu.component';
 import { SoluzioniModule } from './soluzioni/soluzioni.module';
 import { DettaglioSoluzioneModule } from './dettaglio-soluzione/dettaglio-soluzione.module';
 import { CategorieProdottoModule } from './categorie-prodotto/categorie-prodotto.module';
+import { ListaProdottiModule } from './lista-prodotti/lista-prodotti.module';
 import { ChildrenOutletContexts } from '@angular/router';
 
 import { OwlModule } from 'ngx-owl-carousel';
@@ -22,6 +23,7 @@ import { OwlModule } from 'ngx-owl-carousel';
     SoluzioniModule,
     DettaglioSoluzioneModule,
     CategorieProdottoModule,
+    ListaProdottiModule,
     OwlModule
   ],
   providers: [
