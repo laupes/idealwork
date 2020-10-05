@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { DettaglioSoluzioneModule } from './dettaglio-soluzione/dettaglio-soluzione.module';
 import { SoluzioniModule } from './soluzioni/soluzioni.module';
 import { CategorieProdottoModule } from './categorie-prodotto/categorie-prodotto.module';
+import { ListaProdottiModule } from './lista-prodotti/lista-prodotti.module';
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path: 'categorie-prodotto',
     loadChildren: 'src/app/categorie-prodotto/categorie-prodotto.module#CategorieProdottoModule'
+  },
+  {
+    path: 'lista-prodotti',
+    loadChildren: 'src/app/lista-prodotti/lista-prodotti.module#ListaProdottiModule'
   }
 ];
 
@@ -30,6 +35,7 @@ const routes: Routes = [
     DettaglioSoluzioneModule,
     SoluzioniModule,
     CategorieProdottoModule,
+    ListaProdottiModule,
     RouterModule.forRoot(routes)
   ],
   exports: [RouterModule]
