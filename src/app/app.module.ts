@@ -11,11 +11,13 @@ import { ListaProdottiModule } from './lista-prodotti/lista-prodotti.module';
 import { ChildrenOutletContexts } from '@angular/router';
 
 import { OwlModule } from 'ngx-owl-carousel';
+import { DettaglioProdottoComponent } from './dettaglio-prodotto/dettaglio-prodotto.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
+    DettaglioProdottoComponent
   ],
   imports: [
     BrowserModule,

@@ -5,6 +5,8 @@ import { SoluzioniModule } from './soluzioni/soluzioni.module';
 import { CategorieProdottoModule } from './categorie-prodotto/categorie-prodotto.module';
 import { ListaProdottiModule } from './lista-prodotti/lista-prodotti.module';
 
+import { DettaglioProdottoComponent } from './dettaglio-prodotto/dettaglio-prodotto.component';
+
 const routes: Routes = [
   {
     path: 'soluzioni',
@@ -27,6 +29,10 @@ const routes: Routes = [
   {
     path: 'lista-prodotti',
     loadChildren: 'src/app/lista-prodotti/lista-prodotti.module#ListaProdottiModule'
+  },
+  {
+    path: 'prodotto',
+    component: DettaglioProdottoComponent
   }
 ];
 
