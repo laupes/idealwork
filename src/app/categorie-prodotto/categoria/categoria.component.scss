@@ -1,0 +1,24 @@
+.categoria-prodotto {
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 10vh;
+    margin: 5% 7% 0% 7%;
+    padding: 13% 5%;
+
+    .titolo-categoria-prodotto {
+        font-family: 'Roboto', sans-serif;
+        font-weight: 200;
+        font-size: 35px;
+        color: #666666;
+    }
+
+    img {
+        height: 100px;
+    }
+
+    .freccia-categoria-prodotto {
+        height: 20px;
+    }
+}
