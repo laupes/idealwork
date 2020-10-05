@@ -9,11 +9,13 @@ import { DettaglioSoluzioneModule } from './dettaglio-soluzione/dettaglio-soluzi
 import { ChildrenOutletContexts } from '@angular/router';
 
 import { OwlModule } from 'ngx-owl-carousel';
+import { CategorieProdottoComponent } from './titolo/categorie-prodotto/categorie-prodotto.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MenuComponent
+    MenuComponent,
+    CategorieProdottoComponent
   ],
   imports: [
     BrowserModule,
