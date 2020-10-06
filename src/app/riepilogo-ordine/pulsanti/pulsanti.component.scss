@@ -1,0 +1,31 @@
+.pulsanti {
+    margin-top: 15%;
+
+    .pulsante {
+        font-family: 'Roboto condensed', sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 4px;
+        font-weight: 400;
+        font-size: 25px;
+        padding-top: 3%;
+        padding-bottom: 3%;
+        text-align: center;
+        width: 100%;
+        cursor: pointer;
+    }
+    
+    
+    .aggiunti-prodotto {
+        border: solid 2px black;
+        padding: 3% 12%;
+    }
+    
+    .invia-ordine {
+        border: none;
+        background: black;
+        color: white;
+        margin-top: 25px;
+    }
+}
+
+
