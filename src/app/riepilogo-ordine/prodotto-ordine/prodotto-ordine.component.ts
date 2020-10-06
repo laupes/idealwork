@@ -10,18 +10,6 @@ export class ProdottoOrdineComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    $('.lista-numeri').hide();
-
-    $('.dropdown-button').click(function() {
-      $('.lista-numeri').show();
-      $(select).change(function() {
-        var str = "";
-        $('select option:selected').each(function() {
-          str += $(this).text + "";
-        });
-        $('.dropdown-button-default').text(str);
-      });
-    });
   }
 
 }

@@ -1,5 +1,8 @@
 .pulsanti {
-    margin-top: 15%;
+    margin-top: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 
     .pulsante {
         font-family: 'Roboto condensed', sans-serif;
@@ -15,9 +18,9 @@
     }
     
     
-    .aggiunti-prodotto {
+    .aggiungi-prodotto {
         border: solid 2px black;
-        padding: 3% 12%;
+        margin-top: 25px;
     }
     
     .invia-ordine {
@@ -29,3 +32,13 @@
 }
 
 
+@media screen and (min-width: 750px) {
+
+    .pulsanti {
+        flex-direction: row;
+
+        .invia-ordine {
+            margin-left: 20px;
+        }
+    }
+}
