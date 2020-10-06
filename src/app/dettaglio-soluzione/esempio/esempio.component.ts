@@ -7,11 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EsempioComponent implements OnInit {
 
-  mySlideImages = ['../assets/img/dettaglio-soluzioni/slide1.jpg','../assets/img/dettaglio-soluzioni/slide2.png'];
+  // mySlideImages = ['../assets/img/dettaglio-soluzioni/slide1.jpg','../assets/img/dettaglio-soluzioni/slide2.png'];
 
-  mySlideOptions={items: 1, dots: true, nav: true};
+  // mySlideOptions={items: 1, dots: true, nav: true};
 
-  constructor() { }
+  // constructor() { }
 
   ngOnInit(): void {
   }

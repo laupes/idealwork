@@ -9,8 +9,8 @@ import { DettaglioSoluzioneModule } from './dettaglio-soluzione/dettaglio-soluzi
 import { CategorieProdottoModule } from './categorie-prodotto/categorie-prodotto.module';
 import { ListaProdottiModule } from './lista-prodotti/lista-prodotti.module';
 import { ChildrenOutletContexts } from '@angular/router';
+import { RiepilogoOrdineModule } from './riepilogo-ordine/riepilogo-ordine.module';
 
-import { OwlModule } from 'ngx-owl-carousel';
 import { DettaglioProdottoComponent } from './dettaglio-prodotto/dettaglio-prodotto.component';
 
 @NgModule({
@@ -26,7 +26,7 @@ import { DettaglioProdottoComponent } from './dettaglio-prodotto/dettaglio-prodo
     DettaglioSoluzioneModule,
     CategorieProdottoModule,
     ListaProdottiModule,
-    OwlModule
+    RiepilogoOrdineModule
   ],
   providers: [
     ChildrenOutletContexts
