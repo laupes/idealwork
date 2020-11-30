@@ -12,7 +12,7 @@
         font-family: 'Roboto Condensed', sans-serif;
         letter-spacing: 2px;
         text-transform: uppercase;
-        font-size: 25px;
+        font-size: 30px;
         font-weight: 300;
     }
 
@@ -35,3 +35,25 @@
         }
     }   
 }
+
+
+@media screen and (min-width: 600px) {
+    .ordine {
+        padding: 4% 3%;
+    }
+} 
+
+
+@media screen and (min-width: 1020px) {
+    .ordine {
+        padding: 3% 3%;
+        width: 90%;
+    }
+} 
+
+@media screen and (min-width: 1400px) {
+    .ordine {
+        padding: 2% 3%;
+        width: 70%;
+    }
+} 

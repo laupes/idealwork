@@ -3,9 +3,15 @@
     background: #f0edea;
     min-height: 100vh;
 
-    .titolo-riepilogo-ordine {
+    .titolo-elenco-ordini {
         font-family: 'Roboto Condensed', sans-serif;
         letter-spacing: 2px;
     }
 }
 
+
+@media screen and (min-width: 720px) {
+    .elenco-ordini-wrapper {
+        padding: 5% 3%;
+    }
+} 
