@@ -10,8 +10,10 @@ import { CategorieProdottoModule } from './categorie-prodotto/categorie-prodotto
 import { ListaProdottiModule } from './lista-prodotti/lista-prodotti.module';
 import { ChildrenOutletContexts } from '@angular/router';
 import { RiepilogoOrdineModule } from './riepilogo-ordine/riepilogo-ordine.module';
+import { ElencoOrdiniModule } from './elenco-ordini/elenco-ordini.module';
 
 import { DettaglioProdottoComponent } from './dettaglio-prodotto/dettaglio-prodotto.component';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { DettaglioProdottoComponent } from './dettaglio-prodotto/dettaglio-prodo
     DettaglioSoluzioneModule,
     CategorieProdottoModule,
     ListaProdottiModule,
-    RiepilogoOrdineModule
+    RiepilogoOrdineModule,
+    ElencoOrdiniModule
   ],
   providers: [
     ChildrenOutletContexts

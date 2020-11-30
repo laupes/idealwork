@@ -5,6 +5,7 @@ import { SoluzioniModule } from './soluzioni/soluzioni.module';
 import { CategorieProdottoModule } from './categorie-prodotto/categorie-prodotto.module';
 import { ListaProdottiModule } from './lista-prodotti/lista-prodotti.module';
 import { RiepilogoOrdineModule } from './riepilogo-ordine/riepilogo-ordine.module';
+import { ElencoOrdiniModule } from './elenco-ordini/elenco-ordini.module';
 
 import { DettaglioProdottoComponent } from './dettaglio-prodotto/dettaglio-prodotto.component';
 
@@ -38,6 +39,10 @@ const routes: Routes = [
   {
     path: 'riepilogo-ordine',
     loadChildren: 'src/app/riepilogo-ordine/riepilogo-ordine.module#RiepilogoOrdineModule'
+  },
+  {
+    path: 'elenco-ordini',
+    loadChildren: 'src/app/elenco-ordini/elenco-ordini.module#ElencoOrdiniModule'
   }
 ];
 
@@ -48,6 +53,7 @@ const routes: Routes = [
     CategorieProdottoModule,
     ListaProdottiModule,
     RiepilogoOrdineModule,
+    ElencoOrdiniModule,
     RouterModule.forRoot(routes)
   ],
   exports: [RouterModule]
