@@ -11,6 +11,7 @@ import { ListaProdottiModule } from './lista-prodotti/lista-prodotti.module';
 import { ChildrenOutletContexts } from '@angular/router';
 import { RiepilogoOrdineModule } from './riepilogo-ordine/riepilogo-ordine.module';
 import { ElencoOrdiniModule } from './elenco-ordini/elenco-ordini.module';
+import { NovitaModule } from './novita/novita.module';
 
 import { DettaglioProdottoComponent } from './dettaglio-prodotto/dettaglio-prodotto.component';
 
@@ -19,7 +20,7 @@ import { DettaglioProdottoComponent } from './dettaglio-prodotto/dettaglio-prodo
   declarations: [
     AppComponent,
     MenuComponent,
-    DettaglioProdottoComponent
+    DettaglioProdottoComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,7 +30,8 @@ import { DettaglioProdottoComponent } from './dettaglio-prodotto/dettaglio-prodo
     CategorieProdottoModule,
     ListaProdottiModule,
     RiepilogoOrdineModule,
-    ElencoOrdiniModule
+    ElencoOrdiniModule,
+    NovitaModule,
   ],
   providers: [
     ChildrenOutletContexts

@@ -6,6 +6,7 @@ import { CategorieProdottoModule } from './categorie-prodotto/categorie-prodotto
 import { ListaProdottiModule } from './lista-prodotti/lista-prodotti.module';
 import { RiepilogoOrdineModule } from './riepilogo-ordine/riepilogo-ordine.module';
 import { ElencoOrdiniModule } from './elenco-ordini/elenco-ordini.module';
+import { NovitaModule } from './novita/novita.module';
 
 import { DettaglioProdottoComponent } from './dettaglio-prodotto/dettaglio-prodotto.component';
 
@@ -43,6 +44,10 @@ const routes: Routes = [
   {
     path: 'elenco-ordini',
     loadChildren: 'src/app/elenco-ordini/elenco-ordini.module#ElencoOrdiniModule'
+  },
+  {
+    path: 'novita',
+    loadChildren: 'src/app/novita/novita.module#NovitaModule'
   }
 ];
 
@@ -54,6 +59,7 @@ const routes: Routes = [
     ListaProdottiModule,
     RiepilogoOrdineModule,
     ElencoOrdiniModule,
+    NovitaModule,
     RouterModule.forRoot(routes)
   ],
   exports: [RouterModule]
