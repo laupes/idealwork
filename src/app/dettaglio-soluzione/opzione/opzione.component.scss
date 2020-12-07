@@ -8,8 +8,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     margin-top: 10%;
-    height: 20vh;
-    padding: 7%;
+    padding: 7% 7%;
     cursor: pointer;
 
     img {
@@ -35,21 +34,8 @@
 
 
 @media screen and (min-width:570px) {
-    .titolo-opzione {
-        h1 {
-            font-size: 40px;
-        }
-    }
-}
-
-@media screen and (min-width:1029px) {
     .opzione {
-        margin: 6% 5%;
-        width: 62%;
-
-        img {
-            height: 190px;
-        }
+        margin-top: 7%;
     }
 
     .titolo-opzione {
@@ -59,20 +45,30 @@
     }
 }
 
-@media screen and (min-width:1551px) {
+@media screen and (min-width: 850px) {
     .opzione {
-        width: 58%;
-        height: 10vh;
-
-        img {
-            height: 220px;
-        }
+        margin-top: 5%;
+        padding: 5% 10%;
     }
 }
 
-@media screen and (min-width:1775px) {
+@media screen and (min-width: 850px) {
     .opzione {
-        width: 47%;
-        height: 5vh;
+        margin-left: 5%;
+        margin-right: 5%;
+        padding: 3% 10%;
+    }
+}
+
+@media screen and (min-width: 1300px) {
+    .opzione {
+        margin-right: 15%;
+        padding: 2% 10%;
+    }
+}
+
+@media screen and (min-width: 1480px) {
+    .opzione {
+        margin-right: 20%;
     }
 }
