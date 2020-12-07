@@ -8,6 +8,8 @@
     color: white;
     text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
     padding-top: 20%;
+    padding-left: 5%;
+    padding-right: 5%;
 
     h1, h2, .scarica-app-links {
         padding-left: 5%;
@@ -32,5 +34,19 @@
     .mockup-app {
         max-width: 100%;
         margin-top: 15%;
+    }
+}
+
+
+@media screen and (min-width:1085px) {
+    .scarica-app {
+        display: flex; 
+        flex-direction: row;
+        align-items: center;
+        padding-top: 0%;
+
+        .mockup-app {
+            margin-top: 5%;
+        }
     }
 }
