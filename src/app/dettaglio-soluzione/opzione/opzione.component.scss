@@ -1,13 +1,53 @@
-.opzione {
-    text-decoration: none;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+// IMMAGINI SFONDO OPZIONI
+
+#opzione-prodotti {
     background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), 
     url("/assets/img/dettaglio-soluzioni/prodotti.png");
+}
+
+#opzione-attrezzature {
+    background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), 
+    url("/assets/img/dettaglio-soluzioni/attrezzature.png");
+}
+
+#opzione-video-tutorial-istruzioni {
+    background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), 
+    url("/assets/img/dettaglio-soluzioni/video-tutorial-istruzioni.png");
+}
+
+#opzione-certificati {
+    background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), 
+    url("/assets/img/dettaglio-soluzioni/certificati.png");
+}
+
+#opzione-particolari-esecutivi {
+    background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), 
+    url("/assets/img/dettaglio-soluzioni/particolari-esecutivi.jpg");
+}
+
+#opzione-dati-tecnici {
+    background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), 
+    url("/assets/img/dettaglio-soluzioni/dati-tecnici.png");
+}
+
+
+
+// CSS PER IL RESTO
+
+
+#opzione-prodotti {
+    margin-top: 50px;
+}
+
+.opzione {
+    position: relative;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none;
     background-repeat: no-repeat;
     background-size: cover;
-    margin-top: 10%;
     padding: 7% 7%;
     cursor: pointer;
 
@@ -23,6 +63,8 @@
         h1 {
             margin-right: 20px;
             font-family: 'Roboto Condensed', sans-serif;
+            font-size: 30px;
+            text-align: right;
             letter-spacing: 2px;
             font-weight: 300;
             text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
@@ -32,6 +74,8 @@
 
 
 
+
+// MEDIA QUERIES
 
 @media screen and (min-width:570px) {
     .opzione {
