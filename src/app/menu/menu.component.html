@@ -1,24 +1,15 @@
-<!-- Load an icon library to show a hamburger menu (bars) on small screens -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="navigation">
 
-<!-- Top Navigation Menu -->
-<div class="topnav">
-  <a href="#home" class="active"><img id="logo" src="./assets/img/menu/logo-idealwork.png" style="height: 50px;"></a>
-  <!-- Navigation links (hidden by default) -->
-  <div id="myLinks">
-    <div id="links">
-      <a routerLink="/soluzioni">Soluzioni</a>
-      <a href="#">I miei ordini</a>
-      <a href="#">Carrello</a>
-      <a href="#">Torna all'app</a>
-    </div>
-    <i class="fa fa-times" style="font-size: 30px"></i>
-  </div>
+  <img class="logo" src="./assets/img/menu/logo-idealwork.png" style="height: 70px;">
+  <button class="ham"></button>
+  <nav class="navbar">
+    <ul>
+      <li><a class="menuLink" href="#">Soluzioni</a></li>
+      <li><a class="menuLink" href="#">I miei ordini</a></li>
+      <li><a class="menuLink" href="#">Carrello</a></li>
+      <li><a class="menuLink" href="#">Torna all'app</a></li>
+    </ul>
+  </nav>
 
-  <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
-  <a href="javascript:void(0);" class="icon">
-    <i class="fa fa-bars" style="font-size: 30px;"></i>
-  </a>
 </div>
 
-<!-- MENU HAMBURGER MOLTO BELLO https://dev.to/emmaadesile/how-to-create-a-hamburger-menu-icon-with-css-and-javascript-1kgd -->
