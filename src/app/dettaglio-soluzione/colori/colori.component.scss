@@ -14,10 +14,11 @@
         display: flex;
         align-items: center;
 
-        h1 {
+        .colori-disponibili-titolo {
             font-size: 30px;
             font-weight: 400;
             margin-left: 20px;
+            margin-bottom: 0px !important;
         }
     }
 }
@@ -27,8 +28,9 @@
     display: grid;
     grid-template-columns: 50% 50%;
     gap: 0% 10%;
+    row-gap: 10px;
     box-shadow: 0 0 15px rgba(0,0,0,0.2);
-    padding: 2% 5%;
+    padding: 5% 5%;
     margin: 2% 5%;
     font-family: 'Roboto Condensed', sans-serif;
     letter-spacing: 2px;
@@ -38,10 +40,11 @@
         align-items: center;
         font-size: 30px;
 
-        p {
+        .nome-colore {
             margin-left: 10px;
             font-size: 20px;
             color: grey;
+            margin-bottom: 0px !important;
         }
     }
 }
@@ -58,6 +61,10 @@
     .colori-link, .lista-colori {
         margin-right: 15%;
     }
+
+    .colori-link {
+        padding: 2% 5%;
+    }
 }
 
 @media screen and (min-width: 1480px) {
@@ -72,22 +79,6 @@
     .lista-colori {
         display: grid;
         grid-template-columns: 25% 25% 25%;
-        padding: 5% 5%;
-    }
-}
-
-@media screen and (min-width:1300px) {
-    .lista-colori {
-        display: grid;
-        grid-template-columns: 18% 18% 18% 18%;
-        padding: 3% 5%;
-    }
-}
-
-@media screen and (min-width:1765px) {
-    .lista-colori {
         padding: 2% 5%;
-        gap: 0% 10%;
-        width: 51%;
     }
 }
