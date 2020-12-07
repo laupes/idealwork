@@ -1,6 +1,7 @@
 .wrapper {
     background: #f0edea;
     padding-top: 10%;
+    padding-bottom: 10%;
     min-height: 100vh;
 }
 
@@ -10,7 +11,7 @@
     justify-content: space-between;
     align-items: center;
     height: 10vh;
-    margin: 0% 7% 0% 7%;
+    margin: 2% 7% 0% 7%;
     padding: 13% 5%;
     background: white;
     text-decoration: none;
@@ -19,6 +20,7 @@
     .titolo-e-freccia {
         display: flex;
         align-items: center;
+        text-align: right;
 
         .titolo-categoria-prodotto {
             font-family: 'Roboto', sans-serif;
@@ -73,7 +75,7 @@
 @media screen and (min-width: 1000px) {
     .categoria-prodotto {
         padding: 8% 5%;
-        margin: 0% 20% 0% 7%;
+        margin: 3% 20% 0% 7%;
     }
 
     img {
@@ -85,14 +87,14 @@
 @media screen and (min-width: 1020px) {
     .categoria-prodotto {
         padding: 7% 5%;
-        margin: 0% 25% 0% 7%;
+        margin: 2% 20% 0% 7%;
     }
 }
 
 @media screen and (min-width: 1560px) {
     .categoria-prodotto {
         padding: 5% 5%;
-        margin: 0% 30% 0% 7%;
+        margin: 1% 20% 0% 7%;
 
         img {
             height: 150px;
