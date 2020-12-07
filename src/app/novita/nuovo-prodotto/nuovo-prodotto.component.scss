@@ -1,0 +1,116 @@
+.wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    background: #f0edea;
+    padding-top: 10%;
+
+    .prodotto {
+        background: white;
+        box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        padding: 10% 10% 15% 10%;
+        margin: 5% 7% 0% 7%;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 200;
+
+        // .codice {
+        //     text-align: left;
+        //     width: 40%;
+        //     border-bottom: solid 1.3px black;
+        //     text-transform: uppercase;
+        //     letter-spacing: 3px;
+        //     font-weight: 400;
+        // }
+
+        .contenuto-prodotto {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .immagine-prodotto {
+                height: 150px;
+                margin: 10% 0% 10% 0%;
+            }
+
+            .titolo-prodotto, .descrizione-prodotto {
+                text-align: center;
+                margin-bottom: 15px;
+            }
+
+            .titolo-prodotto {
+                letter-spacing: 3px;
+                text-transform: uppercase;
+                font-size: 20px;
+                font-weight: 400;
+            }
+
+            // .descrizione-prodotto {
+            //     color: #666666;
+            // }
+
+            .pulsante-vedi-prodotto {
+                margin-top: 20px;
+                text-transform: uppercase;
+                cursor: pointer;
+                font-size: 20px;
+                border: solid 2px black;
+                padding: 3% 8%;
+                text-decoration: none;
+                font-weight: 400;
+                letter-spacing: 3px;
+            }
+        }
+    }
+}
+
+
+
+// MEDIA QUERIES 
+
+    // PULSANTE ACCEDI PER PREZZO
+
+@media screen and (min-width: 950px) {
+
+    .contenuto-prodotto {
+        .pulsante-vedi-prodotto {
+            padding: 3% 6%;
+        }
+    }
+}
+
+@media screen and (min-width: 1300px) {
+
+    .contenuto-prodotto {
+        .pulsante-vedi-prodotto {
+            padding: 1% 1%;
+        }
+    }
+}
+
+
+    // DISPOSIZIONE ELEMENTI
+    
+
+@media screen and (min-width: 1100px) {
+
+    .wrapper {
+        padding: 5% 0% 10% 10%;
+        .prodotto {
+            max-width: 40%;
+            padding: 5%;
+            margin: 1% 1% 0% 0%;
+        }
+    }
+
+}
+
+@media screen and (min-width: 1660px) {
+
+    .wrapper {
+        .prodotto {
+            max-width: 30%;
+            padding: 3%;
+            margin: 1% 1% 0% 0%;
+        }
+    }
+
+}

@@ -1,0 +1,24 @@
+.novita-wrapper {
+    padding: 5%;
+
+    .titolo-novita, .sottotitolo-novita {
+        font-family: 'Roboto Condensed', sans-serif;
+        letter-spacing: 2px;
+    }
+
+    .sottotitolo-novita {
+        font-family: 'Roboto', sans-serif;
+        font-size: 18px;
+        font-weight: 300;
+        line-height: 1.5;
+        color: grey;
+    }
+    
+}
+
+
+@media screen and (min-width: 720px) {
+    .novita-wrapper {
+        padding: 3%;
+    }
+} 
