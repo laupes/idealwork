@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Input } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
-import { NgModel } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { Utente } from 'src/utente.interface';
 import { LoginService } from '../core/login.service';
@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   @Input() nome: string;
   @Input() password: string;
 
-  constructor(private dataService: LoginService, private http: HttpClient) {
+  constructor(private dataService: LoginService, private http: HttpClient, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -30,13 +30,12 @@ export class LoginComponent implements OnInit {
     $('.navigation').hide();
   }
 
-  
-
   login(username: string, password: string): void {
     for (let x = 0; x < this.utenti.length; x++) {
       if (this.utenti[x].username === username) {
         if (this.utenti[x].password === password) {
           this.nomeUtente = this.utenti[x].nome;
+          this.router.navigate(['soluzioni']);
           return;
         } else {
           alert('password sbagliata');

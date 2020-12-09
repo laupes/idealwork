@@ -13,14 +13,18 @@ import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
     path: 'soluzioni',
     loadChildren: 'src/app/soluzioni/soluzioni.module#SoluzioniModule',
     pathMatch: 'full'
   },
-  { 
-    path: '', 
-    redirectTo: 'soluzioni', 
-    pathMatch: 'full' 
+  {
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'full'
   },
   {
     path: 'dettaglio-soluzione',
@@ -49,10 +53,6 @@ const routes: Routes = [
   {
     path: 'novita',
     loadChildren: 'src/app/novita/novita.module#NovitaModule'
-  },
-  {
-    path: 'login',
-    component: LoginComponent
   },
 ];
 
