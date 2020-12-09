@@ -1,0 +1,19 @@
+<form #f="ngForm">
+    <div class="form-group">
+        <label for="username">E-mail</label>
+        <input required minlength="3" maxlength="50" ngModel name="username" #username="ngModel" id="username" type="text" class="form-control">
+        <div class="alert alert-danger" *ngIf="username.touched && !username.valid">
+            <div *ngIf="username.errors.required">Il nome utente è necessario</div>
+            <div *ngIf="username.errors.minlength">La lunghezza deve essere almeno {{ username.errors.minlength.requiredLength }} caratteri</div>
+        </div>
+        <label for="password">Password</label>
+        <input required minlength="3" maxlength="50" ngModel name="password" #password="ngModel" id="password" type="text" class="form-control">
+        <div class="alert alert-danger" *ngIf="password.touched && !password.valid">
+            <div *ngIf="password.errors.required">La password è necessaria</div>
+            <div *ngIf="password.errors.minlength">La lunghezza deve essere almeno {{ password.errors.minlength.requiredLength }} caratteri</div>
+        </div>
+        <br/>
+        <button class="btn btn-primary" (click)="login(username.value,password.value)" [disabled]="f.invalid">Login</button>
+    </div>
+</form>
+<br/>
