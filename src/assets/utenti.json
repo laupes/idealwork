@@ -1,0 +1,20 @@
+[
+    {
+        "nome" : "Gennaro",
+        "cognome" : "Palazzo",
+        "username" : "gennaro.palazzo@jump-it.it",
+        "password" : "1234"
+    },
+    {
+        "nome" : "Laura",
+        "cognome" : "Pesce",
+        "username" : "laura.pesce@jump-it.it",
+        "password" : "5678"
+    },
+    {
+        "nome" : "Alessio",
+        "cognome" : "Panella",
+        "username" : "alessio.panella@jump-it.it",
+        "password" : "9012"
+    }
+]
