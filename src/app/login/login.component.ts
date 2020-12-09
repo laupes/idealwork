@@ -26,6 +26,8 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.dataService.getUtenti().subscribe((utenti: Utente[]) => this.utenti = utenti);
     this.dataService.getCodici().subscribe((codici: string[]) => this.codici = codici);
+
+    $('.navigation').hide();
   }
 
   
