@@ -9,6 +9,7 @@ import { ElencoOrdiniModule } from './elenco-ordini/elenco-ordini.module';
 import { NovitaModule } from './novita/novita.module';
 
 import { DettaglioProdottoComponent } from './dettaglio-prodotto/dettaglio-prodotto.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {
@@ -48,7 +49,11 @@ const routes: Routes = [
   {
     path: 'novita',
     loadChildren: 'src/app/novita/novita.module#NovitaModule'
-  }
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
 ];
 
 @NgModule({
