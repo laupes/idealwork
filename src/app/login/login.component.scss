@@ -77,3 +77,25 @@
         }
     }
 
+    @media screen and (min-width: 600px) {
+
+        .form-group {
+            padding: 130px 20%;
+        }
+    }
+
+
+    @media screen and (min-width: 994px) {
+
+        .form-group {
+            padding: 130px 30%;
+        }
+    }
+
+
+    @media screen and (min-width: 1350px) {
+
+        .form-group {
+            padding: 130px 35%;
+        }
+    }
