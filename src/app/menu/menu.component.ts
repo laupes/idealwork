@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 // import { $ } from 'protractor';
 import * as $ from 'jquery';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-menu',
@@ -9,11 +10,14 @@ import * as $ from 'jquery';
 })
 export class MenuComponent implements OnInit {
 
-  constructor() { }
+  check: boolean;
+
+  constructor(private data: DataService) { }
 
   ngOnInit(): void {
     var navbar = document.querySelector('.navbar');
     var ham = document.querySelector('.ham');
+    this.data.currentCheck.subscribe(check => this.check = check);
 
     // toggles hamburger menu in and out when clicking on the hamburger
     function toggleHamburger(){

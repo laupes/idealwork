@@ -1,10 +1,12 @@
 import { HttpClient } from '@angular/common/http';
-import { Input } from '@angular/core';
-import { Component, OnInit } from '@angular/core';
+import { EventEmitter, Input, Output, Component, OnInit, Inject, InjectionToken } from '@angular/core';
 import { Router } from '@angular/router';
+
 
 import { Utente } from 'src/utente.interface';
 import { LoginService } from '../core/login.service';
+import { DataService } from '../data.service';
+import { EventEmitterService } from './../event-emitter.service';
 
 @Component({
   selector: 'app-login',
@@ -16,18 +18,24 @@ export class LoginComponent implements OnInit {
   nomeUtente: string;
   utenti: Utente[];
   codici: string[];
+  loginFatto = false;
+  check: boolean = this.loginFatto;
 
   @Input() nome: string;
   @Input() password: string;
+  @Output() checkEvent: EventEmitter<boolean> = new EventEmitter();
 
-  constructor(private dataService: LoginService, private http: HttpClient, private router: Router) {
+  // tslint:disable-next-line: max-line-length
+  constructor(private dataService: LoginService, private http: HttpClient, private router: Router, private emitter: EventEmitterService, private data: DataService) {
   }
 
   ngOnInit(): void {
     this.dataService.getUtenti().subscribe((utenti: Utente[]) => this.utenti = utenti);
     this.dataService.getCodici().subscribe((codici: string[]) => this.codici = codici);
 
-    $('.navigation').hide();
+    this.data.currentCheck.subscribe(check => this.check = check);
+
+    // $('.navigation').hide();
     $('.richiedi-accesso-down').hide();
 
     $('.richiedi-accesso').click(function() {
@@ -35,11 +43,20 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  sendCheck(): void {
+   this.checkEvent.emit(this.loginFatto);
+  }
+
+  changeCheck(): void {
+    this.data.changeCheck(true);
+  }
+
   login(username: string, password: string): void {
     for (let x = 0; x < this.utenti.length; x++) {
       if (this.utenti[x].username === username) {
         if (this.utenti[x].password === password) {
           this.nomeUtente = this.utenti[x].nome;
+          this.sendCheck();
           this.router.navigate(['soluzioni']);
           return;
         } else {
