@@ -28,6 +28,11 @@ export class LoginComponent implements OnInit {
     this.dataService.getCodici().subscribe((codici: string[]) => this.codici = codici);
 
     $('.navigation').hide();
+    $('.richiedi-accesso-down').hide();
+
+    $('.richiedi-accesso').click(function() {
+      $('.richiedi-accesso-down').toggle();
+    });
   }
 
   login(username: string, password: string): void {
