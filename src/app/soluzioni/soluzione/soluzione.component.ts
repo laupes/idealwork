@@ -10,6 +10,7 @@ export class SoluzioneComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    $('.navigation').show();
   }
 
 }

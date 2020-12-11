@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
 
     this.data.currentCheck.subscribe(check => this.check = check);
 
-    // $('.navigation').hide();
+    $('.navigation').hide();
     $('.richiedi-accesso-down').hide();
 
     $('.richiedi-accesso').click(function() {
