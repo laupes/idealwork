@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { TitoloComponent } from './titolo/titolo.component';
-import { ColoriComponent } from './colori/colori.component';
 import { OpzioneComponent } from './opzione/opzione.component';
 import { EsempioComponent } from './esempio/esempio.component';
 import { ScaricaAppComponent } from './scarica-app/scarica-app.component';
@@ -13,8 +12,7 @@ import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
-    TitoloComponent, 
-    ColoriComponent, 
+    TitoloComponent,  
     OpzioneComponent, 
     EsempioComponent, 
     ScaricaAppComponent
@@ -26,7 +24,6 @@ import { RouterModule } from '@angular/router';
   ],
   exports: [
     TitoloComponent,
-    ColoriComponent,
     OpzioneComponent,
     EsempioComponent,
     ScaricaAppComponent
