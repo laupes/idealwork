@@ -1,5 +1,10 @@
 // IMMAGINI SFONDO OPZIONI
 
+#opzione-colori-disponibili {
+    background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), 
+    url("/assets/img/dettaglio-soluzioni/colori-disponibili.jpg");
+}
+
 #opzione-prodotti {
     background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), 
     url("/assets/img/dettaglio-soluzioni/prodotti.png");
@@ -10,9 +15,14 @@
     url("/assets/img/dettaglio-soluzioni/attrezzature.png");
 }
 
-#opzione-video-tutorial-istruzioni {
+#opzione-video-tutorial {
     background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), 
     url("/assets/img/dettaglio-soluzioni/video-tutorial-istruzioni.png");
+}
+
+#opzione-istruzioni-posa {
+    background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), 
+    url("/assets/img/dettaglio-soluzioni/istruzioni-posa.jpg");
 }
 
 #opzione-certificati {
@@ -25,19 +35,15 @@
     url("/assets/img/dettaglio-soluzioni/particolari-esecutivi.jpg");
 }
 
-#opzione-dati-tecnici {
+#opzione-documentazione-sistema {
     background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), 
-    url("/assets/img/dettaglio-soluzioni/dati-tecnici.png");
+    url("/assets/img/dettaglio-soluzioni/documentazione-sistema.png");
 }
+
 
 
 
 // CSS PER IL RESTO
-
-
-#opzione-prodotti {
-    margin-top: 50px;
-}
 
 .opzione {
     position: relative;
@@ -107,7 +113,7 @@
 @media screen and (min-width: 1300px) {
     .opzione {
         margin-right: 15%;
-        padding: 2% 10%;
+        padding: 1% 10%;
     }
 }
 
