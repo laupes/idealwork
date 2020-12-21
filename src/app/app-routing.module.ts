@@ -65,7 +65,7 @@ const routes: Routes = [
     RiepilogoOrdineModule,
     ElencoOrdiniModule,
     NovitaModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })
   ],
   exports: [RouterModule]
 })

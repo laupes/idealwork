@@ -51,6 +51,18 @@ export class LoginComponent implements OnInit {
     this.data.changeCheck(true);
   }
 
+  signIn(credentials): any {
+    this.dataService.login(credentials)
+      .subscribe(result => {
+        if (result) {
+          this.router.navigate(['soluzioni']);
+        }
+        else {
+
+        }
+      });
+  }
+
   login(username: string, password: string): void {
     for (let x = 0; x < this.utenti.length; x++) {
       if (this.utenti[x].username === username) {
