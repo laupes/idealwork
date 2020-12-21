@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError, tap, } from 'rxjs/operators';
 import { registerLocaleData } from '@angular/common';
 import { map } from 'rxjs/operators';
 
 import { Utente } from '../../utente.interface';
+
 
 
 
@@ -24,26 +25,28 @@ export class LoginService {
 
   // tslint:disable-next-line: typedef
   private handleError(error: any) {
-    console.error('server error:', error);
     if (error.error instanceof Error) {
       const errMessage = error.error.message;
-      // tslint:disable-next-line: deprecation
-      return Observable.throw(errMessage);
+      return throwError(errMessage);
     }
-    // tslint:disable-next-line: deprecation
-    return Observable.throw(error || 'Error');
+    return throwError(error);
   }
 
   login(credentials): Observable<object> {
-    return this.http.post('http://10.52.1.120:3000/login', credentials, {
-      headers: {
-        'Content-Type' : 'application/x-www-form-urlencoded'
-      }
+    const header = new HttpHeaders()
+    .set('Content-Type', 'application/x-www-form-urlencoded');
+    const body = new HttpParams()
+    .set('username', credentials['username'])
+    .set('password', credentials['password']);
+    console.log(body);
+    return this.http.post<any>('http://10.52.1.120:3000/login', body, {
+      headers: header
     })
       .pipe(
         catchError(this.handleError),
         tap(resData => {
           console.log(resData);
+          return true;
         })
       );
   }
