@@ -1,0 +1,42 @@
+#lista-colori{
+    padding-left: 5%;
+    width: 100%;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    .colore {
+        border: 1px solid #c6c6c6;
+        height: 200px;
+        width: 45%;
+        margin-right: 10px;
+        margin-bottom: 25px;
+
+        .cromia {
+            height: 70%;
+        }
+
+        .descrizione-cromia {
+            margin: 10px;
+
+            .titolo-cromia {
+                font-weight: 600;
+                margin-bottom: 0px !important;
+            }
+            .codice-cromia {
+                font-family: 'Roboto Condensed', sans-serif;
+                font-size: 16px;
+                font-weight: 300;
+                color: grey;
+                text-transform: uppercase;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 720px) {
+    #lista-colori {
+        padding: 0% 3%;
+    }
+} 
