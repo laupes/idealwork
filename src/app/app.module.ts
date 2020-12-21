@@ -12,6 +12,7 @@ import { ChildrenOutletContexts } from '@angular/router';
 import { RiepilogoOrdineModule } from './riepilogo-ordine/riepilogo-ordine.module';
 import { ElencoOrdiniModule } from './elenco-ordini/elenco-ordini.module';
 import { NovitaModule } from './novita/novita.module';
+import { ColoriDisponibiliModule } from './colori-disponibili/colori-disponibili.module';
 import { CoreModule } from './core/core.module';
 import { DataService } from './data.service';
 
@@ -38,6 +39,7 @@ import { FormsModule } from '@angular/forms';
     RiepilogoOrdineModule,
     ElencoOrdiniModule,
     NovitaModule,
+    ColoriDisponibiliModule,
     FormsModule,
     CoreModule
   ],

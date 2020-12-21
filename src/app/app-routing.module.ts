@@ -7,6 +7,7 @@ import { ListaProdottiModule } from './lista-prodotti/lista-prodotti.module';
 import { RiepilogoOrdineModule } from './riepilogo-ordine/riepilogo-ordine.module';
 import { ElencoOrdiniModule } from './elenco-ordini/elenco-ordini.module';
 import { NovitaModule } from './novita/novita.module';
+import { ColoriDisponibiliModule } from './colori-disponibili/colori-disponibili.module';
 
 import { DettaglioProdottoComponent } from './dettaglio-prodotto/dettaglio-prodotto.component';
 import { LoginComponent } from './login/login.component';
@@ -54,6 +55,10 @@ const routes: Routes = [
     path: 'novita',
     loadChildren: 'src/app/novita/novita.module#NovitaModule'
   },
+  {
+    path: 'colori-disponibili',
+    loadChildren: 'src/app/novita/novita.module#NovitaModule'
+  },
 ];
 
 @NgModule({
@@ -65,6 +70,7 @@ const routes: Routes = [
     RiepilogoOrdineModule,
     ElencoOrdiniModule,
     NovitaModule,
+    ColoriDisponibiliModule,
     RouterModule.forRoot(routes)
   ],
   exports: [RouterModule]
