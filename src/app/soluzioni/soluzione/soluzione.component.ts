@@ -1,4 +1,11 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { AuthService } from 'src/app/core/auth.service';
+import { DataService } from 'src/app/data.service';
+import { EventEmitterService } from 'src/app/event-emitter.service';
+import { Soluzione } from 'src/app/interfaces/soluzione.interface';
 
 @Component({
   selector: 'app-soluzione',
@@ -7,9 +14,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SoluzioneComponent implements OnInit {
 
-  constructor() { }
+  soluzioni: Soluzione[];
+
+  constructor(private dataService: AuthService) { }
 
   ngOnInit(): void {
+    this.dataService.getSoluzioni().subscribe((soluzioni: Soluzione[]) => this.soluzioni = soluzioni);
+
     $('.navigation').show();
   }
 

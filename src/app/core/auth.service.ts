@@ -5,7 +5,8 @@ import { catchError, tap, } from 'rxjs/operators';
 import { registerLocaleData } from '@angular/common';
 import { map } from 'rxjs/operators';
 
-import { Utente } from '../../utente.interface';
+import { Utente } from '../interfaces/utente.interface';
+import { Soluzione } from '../interfaces/soluzione.interface';
 
 
 
@@ -13,13 +14,13 @@ import { Utente } from '../../utente.interface';
 @Injectable({
   providedIn: 'root'
 })
-export class LoginService {
+export class AuthService {
 
   baseUrl = 'assets/utenti.json';
   urlCodici = 'assets/codici.json';
   loginUrl = 'http://10.52.1.120:3000/login';
 
-  currentUser: any;
+  currentUser: Utente;
 
   constructor(private http: HttpClient) { }
 
@@ -32,30 +33,39 @@ export class LoginService {
     return throwError(error);
   }
 
-  login(credentials): Observable<object> {
+  login(credentials): Observable<Utente> {
     const header = new HttpHeaders()
     .set('Content-Type', 'application/x-www-form-urlencoded');
     const body = new HttpParams()
-    .set('username', credentials['username'])
-    .set('password', credentials['password']);
+    .set('username', credentials['username'].trim())
+    .set('password', credentials['password'].trim());
     const option = {
       headers: header
     };
-    console.log(body);
-    return this.http.post<any>(this.loginUrl, body, option)
+    // console.log(body);
+    return this.http.post<Utente>(this.loginUrl, body, option)
       .pipe(
-        map(res => {
-          console.log(res);
-          this.currentUser = res;
-          return res;
+        map(response => {
+          console.log(response);
+          if (response['result'] !== 'incorrect') {
+          localStorage.setItem('token', response.hash);
+          this.currentUser = response;
+          return response;
+          } else {
+            return null;
+          }
         })
         );
   }
 
-  logIn(credentials) {
-    const data = 'username=' + credentials['username'] + 'password=' + credentials['password'] + '&grant_type=password';
-    const reqHeaders = new HttpHeaders({'Content-Type' : 'application/x-www-urlencoded'});
-    return this.http.post(this.loginUrl, data, {headers: reqHeaders});
+  getSoluzioni(): Observable<Soluzione[]> {
+    return this.http.get<Soluzione[]>('http://10.52.1.120:3000/soluzioni/IT')
+    .pipe(
+      catchError(this.handleError),
+      tap(resData => {
+        console.log(resData);
+      })
+    )
   }
 
   getUtenti(): Observable<Utente[]> {
