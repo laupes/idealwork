@@ -17,7 +17,7 @@ export class LoginService {
 
   baseUrl = 'assets/utenti.json';
   urlCodici = 'assets/codici.json';
-  loginUrl = '10.52.1.120:3000/login';
+  loginUrl = 'http://10.52.1.120:3000/login';
 
   currentUser: any;
 
@@ -38,17 +38,24 @@ export class LoginService {
     const body = new HttpParams()
     .set('username', credentials['username'])
     .set('password', credentials['password']);
-    console.log(body);
-    return this.http.post<any>('http://10.52.1.120:3000/login', body, {
+    const option = {
       headers: header
-    })
+    };
+    console.log(body);
+    return this.http.post<any>(this.loginUrl, body, option)
       .pipe(
-        catchError(this.handleError),
-        tap(resData => {
-          console.log(resData);
-          return true;
+        map(res => {
+          console.log(res);
+          this.currentUser = res;
+          return res;
         })
-      );
+        );
+  }
+
+  logIn(credentials) {
+    const data = 'username=' + credentials['username'] + 'password=' + credentials['password'] + '&grant_type=password';
+    const reqHeaders = new HttpHeaders({'Content-Type' : 'application/x-www-urlencoded'});
+    return this.http.post(this.loginUrl, data, {headers: reqHeaders});
   }
 
   getUtenti(): Observable<Utente[]> {

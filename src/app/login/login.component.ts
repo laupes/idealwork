@@ -51,8 +51,8 @@ export class LoginComponent implements OnInit {
     this.data.changeCheck(true);
   }
 
-  signIn(credentials): any {
-    this.dataService.login(credentials)
+  signIn(credentials: any): any {
+    this.dataService.logIn(credentials)
       .subscribe(result => {
         if (result) {
           this.router.navigate(['soluzioni']);
