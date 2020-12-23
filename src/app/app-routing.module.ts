@@ -8,6 +8,7 @@ import { RiepilogoOrdineModule } from './riepilogo-ordine/riepilogo-ordine.modul
 import { ElencoOrdiniModule } from './elenco-ordini/elenco-ordini.module';
 import { NovitaModule } from './novita/novita.module';
 import { ColoriDisponibiliModule } from './colori-disponibili/colori-disponibili.module';
+import { TipologieModule } from './tipologie/tipologie.module';
 
 import { DettaglioProdottoComponent } from './dettaglio-prodotto/dettaglio-prodotto.component';
 import { LoginComponent } from './login/login.component';
@@ -59,6 +60,10 @@ const routes: Routes = [
     path: 'colori-disponibili',
     loadChildren: 'src/app/novita/novita.module#NovitaModule'
   },
+  {
+    path: 'tipologie',
+    loadChildren: 'src/app/tipologie/tipologie.module#TipologieModule'
+  },
 ];
 
 @NgModule({
@@ -71,6 +76,7 @@ const routes: Routes = [
     ElencoOrdiniModule,
     NovitaModule,
     ColoriDisponibiliModule,
+    TipologieModule,
     RouterModule.forRoot(routes)
   ],
   exports: [RouterModule]

@@ -19,6 +19,7 @@ import { DataService } from './data.service';
 import { DettaglioProdottoComponent } from './dettaglio-prodotto/dettaglio-prodotto.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
+import { TipologieModule } from './tipologie/tipologie.module';
 
 
 
@@ -41,6 +42,7 @@ import { FormsModule } from '@angular/forms';
     NovitaModule,
     ColoriDisponibiliModule,
     FormsModule,
+    TipologieModule,
     CoreModule
   ],
   providers: [
