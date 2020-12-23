@@ -12,6 +12,7 @@ import { TipologieModule } from './tipologie/tipologie.module';
 
 import { DettaglioProdottoComponent } from './dettaglio-prodotto/dettaglio-prodotto.component';
 import { LoginComponent } from './login/login.component';
+import { VideoTutorialModule } from './video-tutorial/video-tutorial.module';
 
 const routes: Routes = [
   {
@@ -64,6 +65,10 @@ const routes: Routes = [
     path: 'tipologie',
     loadChildren: 'src/app/tipologie/tipologie.module#TipologieModule'
   },
+  {
+    path: 'video-tutorial',
+    loadChildren: 'src/app/video-tutorial/video-tutorial-module#VideoTutorialModule'
+  }
 ];
 
 @NgModule({
@@ -77,6 +82,7 @@ const routes: Routes = [
     NovitaModule,
     ColoriDisponibiliModule,
     TipologieModule,
+    VideoTutorialModule,
     RouterModule.forRoot(routes)
   ],
   exports: [RouterModule]

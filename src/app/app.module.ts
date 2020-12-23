@@ -15,6 +15,7 @@ import { NovitaModule } from './novita/novita.module';
 import { ColoriDisponibiliModule } from './colori-disponibili/colori-disponibili.module';
 import { CoreModule } from './core/core.module';
 import { DataService } from './data.service';
+import { VideoTutorialModule } from './video-tutorial/video-tutorial.module';
 
 import { DettaglioProdottoComponent } from './dettaglio-prodotto/dettaglio-prodotto.component';
 import { LoginComponent } from './login/login.component';
@@ -43,6 +44,7 @@ import { TipologieModule } from './tipologie/tipologie.module';
     ColoriDisponibiliModule,
     FormsModule,
     TipologieModule,
+    VideoTutorialModule,
     CoreModule
   ],
   providers: [
