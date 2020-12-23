@@ -1,5 +1,5 @@
 export class Soluzione {
-    name: string;
+    nome: string;
     abilitato: number;
     sequenza: number;
     imgSx: string;

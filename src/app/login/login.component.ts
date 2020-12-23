@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { EventEmitter, Input, Output, Component, OnInit, Inject, InjectionToken } from '@angular/core';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 
 import { Utente } from 'src/app/interfaces/utente.interface';
@@ -19,6 +20,7 @@ export class LoginComponent implements OnInit {
   nomeUtente: string;
   // utenti: Utente[];
   // codici: string[];
+  soluzioni: Soluzione[];
   loginFatto = false;
   check: boolean = this.loginFatto;
 
@@ -53,11 +55,13 @@ export class LoginComponent implements OnInit {
   }
 
   signIn(credentials: any): any {
-    this.dataService.login(credentials)
+    console.log(credentials);
+    this.dataService.logIn(credentials)
       .subscribe(result => {
         if (result) {
           // setTimeout(() => {
             this.router.navigate(['soluzioni']);
+            // this.dataService.getSoluzioni().subscribe((soluzioni: Soluzione[]) => this.soluzioni = soluzioni);
         // }, 2000);
         }
         else {

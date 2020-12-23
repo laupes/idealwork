@@ -3,7 +3,6 @@ export class Utente {
     email: string;
     nome: string;
     cognome: string;
-    username: string;
     password: string;
     hash: string;
     // tslint:disable-next-line: variable-name

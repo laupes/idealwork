@@ -23,6 +23,7 @@
     "angular-flickity": "^3.1.4",
     "flickity": "^2.2.1",
     "jquery": "^3.5.1",
+    "ngx-cookie-service": "^11.0.2",
     "ngx-owl-carousel": "^2.0.7",
     "owl.carousel": "^2.3.4",
     "rxjs": "~6.6.0",
