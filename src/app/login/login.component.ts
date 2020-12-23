@@ -3,9 +3,10 @@ import { EventEmitter, Input, Output, Component, OnInit, Inject, InjectionToken 
 import { Router } from '@angular/router';
 
 
-import { Utente } from 'src/utente.interface';
-import { LoginService } from '../core/login.service';
+import { Utente } from 'src/app/interfaces/utente.interface';
+import { AuthService } from '../core/auth.service';
 import { DataService } from '../data.service';
+import { Soluzione } from '../interfaces/soluzione.interface';
 import { EventEmitterService } from './../event-emitter.service';
 
 @Component({
@@ -16,8 +17,8 @@ import { EventEmitterService } from './../event-emitter.service';
 export class LoginComponent implements OnInit {
 
   nomeUtente: string;
-  utenti: Utente[];
-  codici: string[];
+  // utenti: Utente[];
+  // codici: string[];
   loginFatto = false;
   check: boolean = this.loginFatto;
 
@@ -26,12 +27,12 @@ export class LoginComponent implements OnInit {
   @Output() checkEvent: EventEmitter<boolean> = new EventEmitter();
 
   // tslint:disable-next-line: max-line-length
-  constructor(private dataService: LoginService, private http: HttpClient, private router: Router, private emitter: EventEmitterService, private data: DataService) {
+  constructor(private dataService: AuthService, private http: HttpClient, private router: Router, private emitter: EventEmitterService, private data: DataService) {
   }
 
   ngOnInit(): void {
-    this.dataService.getUtenti().subscribe((utenti: Utente[]) => this.utenti = utenti);
-    this.dataService.getCodici().subscribe((codici: string[]) => this.codici = codici);
+    // this.dataService.getUtenti().subscribe((utenti: Utente[]) => this.utenti = utenti);
+    // this.dataService.getCodici().subscribe((codici: string[]) => this.codici = codici);
 
     this.data.currentCheck.subscribe(check => this.check = check);
 
@@ -51,36 +52,18 @@ export class LoginComponent implements OnInit {
     this.data.changeCheck(true);
   }
 
-  signIn(credentials): any {
+  signIn(credentials: any): any {
     this.dataService.login(credentials)
       .subscribe(result => {
         if (result) {
-          this.router.navigate(['soluzioni']);
+          // setTimeout(() => {
+            this.router.navigate(['soluzioni']);
+        // }, 2000);
         }
         else {
-
+          return alert('username e/o password sbagliati');
         }
       });
-  }
-
-  login(username: string, password: string): void {
-    for (let x = 0; x < this.utenti.length; x++) {
-      if (this.utenti[x].username === username) {
-        if (this.utenti[x].password === password) {
-          this.nomeUtente = this.utenti[x].nome;
-          this.sendCheck();
-          this.router.navigate(['soluzioni']);
-          return;
-        } else {
-          alert('password sbagliata');
-          return;
-        }
-      } else {
-        if (x === this.utenti.length - 1) {
-          alert('utente non trovato');
-        }
-      }
-    }
   }
 
 }
