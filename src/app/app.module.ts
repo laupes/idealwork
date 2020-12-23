@@ -16,11 +16,12 @@ import { ColoriDisponibiliModule } from './colori-disponibili/colori-disponibili
 import { CoreModule } from './core/core.module';
 import { DataService } from './data.service';
 import { VideoTutorialModule } from './video-tutorial/video-tutorial.module';
+import { TipologieModule } from './tipologie/tipologie.module';
+import { DocumentazioneModule } from './documentazione/documentazione.module';
 
 import { DettaglioProdottoComponent } from './dettaglio-prodotto/dettaglio-prodotto.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
-import { TipologieModule } from './tipologie/tipologie.module';
 
 
 
@@ -45,6 +46,7 @@ import { TipologieModule } from './tipologie/tipologie.module';
     FormsModule,
     TipologieModule,
     VideoTutorialModule,
+    DocumentazioneModule,
     CoreModule
   ],
   providers: [

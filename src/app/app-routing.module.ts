@@ -9,6 +9,7 @@ import { ElencoOrdiniModule } from './elenco-ordini/elenco-ordini.module';
 import { NovitaModule } from './novita/novita.module';
 import { ColoriDisponibiliModule } from './colori-disponibili/colori-disponibili.module';
 import { TipologieModule } from './tipologie/tipologie.module';
+import { DocumentazioneModule } from './documentazione/documentazione.module'
 
 import { DettaglioProdottoComponent } from './dettaglio-prodotto/dettaglio-prodotto.component';
 import { LoginComponent } from './login/login.component';
@@ -68,6 +69,10 @@ const routes: Routes = [
   {
     path: 'video-tutorial',
     loadChildren: 'src/app/video-tutorial/video-tutorial-module#VideoTutorialModule'
+  },
+  {
+    path: 'documentazione',
+    loadChildren: 'src/app/documentazione/documentazione-module#DocumentazioneModule'
   }
 ];
 
@@ -83,6 +88,7 @@ const routes: Routes = [
     ColoriDisponibiliModule,
     TipologieModule,
     VideoTutorialModule,
+    DocumentazioneModule,
     RouterModule.forRoot(routes)
   ],
   exports: [RouterModule]
