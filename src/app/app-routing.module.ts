@@ -14,6 +14,7 @@ import { DocumentazioneModule } from './documentazione/documentazione.module'
 import { DettaglioProdottoComponent } from './dettaglio-prodotto/dettaglio-prodotto.component';
 import { LoginComponent } from './login/login.component';
 import { VideoTutorialModule } from './video-tutorial/video-tutorial.module';
+import { ParticolariEsecutiviModule } from './particolari-esecutivi/particolari-esecutivi.module';
 
 const routes: Routes = [
   {
@@ -73,6 +74,10 @@ const routes: Routes = [
   {
     path: 'documentazione',
     loadChildren: 'src/app/documentazione/documentazione-module#DocumentazioneModule'
+  },
+  {
+    path: 'particolari-esecutivi',
+    loadChildren: 'src/app/particolari-esecutivi/particolari-esecutivi-module#ParticolariEsecutiviModule'
   }
 ];
 
@@ -89,6 +94,7 @@ const routes: Routes = [
     TipologieModule,
     VideoTutorialModule,
     DocumentazioneModule,
+    ParticolariEsecutiviModule,
     RouterModule.forRoot(routes)
   ],
   exports: [RouterModule]

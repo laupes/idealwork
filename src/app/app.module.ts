@@ -18,11 +18,11 @@ import { DataService } from './data.service';
 import { VideoTutorialModule } from './video-tutorial/video-tutorial.module';
 import { TipologieModule } from './tipologie/tipologie.module';
 import { DocumentazioneModule } from './documentazione/documentazione.module';
+import { ParticolariEsecutiviModule } from './particolari-esecutivi/particolari-esecutivi.module';
 
 import { DettaglioProdottoComponent } from './dettaglio-prodotto/dettaglio-prodotto.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
-
 
 
 @NgModule({
@@ -47,6 +47,7 @@ import { FormsModule } from '@angular/forms';
     TipologieModule,
     VideoTutorialModule,
     DocumentazioneModule,
+    ParticolariEsecutiviModule,
     CoreModule
   ],
   providers: [
