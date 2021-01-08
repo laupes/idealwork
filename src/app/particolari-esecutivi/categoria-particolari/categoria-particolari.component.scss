@@ -1,0 +1,49 @@
+
+#opzione-preparazioni-architop {
+    background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), 
+    url("/assets/img/particolari-esecutivi/preparazioni.png");
+}
+
+#opzione-applicazioni-architop {
+    background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), 
+    url("/assets/img/particolari-esecutivi/applicazioni.png");
+}
+
+#opzione-protezioni-architop {
+    background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), 
+    url("/assets/img/particolari-esecutivi/protezioni.png");
+}
+
+
+.opzione {
+    position: relative;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 7% 7%;
+    cursor: pointer;
+
+    img {
+        height: 150px;
+    }
+
+    .titolo-opzione {
+        display: flex;
+        align-items: center;
+        color: white;
+
+        h1 {
+            margin-right: 20px;
+            font-family: 'Roboto Condensed', sans-serif;
+            font-size: 30px;
+            text-align: right;
+            letter-spacing: 2px;
+            font-weight: 300;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+    }
+}
