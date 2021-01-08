@@ -3,12 +3,12 @@
         <img src="./assets/img/menu/logo-idealwork.png" style="width: 100px; padding-bottom: 50px">
         <input placeholder="E-mail" required minlength="3" maxlength="50" ngModel name="username" #username="ngModel" id="username" type="text" class="form-control">
         <div class="alert alert-danger" *ngIf="username.touched && !username.valid">
-            <div *ngIf="username.errors.required">Il nome utente è necessario</div>
+            <div *ngIf="username.errors.required">Il nome utente è obbligatorio</div>
             <div *ngIf="username.errors.minlength">La lunghezza deve essere almeno {{ username.errors.minlength.requiredLength }} caratteri</div>
         </div>
-        <input placeholder="Password" required minlength="3" maxlength="50" ngModel name="password" #password="ngModel" id="password" type="text" class="form-control">
+        <input placeholder="Password" required minlength="3" maxlength="50" ngModel name="password" #password="ngModel" id="password" type="password" class="form-control">
         <div class="alert alert-danger" *ngIf="password.touched && !password.valid">
-            <div *ngIf="password.errors.required">La password è necessaria</div>
+            <div *ngIf="password.errors.required">La password è obbligatoria</div>
             <div *ngIf="password.errors.minlength">La lunghezza deve essere almeno {{ password.errors.minlength.requiredLength }} caratteri</div>
         </div>
         <br/>
@@ -18,14 +18,14 @@
             <i class="fa fa-chevron-down" style="font-size: 20px;"></i> 
         </div>
 
-        <!-- <div class="richiedi-accesso-down">
+        <div class="richiedi-accesso-down">
             <input placeholder="Nome" required minlength="3" maxlength="50" ngModel name="nome" #password="ngModel" id="password" type="text" class="form-control space-down">
             <input placeholder="Cognome" required minlength="3" maxlength="50" ngModel name="cognome" #password="ngModel" id="password" type="text" class="form-control space-down">
             <input placeholder="E-mail" required minlength="10" maxlength="50" ngModel name="email" #password="ngModel" id="password" type="text" class="form-control space-down">
             <input placeholder="Codice azienda" required minlength="5" maxlength="50" ngModel name="codice-azienda" #password="ngModel" id="codice-azienda" type="text" class="form-control space-down">
             <input placeholder="Note" required minlength="5" maxlength="50" ngModel name="note" #password="ngModel" id="password" type="text" class="form-control space-down">
-            <button class="pulsante-invia-richiesta" (click)="login(username.value,password.value)" [disabled]="f.invalid">Invia richiesta</button>
-        </div> -->
+            <button class="pulsante-invia-richiesta"  [disabled]="f.invalid">Invia richiesta</button>
+        </div>
     </div>
 </form>
 <br/>

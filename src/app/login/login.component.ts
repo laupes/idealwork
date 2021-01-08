@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { EventEmitter, Input, Output, Component, OnInit, Inject, InjectionToken } from '@angular/core';
 import { Router } from '@angular/router';
@@ -54,11 +55,24 @@ export class LoginComponent implements OnInit {
     this.data.changeCheck(true);
   }
 
+  /* get isLoggedIn(): Observable<boolean> {
+    const authToken = this.cookieService.get('vmkr');
+    if (authToken) {
+      return this.getUserBySession(authToken).pipe(
+        map(() => true),
+        catchError(() => of(false))
+      );
+    } else {
+      console.log('No token found!');
+      return of(false);
+    }
+  } */
+
   signIn(credentials: any): any {
-    console.log(credentials);
+    // console.log(credentials);
     this.dataService.logIn(credentials)
-      .subscribe(result => {
-        if (result) {
+      .subscribe((result: string) => {
+        if (!result.includes('no_data')) {
           // setTimeout(() => {
             this.router.navigate(['soluzioni']);
             // this.dataService.getSoluzioni().subscribe((soluzioni: Soluzione[]) => this.soluzioni = soluzioni);
@@ -69,5 +83,6 @@ export class LoginComponent implements OnInit {
         }
       });
   }
+
 
 }

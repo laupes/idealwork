@@ -1,14 +1,12 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Observable, throwError, from } from 'rxjs';
+import { HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
+import { Observable, throwError, from, observable } from 'rxjs';
 import { catchError, tap, } from 'rxjs/operators';
 import { registerLocaleData } from '@angular/common';
 import { map } from 'rxjs/operators';
 
 import { Utente } from '../interfaces/utente.interface';
 import { Soluzione } from '../interfaces/soluzione.interface';
-import { CookieService } from 'ngx-cookie-service';
-
 
 
 
@@ -50,16 +48,16 @@ export class AuthService {
         map(response => {
           console.log(response);
           if (response['result'] !== 'incorrect') {
-          // localStorage.setItem('username', response.email);
+          localStorage.setItem('token', response.headers.get('Set-Cookie'));
           // sessionStorage.setItem('utente', response.hash);
           // tslint:disable-next-line: max-line-length
           // sessionStorage.setItem('SESSIONID', 'connect.sid=s%3AbMQ0f6Th4-k0G7aRaXE8I3hS92v4UleY.Hs5OUDidYil1Y3o%2FUZ4DRXeoTAM%2BmDruzTanFAlcDeA; Path=/; Expires=Wed, 23 Dec 2020 12:39:10 GMT');
           // tslint:disable-next-line: max-line-length
           // this.cookies.set('SessionID', 'connect.sid=s%3Ah6IrMz8LleceoWqazuerK8pyxHNLiop9.0GxvAYjPnrX%2BWTGIKnZWd8ioCQYnKCptw%2FjDmzcdqmc');
-           const cookie  = response.headers.keys();
-           console.log('cookie: ' + cookie);
+          const cookie  = response.headers.keys();
+          console.log('cookie: ' + cookie);
           // this.currentUser = response;
-           return response;
+          return response;
           } else {
             return null;
           }
@@ -76,9 +74,35 @@ export class AuthService {
     );
   }
 
-  logIn(credentials: { [x: string]: string; }): any {
+  logIn(credentials: { [x: string]: string; }): Observable<any> {
     const http = new XMLHttpRequest();
-    const params = 'username=' + credentials['username'] + '&passowrd=' + credentials['password'];
+    const promise = new Promise(function(resolve, reject) {
+      http.onload = function() {
+        resolve(this.responseText);
+      }
+      http.onerror = function() {
+        reject(this.status);
+      }
+      // const params = 'username=' + credentials['username'] + '&passowrd=' + credentials['password'];
+      // const params = JSON.stringify({ username : credentials['username'], password : credentials['password'] });
+      const data = new FormData();
+      data.set('username', credentials['username']);
+      data.set('password', credentials['password']);
+      const url = 'http://10.52.1.120:3000/login';
+      http.open('POST', url, true);
+      http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+      http.onreadystatechange = () => {
+        if (http.readyState === 4 && http.status === 200) {
+          console.log(http.responseText);
+        }
+      };
+      data.forEach( x => {
+        console.log(x);
+      });
+      http.send(data);
+    });
+    return from(promise);
+    /*const params = 'username=' + credentials['username'] + '&passowrd=' + credentials['password'];
     const url = 'http://10.52.1.120:3000/login';
     http.open('POST', url, true);
     http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
@@ -87,7 +111,7 @@ export class AuthService {
         console.log(http.responseText);
       }
     };
-    return http.send(params);
+    return http.send(params); */
   }
 
   /*
