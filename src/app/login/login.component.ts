@@ -37,6 +37,19 @@ export class LoginComponent implements OnInit {
 
     this.data.currentCheck.subscribe(check => this.check = check);
 
+    const togglePassword = document.querySelector('#togglePassword');
+    const password = document.querySelector('#password');
+
+
+    togglePassword.addEventListener('click', function (e) {
+      // toggle the type attribute
+      const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+      password.setAttribute('type', type);
+      // toggle the eye slash icon
+      this.classList.toggle('fa-eye-slash');
+    });
+
+
     $('.navigation').hide();
     $('.richiedi-accesso-down').hide();
 
@@ -70,7 +83,7 @@ export class LoginComponent implements OnInit {
     // console.log(credentials);
     this.dataService.logIn(credentials)
       .subscribe((result: string) => {
-        if (!result.includes('no_data')) {
+        if (result.includes('no_data')) {
           // setTimeout(() => {
             this.router.navigate(['soluzioni']);
             // this.dataService.getSoluzioni().subscribe((soluzioni: Soluzione[]) => this.soluzioni = soluzioni);

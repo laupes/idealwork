@@ -6,7 +6,13 @@
             <div *ngIf="username.errors.required">Il nome utente è obbligatorio</div>
             <div *ngIf="username.errors.minlength">La lunghezza deve essere almeno {{ username.errors.minlength.requiredLength }} caratteri</div>
         </div>
-        <input placeholder="Password" required minlength="3" maxlength="50" ngModel name="password" #password="ngModel" id="password" type="password" class="form-control">
+
+        <div id="password-container">
+            <input placeholder="Password" type="password" required minlength="3" maxlength="50" ngModel name="password" #password="ngModel" id="password" class="form-control">
+            <i class="fa fa-eye" id="togglePassword"></i>
+        </div>
+
+
         <div class="alert alert-danger" *ngIf="password.touched && !password.valid">
             <div *ngIf="password.errors.required">La password è obbligatoria</div>
             <div *ngIf="password.errors.minlength">La lunghezza deve essere almeno {{ password.errors.minlength.requiredLength }} caratteri</div>
