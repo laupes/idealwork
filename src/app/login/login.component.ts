@@ -2,8 +2,6 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { EventEmitter, Input, Output, Component, OnInit, Inject, InjectionToken } from '@angular/core';
 import { Router } from '@angular/router';
-import { CookieService } from 'ngx-cookie-service';
-
 
 import { Utente } from 'src/app/interfaces/utente.interface';
 import { AuthService } from '../core/auth.service';
