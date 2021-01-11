@@ -53,6 +53,8 @@ export class LoginComponent implements OnInit {
     $('.navigation').hide();
     $('.richiedi-accesso-down').hide();
 
+    $('.alert-danger').hide();
+
     $('.richiedi-accesso').click(function() {
       $('.richiedi-accesso-down').toggle();
     });
@@ -90,7 +92,8 @@ export class LoginComponent implements OnInit {
         // }, 2000);
         }
         else {
-          return alert('username e/o password sbagliati');
+          // return alert('username e/o password sbagliati');
+          $('.alert-danger').show();
         }
       });
   }
