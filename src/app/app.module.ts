@@ -50,7 +50,7 @@ import { CookieService } from 'ngx-cookie-service';
     VideoTutorialModule,
     DocumentazioneModule,
     ParticolariEsecutiviModule,
-    CoreModule
+    CoreModule,
   ],
   providers: [
     EventEmitter,
