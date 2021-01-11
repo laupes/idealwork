@@ -2,8 +2,6 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { EventEmitter, Input, Output, Component, OnInit, Inject, InjectionToken } from '@angular/core';
 import { Router } from '@angular/router';
-import { CookieService } from 'ngx-cookie-service';
-
 
 import { Utente } from 'src/app/interfaces/utente.interface';
 import { AuthService } from '../core/auth.service';
@@ -39,8 +37,23 @@ export class LoginComponent implements OnInit {
 
     this.data.currentCheck.subscribe(check => this.check = check);
 
+    const togglePassword = document.querySelector('#togglePassword');
+    const password = document.querySelector('#password');
+
+
+    togglePassword.addEventListener('click', function (e) {
+      // toggle the type attribute
+      const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+      password.setAttribute('type', type);
+      // toggle the eye slash icon
+      this.classList.toggle('fa-eye-slash');
+    });
+
+
     $('.navigation').hide();
     $('.richiedi-accesso-down').hide();
+
+    $('.alert-danger').hide();
 
     $('.richiedi-accesso').click(function() {
       $('.richiedi-accesso-down').toggle();
@@ -72,14 +85,15 @@ export class LoginComponent implements OnInit {
     // console.log(credentials);
     this.dataService.logIn(credentials)
       .subscribe((result: string) => {
-        if (!result.includes('no_data')) {
+        if (result.includes('no_data')) {
           // setTimeout(() => {
             this.router.navigate(['soluzioni']);
             // this.dataService.getSoluzioni().subscribe((soluzioni: Soluzione[]) => this.soluzioni = soluzioni);
         // }, 2000);
         }
         else {
-          return alert('username e/o password sbagliati');
+          // return alert('username e/o password sbagliati');
+          $('.alert-danger').show();
         }
       });
   }

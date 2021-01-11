@@ -23,7 +23,6 @@ import { DettaglioProdottoComponent } from './dettaglio-prodotto/dettaglio-prodo
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { TipologieModule } from './tipologie/tipologie.module';
-import { CookieService } from 'ngx-cookie-service';
 
 
 
@@ -55,8 +54,7 @@ import { CookieService } from 'ngx-cookie-service';
   providers: [
     EventEmitter,
     DataService,
-    ChildrenOutletContexts,
-    CookieService
+    ChildrenOutletContexts
   ],
   bootstrap: [AppComponent]
 })
