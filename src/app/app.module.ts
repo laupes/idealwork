@@ -49,7 +49,7 @@ import { TipologieModule } from './tipologie/tipologie.module';
     VideoTutorialModule,
     DocumentazioneModule,
     ParticolariEsecutiviModule,
-    CoreModule
+    CoreModule,
   ],
   providers: [
     EventEmitter,

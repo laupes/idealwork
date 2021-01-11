@@ -32,7 +32,7 @@ export class AuthService {
     return throwError(error);
   }
 
-
+/*
   login(credentials): Observable<any> {
     const header = new HttpHeaders()
     .set('Content-Type', 'application/x-www-form-urlencoded');
@@ -64,7 +64,7 @@ export class AuthService {
         })
         );
   }
-
+*/
   getSoluzioni(): Observable<Soluzione[]> {
     return this.http.get<Soluzione[]>('http://10.52.1.120:3000/soluzioni/IT')
     .pipe(
@@ -77,29 +77,30 @@ export class AuthService {
   logIn(credentials: { [x: string]: string; }): Observable<any> {
     const http = new XMLHttpRequest();
     const promise = new Promise(function(resolve, reject) {
-      http.onload = function() {
+      http.onload = function(): void {
         resolve(this.responseText);
-      }
-      http.onerror = function() {
+      };
+      http.onerror = function(): void {
         reject(this.status);
-      }
+      };
       // const params = 'username=' + credentials['username'] + '&passowrd=' + credentials['password'];
       // const params = JSON.stringify({ username : credentials['username'], password : credentials['password'] });
-      const data = new FormData();
-      data.set('username', credentials['username']);
-      data.set('password', credentials['password']);
+      let body = new URLSearchParams();
+      body.set('username', credentials['username']);
+      body.set('password', credentials['password']);
       const url = 'http://10.52.1.120:3000/login';
       http.open('POST', url, true);
-      http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+      http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
       http.onreadystatechange = () => {
         if (http.readyState === 4 && http.status === 200) {
           console.log(http.responseText);
+          console.log(http.getResponseHeader('Set-Cookie'));
         }
       };
-      data.forEach( x => {
+      body.forEach( x => {
         console.log(x);
       });
-      http.send(data);
+      http.send(body);
     });
     return from(promise);
     /*const params = 'username=' + credentials['username'] + '&passowrd=' + credentials['password'];
