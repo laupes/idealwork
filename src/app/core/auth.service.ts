@@ -65,8 +65,8 @@ export class AuthService {
         );
   }
 */
-  getSoluzioni(): Observable<Soluzione[]> {
-    return this.http.get<Soluzione[]>('http://10.52.1.120:3000/soluzioni/IT')
+  getSoluzioni(): Observable<any[]> {
+    return this.http.get<any[]>('http://10.52.1.120:3000/soluzioni/IT')
     .pipe(
       tap(resData => {
         console.log(resData);
@@ -94,7 +94,7 @@ export class AuthService {
       http.onreadystatechange = () => {
         if (http.readyState === 4 && http.status === 200) {
           console.log(http.responseText);
-          console.log(http.getResponseHeader('Set-Cookie'));
+          // console.log(http.getResponseHeader('Set-Cookie'));
         }
       };
       body.forEach( x => {

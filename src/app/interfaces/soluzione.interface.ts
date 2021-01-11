@@ -1,10 +1,11 @@
 export class Soluzione {
-    nome: string;
+
     abilitato: number;
-    sequenza: number;
-    imgSx: string;
-    imgDx: string;
-    lingua: string;
-    testo: string;
     descrizione: string;
+    img_dx: string;
+    img_sx: string;
+    lingua: string;
+    sequenza: number;
+    soluzione: string;
+    testo: string;
 }

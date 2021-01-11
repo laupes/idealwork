@@ -1,8 +1,19 @@
 <div id="intestazione-soluzioni">
-    <h1>Il portale dell'applicatore</h1>
-    <p>Scegli la tipologia di prodotto</p>
+    <h1>{{ titolo }}</h1>
+    <p>{{ descrizione }}</p>
 </div>
 
+<div>
+    <div *ngFor = "let soluzione of soluzioni" class="list-group-item">
+        <div class="soluzione">
+            <div class="immagine-soluzione" [ngStyle]="{background: (soluzione.img_sx) ? 'url('+soluzione.img_sx+')' : 'url(./assets/img/soluzioni/esempio-acidificato.png)'}"></div>
+            <div class="titolo-soluzione" [ngStyle]="{background: (soluzione.img_dx) ? 'url('+soluzione.img_dx+')' : 'url(./assets/img/soluzioni/acid-stain.png)'}">
+                <h1>{{ soluzione.soluzione }}</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<!--
 <a routerLink="/dettaglio-soluzione">
     <div class="soluzione">
         <div class="immagine-soluzione" style="background-image: url(./assets/img/soluzioni/esempio-acidificato.png);"></div>
@@ -78,3 +89,4 @@
         </div>
     </div>
 </a>
+-->
