@@ -15,13 +15,14 @@ import { Soluzione } from '../interfaces/soluzione.interface';
 })
 export class AuthService {
 
+  constructor(private http: HttpClient) { }
+  static lingua: string;
+
   // baseUrl = 'assets/utenti.json';
   // urlCodici = 'assets/codici.json';
   loginUrl = 'http://10.52.1.120:3000/login';
 
   currentUser: Utente;
-
-  constructor(private http: HttpClient) { }
 
   // tslint:disable-next-line: typedef
   private handleError(error: any) {
@@ -30,6 +31,14 @@ export class AuthService {
       return throwError(errMessage);
     }
     return throwError(error);
+  }
+
+  get staticLingua(): string {
+    return AuthService.lingua;
+  }
+
+  set setStaticLingua(lingua: string) {
+    AuthService.lingua = lingua;
   }
 
 /*
@@ -66,7 +75,18 @@ export class AuthService {
   }
 */
   getSoluzioni(): Observable<any[]> {
-    return this.http.get<any[]>('http://10.52.1.120:3000/soluzioni/IT')
+    return this.http.get<any[]>('http://10.52.1.120:3000/soluzioni/' + (this.staticLingua ? this.staticLingua
+    : sessionStorage.getItem('lingua')))
+    .pipe(
+      tap(resData => {
+        console.log(resData);
+      })
+    );
+  }
+
+  getSoluzioniDettaglio(soluzione: string): Observable<any[]> {
+    return this.http.get<any[]>('http://10.52.1.120:3000/soluzioni/' + (this.staticLingua ? this.staticLingua
+    : sessionStorage.getItem('lingua')) + soluzione)
     .pipe(
       tap(resData => {
         console.log(resData);
@@ -85,7 +105,7 @@ export class AuthService {
       };
       // const params = 'username=' + credentials['username'] + '&passowrd=' + credentials['password'];
       // const params = JSON.stringify({ username : credentials['username'], password : credentials['password'] });
-      let body = new URLSearchParams();
+      const body = new URLSearchParams();
       body.set('username', credentials['username']);
       body.set('password', credentials['password']);
       const url = 'http://10.52.1.120:3000/login';
@@ -94,6 +114,8 @@ export class AuthService {
       http.onreadystatechange = () => {
         if (http.readyState === 4 && http.status === 200) {
           console.log(http.responseText);
+          AuthService.lingua = http.responseText.split(',')[6].split(':')[1].replace('\"', '').replace('\"', '');
+          sessionStorage.setItem('lingua', http.responseText.split(',')[6].split(':')[1].replace('\"', '').replace('\"', ''));
           // console.log(http.getResponseHeader('Set-Cookie'));
         }
       };

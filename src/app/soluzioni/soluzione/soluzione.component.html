@@ -1,9 +1,10 @@
 <div id="intestazione-soluzioni">
-    <h1>{{ titolo }}</h1>
-    <p>{{ descrizione }}</p>
+    <h1>{{ staticTitolo }}</h1>
+    <p>{{ staticDescrizione }}</p>
 </div>
 
-<div>
+
+    <a routerLink="/dettaglio-soluzione">
     <div *ngFor = "let soluzione of soluzioni" class="list-group-item">
         <div class="soluzione">
             <div class="immagine-soluzione" [ngStyle]="{background: (soluzione.img_sx) ? 'url('+soluzione.img_sx+')' : 'url(./assets/img/soluzioni/esempio-acidificato.png)'}"></div>
@@ -12,7 +13,8 @@
             </div>
         </div>
     </div>
-</div>
+    </a>
+
 
 <!--
 <a routerLink="/dettaglio-soluzione">
