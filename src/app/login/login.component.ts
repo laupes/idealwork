@@ -85,7 +85,7 @@ export class LoginComponent implements OnInit {
     // console.log(credentials);
     this.dataService.logIn(credentials)
       .subscribe((result: string) => {
-        if (result.includes('no_data')) {
+        if (!result.includes('no_data')) {
           // setTimeout(() => {
             this.router.navigate(['soluzioni']);
             // this.dataService.getSoluzioni().subscribe((soluzioni: Soluzione[]) => this.soluzioni = soluzioni);

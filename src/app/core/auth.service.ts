@@ -20,6 +20,7 @@ export class AuthService {
   loginUrl = 'http://10.52.1.120:3000/login';
 
   currentUser: Utente;
+  lingua: string;
 
   constructor(private http: HttpClient) { }
 
@@ -66,7 +67,16 @@ export class AuthService {
   }
 */
   getSoluzioni(): Observable<any[]> {
-    return this.http.get<any[]>('http://10.52.1.120:3000/soluzioni/IT')
+    return this.http.get<any[]>('http://10.52.1.120:3000/soluzioni/' + this.lingua)
+    .pipe(
+      tap(resData => {
+        console.log(resData);
+      })
+    );
+  }
+
+  getSoluzioniDettaglio(soluzione: string): Observable<any[]> {
+    return this.http.get<any[]>('http://10.52.1.120:3000/soluzioni/' + this.lingua + soluzione)
     .pipe(
       tap(resData => {
         console.log(resData);
@@ -85,7 +95,7 @@ export class AuthService {
       };
       // const params = 'username=' + credentials['username'] + '&passowrd=' + credentials['password'];
       // const params = JSON.stringify({ username : credentials['username'], password : credentials['password'] });
-      let body = new URLSearchParams();
+      const body = new URLSearchParams();
       body.set('username', credentials['username']);
       body.set('password', credentials['password']);
       const url = 'http://10.52.1.120:3000/login';
@@ -94,6 +104,7 @@ export class AuthService {
       http.onreadystatechange = () => {
         if (http.readyState === 4 && http.status === 200) {
           console.log(http.responseText);
+          this.lingua = http.responseText.split(',')[6].split(':')[1].replace('\"', '').replace('\"', '');
           // console.log(http.getResponseHeader('Set-Cookie'));
         }
       };
