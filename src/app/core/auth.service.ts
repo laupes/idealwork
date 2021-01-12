@@ -75,8 +75,10 @@ export class AuthService {
   }
 */
   getSoluzioni(): Observable<any[]> {
+    const header = new HttpHeaders()
+    .set('Access-Token', sessionStorage.getItem('token'));
     return this.http.get<any[]>('http://10.52.1.120:3000/soluzioni/' + (this.staticLingua ? this.staticLingua
-    : sessionStorage.getItem('lingua')))
+    : sessionStorage.getItem('lingua')), { headers: header })
     .pipe(
       tap(resData => {
         console.log(resData);
@@ -85,8 +87,10 @@ export class AuthService {
   }
 
   getSoluzioniDettaglio(soluzione: string): Observable<any[]> {
+    const header = new HttpHeaders()
+    .set('Access-Token', sessionStorage.getItem('token'));
     return this.http.get<any[]>('http://10.52.1.120:3000/soluzioni/' + (this.staticLingua ? this.staticLingua
-    : sessionStorage.getItem('lingua')) + '/' + soluzione)
+    : sessionStorage.getItem('lingua')) + '/' + soluzione, { headers: header })
     .pipe(
       tap(resData => {
         console.log(resData);
@@ -95,12 +99,39 @@ export class AuthService {
   }
 
   getSoluzioneColore(): Observable<any[]> {
-    return this.http.get<any[]>('http://10.52.1.120:3000/soluzioni/' + sessionStorage.getItem('lingua') + '/' + sessionStorage.getItem('soluzione') + '/' + 'colori')
+    const header = new HttpHeaders()
+    .set('Access-Token', sessionStorage.getItem('token'));
+    return this.http.get<any[]>('http://10.52.1.120:3000/soluzioni/' + sessionStorage.getItem('lingua') + '/' + sessionStorage.getItem('soluzione') + '/' + 'colori'
+    , { headers: header })
     .pipe(
       tap(resData => {
         console.log(resData);
       })
-    )
+    );
+  }
+
+  getSoluzioneCartelle(): Observable<any[]> {
+    const header = new HttpHeaders()
+    .set('Access-Token', sessionStorage.getItem('token'));
+    return this.http.get<any[]>('http://10.52.1.120:3000/soluzioni/' + sessionStorage.getItem('lingua') + '/' + sessionStorage.getItem('soluzione') + '/' + 'cartelle'
+    , { headers: header })
+    .pipe(
+      tap(resData => {
+        console.log(resData);
+      })
+    );
+  }
+
+  getSoluzioneSottoCartelle(): Observable<any[]> {
+    const header = new HttpHeaders()
+    .set('Access-Token', sessionStorage.getItem('token'));
+    return this.http.get<any[]>('http://10.52.1.120:3000/soluzioni/' + sessionStorage.getItem('lingua') + '/' + sessionStorage.getItem('soluzione') + '/' + 'cartelle'
+    + '/' + sessionStorage.getItem('cartella'), { headers: header })
+    .pipe(
+      tap(resData => {
+        console.log(resData);
+      })
+    );
   }
 
   logIn(credentials: { [x: string]: string; }): Observable<any> {
@@ -123,8 +154,12 @@ export class AuthService {
       http.onreadystatechange = () => {
         if (http.readyState === 4 && http.status === 200) {
           console.log(http.responseText);
-          AuthService.lingua = http.responseText.split(',')[6].split(':')[1].replace('\"', '').replace('\"', '');
-          sessionStorage.setItem('lingua', http.responseText.split(',')[6].split(':')[1].replace('\"', '').replace('\"', ''));
+          AuthService.lingua = http.responseText.split(',')[7].split(':')[1].replace('\"', '').replace('\"', '');
+          sessionStorage.setItem('lingua', http.responseText.split(',')[7].split(':')[1].replace('\"', '').replace('\"', ''));
+          sessionStorage
+          .setItem('token', http.responseText.split(',')[12].split(':')[1].replace('\"', '').replace('\"', '').replace('}', ''));
+          // console.log(http.responseText.split(',')[7].split(':')[1].replace('\"', '').replace('\"', ''));
+          // console.log(http.responseText.split(',')[12].split(':')[1].replace('\"', '').replace('\"', '').replace('}', ''));
           // console.log(http.getResponseHeader('Set-Cookie'));
         }
       };

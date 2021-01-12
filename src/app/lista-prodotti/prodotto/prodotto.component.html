@@ -1,4 +1,17 @@
 <div class="wrapper">
+    <div class="prodotto" *ngFor = "let materiale of materiali">
+        <p class="codice">{{ materiale.codice_materiale }}</p>
+        <div class="contenuto-prodotto">
+            <img class="immagine-prodotto" src="http://10.52.1.120:3000{{ materiale.img }}">
+            <h2 class="titolo-prodotto">{{ materiale.descrizione }}</h2>
+            <p class="descrizione-prodotto">{{ materiale.testo }}</p>
+            <a class="pulsante-vedi-prodotto" routerLink="/prodotto">vedi prodotto</a>
+        </div>
+    </div>
+</div>
+
+<!--
+<div class="wrapper">
     <div class="prodotto">
         <p class="codice">Hard-acq</p>
         <div class="contenuto-prodotto">
@@ -29,3 +42,4 @@
         </div>
     </div>
 </div>
+-->

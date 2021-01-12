@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/core/auth.service';
+import { Materiale } from 'src/app/interfaces/materiale.interface';
 
 @Component({
   selector: 'app-titolo-prodotto',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TitoloProdottoComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dataService: AuthService) { }
+  materiali: Materiale[];
+  titolo: string;
 
   ngOnInit(): void {
+    this.dataService.getSoluzioneSottoCartelle().subscribe((response: Materiale[]) => this.materiali = response);
+    this.titolo = sessionStorage.getItem('prodotto');
   }
 
 }

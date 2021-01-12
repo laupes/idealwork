@@ -1,7 +1,14 @@
-<a routerLink="/categorie-prodotto" class="opzione" id="opzione-preparazioni-architop">
+<a routerLink="/lista-prodotti" class="opzione" *ngFor = "let prodotto of prodotti" [ngStyle]="{background: (prodotto.img) ? 'url('+prodotto.img+')' : 'url(./assets/img/immagine-non-disponibile.jpg)', 'background-size' : 'cover', 'background-position' : 'center'}" (click)="selezione(prodotto.testo, prodotto.nome_cartella)">
     <div class="spazio-vuoto"></div>
     <div class="titolo-opzione">
-        <h1>Preparazioni Architop</h1>
+        <h1>{{ prodotto.testo }}</h1>
+        <i class="fa fa-chevron-right" style="font-size: 20px;"></i>
+    </div>
+</a>
+<!-- <a routerLink="/categorie-prodotto" class="opzione" id="opzione-preparazioni-architop">
+    <div class="spazio-vuoto"></div>
+    <div class="titolo-opzione">
+        <h1>Preparazioni {{ titolo | titlecase }}</h1>
         <i class="fa fa-chevron-right" style="font-size: 20px;"></i>
     </div>
 </a>
@@ -20,4 +27,4 @@
         <h1>Protezioni Architop</h1>
         <i class="fa fa-chevron-right" style="font-size: 20px;"></i>
     </div>
-</a>
+</a> -->
