@@ -24,6 +24,8 @@ export class SoluzioneComponent implements OnInit {
     // console.log(localStorage.getItem('lingua'));
     // this.dataService.getSoluzioni().subscribe((intro: Intro[]) => this.titolo = intro[0].titolo);
 
+
+
     $('.navigation').show();
   }
 
@@ -34,6 +36,10 @@ export class SoluzioneComponent implements OnInit {
 
   get staticDescrizione(): string {
     return SoluzioneComponent.descrizione;
+  }
+
+  selezioneSoluzione(soluzione: string): void {
+    sessionStorage.setItem('soluzione', soluzione);
   }
 
 }

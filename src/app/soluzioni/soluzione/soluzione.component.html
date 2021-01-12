@@ -6,9 +6,9 @@
 
     <a routerLink="/dettaglio-soluzione">
     <div *ngFor = "let soluzione of soluzioni" class="list-group-item">
-        <div class="soluzione">
-            <div class="immagine-soluzione" [ngStyle]="{background: (soluzione.img_sx) ? 'url('+soluzione.img_sx+')' : 'url(./assets/img/soluzioni/esempio-acidificato.png)'}"></div>
-            <div class="titolo-soluzione" [ngStyle]="{background: (soluzione.img_dx) ? 'url('+soluzione.img_dx+')' : 'url(./assets/img/soluzioni/acid-stain.png)'}">
+        <div class="soluzione" (click)="selezioneSoluzione(soluzione.soluzione)">
+            <div class="immagine-soluzione" [ngStyle]="{background: (soluzione.img_sx) ? 'url('+soluzione.img_sx+')' : 'url(./assets/img/immagine-non-disponibile.jpg)'}"></div>
+            <div class="titolo-soluzione" [ngStyle]="{background: (soluzione.img_dx) ? 'url('+soluzione.img_dx+')' : 'url(./assets/img/immagine-non-disponibile-destra.jpg)'}">
                 <h1>{{ soluzione.soluzione }}</h1>
             </div>
         </div>
