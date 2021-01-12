@@ -16,4 +16,11 @@ export class ProdottoComponent implements OnInit {
     this.dataService.getSoluzioneSottoCartelle().subscribe((response: Materiale[]) => this.materiali = response);
   }
 
+  selezioneMateriale(codiceMateriale: string, descrizione: string, img: string, testo: string): void {
+    sessionStorage.setItem('codiceMateriale', codiceMateriale);
+    sessionStorage.setItem('descrizioneMateriale', descrizione);
+    sessionStorage.setItem('imgMateriale', img);
+    sessionStorage.setItem('testoMateriale', testo);
+  }
+
 }
