@@ -86,12 +86,21 @@ export class AuthService {
 
   getSoluzioniDettaglio(soluzione: string): Observable<any[]> {
     return this.http.get<any[]>('http://10.52.1.120:3000/soluzioni/' + (this.staticLingua ? this.staticLingua
-    : sessionStorage.getItem('lingua')) + soluzione)
+    : sessionStorage.getItem('lingua')) + '/' + soluzione)
     .pipe(
       tap(resData => {
         console.log(resData);
       })
     );
+  }
+
+  getSoluzioneColore(): Observable<any[]> {
+    return this.http.get<any[]>('http://10.52.1.120:3000/soluzioni/' + sessionStorage.getItem('lingua') + '/' + sessionStorage.getItem('soluzione') + '/' + 'colori')
+    .pipe(
+      tap(resData => {
+        console.log(resData);
+      })
+    )
   }
 
   logIn(credentials: { [x: string]: string; }): Observable<any> {

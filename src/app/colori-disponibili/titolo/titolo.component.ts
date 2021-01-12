@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/core/auth.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TitoloComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dataService: AuthService) { }
+  colori: any[];
+  titolo: string;
 
   ngOnInit(): void {
+    this.dataService.getSoluzioneColore().subscribe((response: any[]) => this.colori = response);
+    this.titolo = sessionStorage.getItem('soluzione');
   }
 
 }

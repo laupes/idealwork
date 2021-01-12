@@ -1,4 +1,6 @@
+import { AuthService } from 'src/app/core/auth.service';
 import { Component, OnInit } from '@angular/core';
+import { Colore } from 'src/app/interfaces/colore.interface';
 
 @Component({
   selector: 'app-lista-colori',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListaColoriComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dataService: AuthService) { }
+
+  colori: Colore[];
 
   ngOnInit(): void {
+    this.dataService.getSoluzioneColore().subscribe((response: Colore[]) => this.colori = response);
   }
 
 }
