@@ -37,6 +37,7 @@
     
         .pulsante-login {
             color: white;
+            cursor: pointer;
             background: black;
             font-size: 30px;
             text-transform: uppercase;
@@ -46,6 +47,10 @@
             padding-bottom: 10px;
             width: 100%;
             border-radius: 4px;
+
+            &:hover {
+                background: grey;
+            }
         }
 
         .richiedi-accesso {
@@ -84,6 +89,7 @@
 
             .pulsante-invia-richiesta {
                 color: white;
+                cursor: pointer;
                 background: black;
                 font-size: 30px;
                 text-transform: uppercase;
@@ -93,6 +99,10 @@
                 padding-bottom: 10px;
                 width: 100%;
                 border-radius: 4px;
+
+                &:hover {
+                    background: grey;
+                }
             }
         }
     }
