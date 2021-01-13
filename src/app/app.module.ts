@@ -23,6 +23,7 @@ import { DettaglioProdottoComponent } from './dettaglio-prodotto/dettaglio-prodo
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { TipologieModule } from './tipologie/tipologie.module';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 
@@ -32,6 +33,7 @@ import { TipologieModule } from './tipologie/tipologie.module';
     MenuComponent,
     DettaglioProdottoComponent,
     LoginComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,

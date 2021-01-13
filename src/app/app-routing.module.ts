@@ -15,6 +15,7 @@ import { DettaglioProdottoComponent } from './dettaglio-prodotto/dettaglio-prodo
 import { LoginComponent } from './login/login.component';
 import { VideoTutorialModule } from './video-tutorial/video-tutorial.module';
 import { ParticolariEsecutiviModule } from './particolari-esecutivi/particolari-esecutivi.module';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
@@ -78,7 +79,11 @@ const routes: Routes = [
   {
     path: 'particolari-esecutivi',
     loadChildren: 'src/app/particolari-esecutivi/particolari-esecutivi-module#ParticolariEsecutiviModule'
-  }
+  },
+  {
+    path: 'pagina-non-trovata',
+    component: PageNotFoundComponent
+  },
 ];
 
 @NgModule({
