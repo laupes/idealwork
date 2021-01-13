@@ -98,5 +98,17 @@ export class LoginComponent implements OnInit {
       });
   }
 
+  richiestaAccesso(credentials: any): any {
+    this.dataService.richiestaAccesso(credentials)
+    .subscribe((result: any) => {
+      console.log(result);
+      if (result) {
+        alert('richiesta effettuata');
+      } else {
+        alert('codice non trovato');
+      }
+    });
+  }
+
 
 }

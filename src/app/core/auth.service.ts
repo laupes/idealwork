@@ -137,12 +137,12 @@ export class AuthService {
   richiestaAccesso(credentials: {[x: string]: string; }): Observable<any> {
     const header = new HttpHeaders()
     .set('Content-Type', 'application/x-www-form-urlencoded');
-    const url = '10.52.1.120:3000/request';
+    const url = 'http://10.52.1.120:3000/request';
     const body = new HttpParams()
-    .set('username', credentials['nome'].trim())
-    .set('password', credentials['cognome'].trim())
+    .set('nome', credentials['nome'].trim())
+    .set('cognome', credentials['cognome'].trim())
     .set('email', credentials['email'].trim())
-    .set('codice', credentials['codice_azienda'])
+    .set('codice', credentials['codice-azienda'])
     .set('note', credentials['note']);
     const options = {
       headers: header,
