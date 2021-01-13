@@ -134,6 +134,26 @@ export class AuthService {
     );
   }
 
+  richiestaAccesso(credentials: {[x: string]: string; }): Observable<any> {
+    const header = new HttpHeaders()
+    .set('Content-Type', 'application/x-www-form-urlencoded');
+    const url = '10.52.1.120:3000/request';
+    const body = new HttpParams()
+    .set('username', credentials['nome'].trim())
+    .set('password', credentials['cognome'].trim())
+    .set('email', credentials['email'].trim())
+    .set('codice', credentials['codice_azienda'])
+    .set('note', credentials['note']);
+    const options = {
+      headers: header,
+    };
+    return this.http.post(url, body, {headers: header , observe: 'response', withCredentials: true})
+    .pipe(map(response => {
+      console.log(response);
+    })
+    );
+  }
+
   logIn(credentials: { [x: string]: string; }): Observable<any> {
     const http = new XMLHttpRequest();
     const promise = new Promise(function(resolve, reject) {
