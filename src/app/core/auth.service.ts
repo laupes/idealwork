@@ -20,7 +20,7 @@ export class AuthService {
 
   // baseUrl = 'assets/utenti.json';
   // urlCodici = 'assets/codici.json';
-  loginUrl = 'http://10.52.1.120:3000/login';
+  loginUrl = '/login';
 
   currentUser: Utente;
 
@@ -77,7 +77,7 @@ export class AuthService {
   getSoluzioni(): Observable<any[]> {
     const header = new HttpHeaders()
     .set('Access-Token', sessionStorage.getItem('token'));
-    return this.http.get<any[]>('http://10.52.1.120:3000/soluzioni/' + (this.staticLingua ? this.staticLingua
+    return this.http.get<any[]>('https://idea.idealwork.it:8443/soluzioni/' + (this.staticLingua ? this.staticLingua
     : sessionStorage.getItem('lingua')), { headers: header })
     .pipe(
       tap(resData => {
@@ -89,7 +89,7 @@ export class AuthService {
   getSoluzioniDettaglio(soluzione: string): Observable<any[]> {
     const header = new HttpHeaders()
     .set('Access-Token', sessionStorage.getItem('token'));
-    return this.http.get<any[]>('http://10.52.1.120:3000/soluzioni/' + (this.staticLingua ? this.staticLingua
+    return this.http.get<any[]>('/soluzioni/' + (this.staticLingua ? this.staticLingua
     : sessionStorage.getItem('lingua')) + '/' + soluzione, { headers: header })
     .pipe(
       tap(resData => {
@@ -101,7 +101,7 @@ export class AuthService {
   getSoluzioneColore(): Observable<any[]> {
     const header = new HttpHeaders()
     .set('Access-Token', sessionStorage.getItem('token'));
-    return this.http.get<any[]>('http://10.52.1.120:3000/soluzioni/' + sessionStorage.getItem('lingua') + '/' + sessionStorage.getItem('soluzione') + '/' + 'colori'
+    return this.http.get<any[]>('/soluzioni/' + sessionStorage.getItem('lingua') + '/' + sessionStorage.getItem('soluzione') + '/' + 'colori'
     , { headers: header })
     .pipe(
       tap(resData => {
@@ -113,7 +113,7 @@ export class AuthService {
   getSoluzioneCartelle(): Observable<any[]> {
     const header = new HttpHeaders()
     .set('Access-Token', sessionStorage.getItem('token'));
-    return this.http.get<any[]>('http://10.52.1.120:3000/soluzioni/' + sessionStorage.getItem('lingua') + '/' + sessionStorage.getItem('soluzione') + '/' + 'cartelle'
+    return this.http.get<any[]>('/soluzioni/' + sessionStorage.getItem('lingua') + '/' + sessionStorage.getItem('soluzione') + '/' + 'cartelle'
     , { headers: header })
     .pipe(
       tap(resData => {
@@ -125,7 +125,7 @@ export class AuthService {
   getSoluzioneSottoCartelle(): Observable<any[]> {
     const header = new HttpHeaders()
     .set('Access-Token', sessionStorage.getItem('token'));
-    return this.http.get<any[]>('http://10.52.1.120:3000/soluzioni/' + sessionStorage.getItem('lingua') + '/' + sessionStorage.getItem('soluzione') + '/' + 'cartelle'
+    return this.http.get<any[]>('/soluzioni/' + sessionStorage.getItem('lingua') + '/' + sessionStorage.getItem('soluzione') + '/' + 'cartelle'
     + '/' + sessionStorage.getItem('cartella'), { headers: header })
     .pipe(
       tap(resData => {
@@ -137,7 +137,7 @@ export class AuthService {
   richiestaAccesso(credentials: {[x: string]: string; }): Observable<any> {
     const header = new HttpHeaders()
     .set('Content-Type', 'application/x-www-form-urlencoded');
-    const url = 'http://10.52.1.120:3000/request';
+    const url = '/request';
     const body = new HttpParams()
     .set('nome', credentials['nome'].trim())
     .set('cognome', credentials['cognome'].trim())
@@ -168,7 +168,7 @@ export class AuthService {
       const body = new URLSearchParams();
       body.set('username', credentials['username']);
       body.set('password', credentials['password']);
-      const url = 'http://10.52.1.120:3000/login';
+      const url = 'https://idea.idealwork.it:8443/login';
       http.open('POST', url, true);
       http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
       http.onreadystatechange = () => {
@@ -190,7 +190,7 @@ export class AuthService {
     });
     return from(promise);
     /*const params = 'username=' + credentials['username'] + '&passowrd=' + credentials['password'];
-    const url = 'http://10.52.1.120:3000/login';
+    const url = '/login';
     http.open('POST', url, true);
     http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     http.onreadystatechange = () => {
