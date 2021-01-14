@@ -17,10 +17,13 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
   static lingua: string;
+  static token: string;
 
   // baseUrl = 'assets/utenti.json';
   // urlCodici = 'assets/codici.json';
   loginUrl = '/login';
+  url = 'http://idea.idealwork.it:3000/';
+  // url = 'http://10.52.1.120:3000/';
 
   currentUser: Utente;
 
@@ -39,6 +42,10 @@ export class AuthService {
 
   set setStaticLingua(lingua: string) {
     AuthService.lingua = lingua;
+  }
+
+  get staticToken(): string {
+    return AuthService.token;
   }
 
 /*
@@ -77,7 +84,7 @@ export class AuthService {
   getSoluzioni(): Observable<any[]> {
     const header = new HttpHeaders()
     .set('Access-Token', sessionStorage.getItem('token'));
-    return this.http.get<any[]>('http://idea.idealwork.it:3000/soluzioni/' + (this.staticLingua ? this.staticLingua
+    return this.http.get<any[]>(this.url + 'soluzioni/' + (this.staticLingua ? this.staticLingua
     : sessionStorage.getItem('lingua')), { headers: header })
     .pipe(
       tap(resData => {
@@ -89,7 +96,7 @@ export class AuthService {
   getSoluzioniDettaglio(soluzione: string): Observable<any[]> {
     const header = new HttpHeaders()
     .set('Access-Token', sessionStorage.getItem('token'));
-    return this.http.get<any[]>('http://idea.idealwork.it:3000/soluzioni/' + (this.staticLingua ? this.staticLingua
+    return this.http.get<any[]>(this.url + 'soluzioni/' + (this.staticLingua ? this.staticLingua
     : sessionStorage.getItem('lingua')) + '/' + soluzione, { headers: header })
     .pipe(
       tap(resData => {
@@ -101,7 +108,7 @@ export class AuthService {
   getSoluzioneColore(): Observable<any[]> {
     const header = new HttpHeaders()
     .set('Access-Token', sessionStorage.getItem('token'));
-    return this.http.get<any[]>('http://idea.idealwork.it:3000/soluzioni/' + sessionStorage.getItem('lingua') + '/' +
+    return this.http.get<any[]>(this.url + 'soluzioni/' + sessionStorage.getItem('lingua') + '/' +
     sessionStorage.getItem('soluzione') + '/' + 'colori'
     , { headers: header })
     .pipe(
@@ -114,7 +121,7 @@ export class AuthService {
   getSoluzioneCartelle(): Observable<any[]> {
     const header = new HttpHeaders()
     .set('Access-Token', sessionStorage.getItem('token'));
-    return this.http.get<any[]>('http://idea.idealwork.it:3000/soluzioni/' + sessionStorage.getItem('lingua') + '/' +
+    return this.http.get<any[]>(this.url + 'soluzioni/' + sessionStorage.getItem('lingua') + '/' +
     sessionStorage.getItem('soluzione') + '/' + 'cartelle'
     , { headers: header })
     .pipe(
@@ -127,7 +134,7 @@ export class AuthService {
   getSoluzioneSottoCartelle(): Observable<any[]> {
     const header = new HttpHeaders()
     .set('Access-Token', sessionStorage.getItem('token'));
-    return this.http.get<any[]>('http://idea.idealwork.it:3000/soluzioni/' + sessionStorage.getItem('lingua') + '/' +
+    return this.http.get<any[]>(this.url + 'soluzioni/' + sessionStorage.getItem('lingua') + '/' +
      sessionStorage.getItem('soluzione') + '/' + 'cartelle'
     + '/' + sessionStorage.getItem('cartella'), { headers: header })
     .pipe(
@@ -140,7 +147,7 @@ export class AuthService {
   richiestaAccesso(credentials: {[x: string]: string; }): Observable<any> {
     const header = new HttpHeaders()
     .set('Content-Type', 'application/x-www-form-urlencoded');
-    const url = 'http://idea.idealwork.it:3000/request';
+    const urlR = this.url + 'request';
     const body = new HttpParams()
     .set('nome', credentials['nome'].trim())
     .set('cognome', credentials['cognome'].trim())
@@ -150,7 +157,7 @@ export class AuthService {
     const options = {
       headers: header,
     };
-    return this.http.post(url, body, {headers: header , observe: 'response', withCredentials: true})
+    return this.http.post(urlR, body, {headers: header , observe: 'response', withCredentials: true})
     .pipe(map(response => {
       console.log(response);
     })
@@ -171,13 +178,14 @@ export class AuthService {
       const body = new URLSearchParams();
       body.set('username', credentials['username']);
       body.set('password', credentials['password']);
-      const url = 'http://idea.idealwork.it:3000/login';
-      http.open('POST', url, true);
+      const urlL = this.url + 'login';
+      http.open('POST', urlL, true);
       http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
       http.onreadystatechange = () => {
         if (http.readyState === 4 && http.status === 200) {
           console.log(http.responseText);
           AuthService.lingua = http.responseText.split(',')[7].split(':')[1].replace('\"', '').replace('\"', '');
+          AuthService.token = http.responseText.split(',')[12].split(':')[1].replace('\"', '').replace('\"', '').replace('}', '');
           sessionStorage.setItem('lingua', http.responseText.split(',')[7].split(':')[1].replace('\"', '').replace('\"', ''));
           sessionStorage
           .setItem('token', http.responseText.split(',')[12].split(':')[1].replace('\"', '').replace('\"', '').replace('}', ''));
