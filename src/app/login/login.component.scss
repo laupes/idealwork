@@ -50,7 +50,6 @@
 
             &:focus {
                 background: grey;
-                pointer-events: none;
                 cursor: default;
             }
         }
@@ -104,7 +103,6 @@
 
                 &:focus {
                     background: grey;
-                    pointer-events: none;
                     cursor: default;
                 }
             }
