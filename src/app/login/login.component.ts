@@ -109,10 +109,10 @@ export class LoginComponent implements OnInit {
     this.dataService.richiestaAccesso(credentials)
     .subscribe((result: boolean) => {
       console.log(result);
-      if (result === true) {
-        alert('richiesta effettuata');
+      if (result) {
+       // this.router.navigate(['reimposta-password']);
       } else {
-        alert('codice non trovato');
+       // this.router.navigate(['reimposta-password']);
       }
     });
   }

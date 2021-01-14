@@ -83,7 +83,7 @@ const routes: Routes = [
   },
   {
     path: 'reimposta-password',
-    component: PageFormAccessoComponent
+    component: PageFormAccessoComponent,
   },
   {
     path: 'pagina-non-trovata',
