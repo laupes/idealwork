@@ -25,11 +25,13 @@ export class PageFormAccessoComponent implements OnInit {
   signIn(credentials: any): any {
     this.dataService.reimpostaPassword(this.email, this.hash, credentials)
       .subscribe((result: string) => {
-        if (result) {
-          this.router.navigate(['login']);
+        if (result.includes('success')) {
+          this.router.navigate(['']);
         }
-        else {
-          $('.alert-danger').show();
+        else if (result.includes('invalid_link')){
+          return alert('invalid link');
+        } else {
+          return alert('richiesta errata');
         }
       });
   }

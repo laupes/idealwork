@@ -92,7 +92,7 @@ export class LoginComponent implements OnInit {
     // console.log(credentials);
     this.dataService.logIn(credentials)
       .subscribe((result: string) => {
-        if (!result.includes('no_data')) {
+        if (!result.includes('incorrect')) {
           // setTimeout(() => {
             this.router.navigate(['soluzioni']);
             // this.dataService.getSoluzioni().subscribe((soluzioni: Soluzione[]) => this.soluzioni = soluzioni);
@@ -100,6 +100,7 @@ export class LoginComponent implements OnInit {
         }
         else {
           // return alert('username e/o password sbagliati');
+          this.clicked = false;
           $('.alert-danger').show();
         }
       });
@@ -107,15 +108,24 @@ export class LoginComponent implements OnInit {
 
   richiestaAccesso(credentials: any): any {
     this.dataService.richiestaAccesso(credentials)
-    .subscribe((result: boolean) => {
+    .subscribe((result: string) => {
       console.log(result);
-      if (result) {
+      if (result.includes('esistente')) {
+       // this.router.navigate(['reimposta-password']);
+       return alert('utente esistente');
+      } else if (result.includes('non trovato')) {
+        alert('codice non trovato, verrai reindirizzato verso la pagina contatti di IdealWork');
+        this.goToLink('https://www.idealwork.it/contatti/');
        // this.router.navigate(['reimposta-password']);
       } else {
-       // this.router.navigate(['reimposta-password']);
+        return alert('Invio richiesta riuscito. Controlla il tuo indirizzo mail');
       }
     });
   }
+
+  goToLink(url: string): void {
+    window.open(url, '_self');
+}
 
 
 }

@@ -145,7 +145,7 @@ export class AuthService {
       );
   }
 
-  richiestaAccesso(credentials: { [x: string]: string; }): Observable<boolean> {
+  richiestaAccesso(credentials: { [x: string]: string; }): Observable<string> {
     const header = new HttpHeaders()
       .set('Content-Type', 'application/x-www-form-urlencoded');
     const urlR = AuthService.url + 'request';
@@ -154,7 +154,7 @@ export class AuthService {
       .set('cognome', credentials['cognome'].trim())
       .set('email', credentials['email'].trim())
       .set('codice', credentials['codice-azienda'])
-      .set('note', credentials['note']);
+      .set('note', credentials['note'] ? credentials['note'] : '');
     const options = {
       headers: header,
     };
@@ -162,15 +162,17 @@ export class AuthService {
       .pipe(map(response => {
         console.log(response);
         if (response['body']['result'].toString().includes('existing')) {
-          return true;
+          return 'esistente';
+        } else if (response['body']['result'].toString().includes('not_found')) {
+          return 'non trovato';
         } else {
-          return false;
+          return 'corretto';
         }
       })
       );
   }
 
-  reimpostaPassword(email: string, hash: string, credentials: { [x: string]: string; }): Observable<any> {
+  reimpostaPassword(email: string, hash: string, credentials: { [x: string]: string; }): Observable<string> {
     const header = new HttpHeaders()
       .set('Content-type', 'application/x-www-form-urlencoded');
     const urlP = AuthService.url + 'reset';
@@ -180,7 +182,8 @@ export class AuthService {
       .set('password', credentials['password']);
     return this.http.post(urlP, body, { headers: header, observe: 'response', withCredentials: true })
       .pipe(map(response => {
-        console.log(response);
+        console.log(response.body['result']);
+        return response.body['result'];
       })
       );
   }
@@ -204,12 +207,15 @@ export class AuthService {
       http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
       http.onreadystatechange = () => {
         if (http.readyState === 4 && http.status === 200) {
-          console.log(http.responseText);
-          AuthService.lingua = http.responseText.split(',')[7].split(':')[1].replace('\"', '').replace('\"', '');
-          AuthService.token = http.responseText.split(',')[12].split(':')[1].replace('\"', '').replace('\"', '').replace('}', '');
-          sessionStorage.setItem('lingua', http.responseText.split(',')[7].split(':')[1].replace('\"', '').replace('\"', ''));
-          sessionStorage
-            .setItem('token', http.responseText.split(',')[12].split(':')[1].replace('\"', '').replace('\"', '').replace('}', ''));
+          if (http.responseText.length > 30) {
+            console.log(http.responseText.split(',')[0].split(':')[1].replace('\"', '').replace('\"', ''));
+            console.log(http.responseText);
+            AuthService.lingua = http.responseText.split(',')[7].split(':')[1].replace('\"', '').replace('\"', '');
+            AuthService.token = http.responseText.split(',')[12].split(':')[1].replace('\"', '').replace('\"', '').replace('}', '');
+            sessionStorage.setItem('lingua', http.responseText.split(',')[7].split(':')[1].replace('\"', '').replace('\"', ''));
+            sessionStorage
+              .setItem('token', http.responseText.split(',')[12].split(':')[1].replace('\"', '').replace('\"', '').replace('}', ''));
+          }
           // console.log(http.responseText.split(',')[7].split(':')[1].replace('\"', '').replace('\"', ''));
           // console.log(http.responseText.split(',')[12].split(':')[1].replace('\"', '').replace('\"', '').replace('}', ''));
           // console.log(http.getResponseHeader('Set-Cookie'));
