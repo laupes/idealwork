@@ -157,9 +157,9 @@ export class AuthService {
     const options = {
       headers: header,
     };
-    return this.http.post(urlR, body, {headers: header , withCredentials: true})
+    return this.http.post(urlR, body, {headers: header , observe: 'response', withCredentials: true})
     .pipe(map(response => {
-      console.log(response['result']);
+      console.log(response);
     })
     );
   }
