@@ -1,3 +1,4 @@
+import { PageFormAccessoComponent } from './page-form-accesso/page-form-accesso.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DettaglioSoluzioneModule } from './dettaglio-soluzione/dettaglio-soluzione.module';
@@ -79,6 +80,10 @@ const routes: Routes = [
   {
     path: 'particolari-esecutivi',
     loadChildren: 'src/app/particolari-esecutivi/particolari-esecutivi-module#ParticolariEsecutiviModule'
+  },
+  {
+    path: 'reimposta-password',
+    component: PageFormAccessoComponent
   },
   {
     path: 'pagina-non-trovata',

@@ -1,0 +1,133 @@
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Roboto Condensed', sans-serif;
+    padding: 130px 10%;
+
+    #username {
+        margin-bottom: 15px;
+    }
+
+    #username, #password-container {
+        font-size: 25px;
+        border: solid 2px black;
+        border-radius: 5px;
+        width: 100%;
+    }
+
+    #password-container {
+        display: flex;
+        align-items: center;
+
+        #password {
+            font-size: 1.5rem !important;
+        }
+
+        i {
+            margin-left: -35px;
+            cursor: pointer;
+        }
+    }
+
+    .alert-danger {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .pulsante-login {
+        color: white;
+        cursor: pointer;
+        background: black;
+        font-size: 30px;
+        text-transform: uppercase;
+        font-family: 'Roboto Condensed', sans-serif;
+        letter-spacing: 2px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        width: 100%;
+        border-radius: 4px;
+
+        &:focus {
+            background: grey;
+            cursor: default;
+        }
+    }
+
+    .richiedi-accesso {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        padding: 15px 30px;
+        margin-top: 50px;
+        width: 100%;
+
+
+        h1 {
+            font-size: 30px;
+        }
+    }
+
+
+    .richiedi-accesso-down {
+        margin-top: 30px;
+        box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        background: white;
+        min-height: 50vh;
+        padding: 50px;
+        width: 100%;
+
+        .space-down {
+            margin-bottom: 15px;
+        }
+
+        input {
+            font-size: 25px;
+            border: solid 2px black;
+        }
+
+        .pulsante-invia-richiesta {
+            color: white;
+            cursor: pointer;
+            background: black;
+            font-size: 30px;
+            text-transform: uppercase;
+            font-family: 'Roboto Condensed', sans-serif;
+            letter-spacing: 2px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            width: 100%;
+            border-radius: 4px;
+
+            &:focus {
+                background: grey;
+                cursor: default;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 600px) {
+
+    .form-group {
+        padding: 130px 20%;
+    }
+}
+
+
+@media screen and (min-width: 994px) {
+
+    .form-group {
+        padding: 130px 30%;
+    }
+}
+
+
+@media screen and (min-width: 1350px) {
+
+    .form-group {
+        padding: 130px 35%;
+    }
+}

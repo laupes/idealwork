@@ -102,9 +102,9 @@ export class LoginComponent implements OnInit {
 
   richiestaAccesso(credentials: any): any {
     this.dataService.richiestaAccesso(credentials)
-    .subscribe((result: string) => {
+    .subscribe((result: boolean) => {
       console.log(result);
-      if (result) {
+      if (result === true) {
         alert('richiesta effettuata');
       } else {
         alert('codice non trovato');

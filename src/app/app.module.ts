@@ -24,6 +24,7 @@ import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { TipologieModule } from './tipologie/tipologie.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { PageFormAccessoComponent } from './page-form-accesso/page-form-accesso.component';
 
 
 
@@ -34,6 +35,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     DettaglioProdottoComponent,
     LoginComponent,
     PageNotFoundComponent,
+    PageFormAccessoComponent,
   ],
   imports: [
     BrowserModule,

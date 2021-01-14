@@ -3,7 +3,7 @@
         <img src="./assets/img/menu/logo-idealwork.png" style="width: 100px; padding-bottom: 50px">
         <input placeholder="E-mail" required minlength="3" maxlength="50" ngModel name="username" #username="ngModel" id="username" type="text" class="form-control">
         <div class="alert alert-danger" *ngIf="username.touched && !username.valid">
-            <div *ngIf="username.errors.required">Il nome utente è obbligatorio</div>
+            <div *ngIf="username.errors.required">E-mail obbligatoria</div>
             <div *ngIf="username.errors.minlength">La lunghezza deve essere almeno {{ username.errors.minlength.requiredLength }} caratteri</div>
         </div>
 

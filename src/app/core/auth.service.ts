@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
-import { Observable, throwError, from, observable } from 'rxjs';
+import { Observable, throwError, from, observable, of } from 'rxjs';
 import { catchError, tap, } from 'rxjs/operators';
 import { registerLocaleData } from '@angular/common';
 import { map } from 'rxjs/operators';
@@ -23,7 +23,7 @@ export class AuthService {
   // urlCodici = 'assets/codici.json';
   // loginUrl = '/login';
   // static url = 'https://idea.idealwork.it:3000/';
-  static url = 'http://10.52.1.120:3000/';
+  static url = 'https://10.52.1.120:3000/';
 
   currentUser: Utente;
 
@@ -144,7 +144,7 @@ export class AuthService {
     );
   }
 
-  richiestaAccesso(credentials: {[x: string]: string; }): Observable<any> {
+  richiestaAccesso(credentials: {[x: string]: string; }): Observable<boolean> {
     const header = new HttpHeaders()
     .set('Content-Type', 'application/x-www-form-urlencoded');
     const urlR = AuthService.url + 'request';
@@ -160,6 +160,11 @@ export class AuthService {
     return this.http.post(urlR, body, {headers: header , observe: 'response', withCredentials: true})
     .pipe(map(response => {
       console.log(response);
+      if(response['body']['result'].toString().includes('existing')) {
+        return true;
+      } else {
+        return false;
+      }
     })
     );
   }
