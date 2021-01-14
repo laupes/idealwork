@@ -22,8 +22,8 @@ export class AuthService {
   // baseUrl = 'assets/utenti.json';
   // urlCodici = 'assets/codici.json';
   // loginUrl = '/login';
-  // static url = 'http://idea.idealwork.it:3000/';
-   static url = 'http://10.52.1.120:3000/';
+  // static url = 'https://idea.idealwork.it:3000/';
+  static url = 'http://10.52.1.120:3000/';
 
   currentUser: Utente;
 

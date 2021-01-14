@@ -22,6 +22,7 @@ export class LoginComponent implements OnInit {
   soluzioni: Soluzione[];
   loginFatto = false;
   check: boolean = this.loginFatto;
+  clicked = false;
 
   @Input() nome: string;
   @Input() password: string;
@@ -82,6 +83,7 @@ export class LoginComponent implements OnInit {
   } */
 
   signIn(credentials: any): any {
+    this.clicked = true;
     // console.log(credentials);
     this.dataService.logIn(credentials)
       .subscribe((result: string) => {
