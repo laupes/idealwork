@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { EventEmitter, Input, Output, Component, OnInit, Inject, InjectionToken } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { Utente } from 'src/app/interfaces/utente.interface';
 import { AuthService } from '../core/auth.service';
@@ -23,13 +23,18 @@ export class LoginComponent implements OnInit {
   loginFatto = false;
   check: boolean = this.loginFatto;
   clicked = false;
+  param: string;
 
   @Input() nome: string;
   @Input() password: string;
   @Output() checkEvent: EventEmitter<boolean> = new EventEmitter();
 
   // tslint:disable-next-line: max-line-length
-  constructor(private dataService: AuthService, private http: HttpClient, private router: Router, private emitter: EventEmitterService, private data: DataService) {
+  constructor(private dataService: AuthService, private http: HttpClient, private route: ActivatedRoute,
+              private router: Router, private emitter: EventEmitterService, private data: DataService) {
+                this.route.queryParams.subscribe(params => {
+                  console.log(params);
+              });
   }
 
   ngOnInit(): void {

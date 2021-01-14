@@ -169,6 +169,21 @@ export class AuthService {
     );
   }
 
+  reimpostaPassword(email: string, hash: string, credentials: { [x: string]: string; }): Observable<any> {
+    const header = new HttpHeaders()
+    .set('Content-type', 'application/x-www-form-urlencoded');
+    const urlP = AuthService.url + 'reset';
+    const body = new HttpParams()
+    .set('email', email)
+    .set('hash', hash)
+    .set('password', credentials['password']);
+    return this.http.post(urlP, body, {headers: header, observe: 'response', withCredentials: true})
+    .pipe(map(response => {
+      console.log(response);
+    })
+    );
+  }
+
   logIn(credentials: { [x: string]: string; }): Observable<any> {
     const http = new XMLHttpRequest();
     const promise = new Promise(function(resolve, reject) {
