@@ -100,7 +100,7 @@ export class LoginComponent implements OnInit {
 
   richiestaAccesso(credentials: any): any {
     this.dataService.richiestaAccesso(credentials)
-    .subscribe((result: any) => {
+    .subscribe((result: string) => {
       console.log(result);
       if (result) {
         alert('richiesta effettuata');
