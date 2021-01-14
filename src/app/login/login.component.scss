@@ -48,8 +48,10 @@
             width: 100%;
             border-radius: 4px;
 
-            &:hover {
+            &:focus {
                 background: grey;
+                pointer-events: none;
+                cursor: default;
             }
         }
 
@@ -100,8 +102,10 @@
                 width: 100%;
                 border-radius: 4px;
 
-                &:hover {
+                &:focus {
                     background: grey;
+                    pointer-events: none;
+                    cursor: default;
                 }
             }
         }
