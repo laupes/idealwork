@@ -87,7 +87,7 @@ const routes: Routes = [
   },
   {
     path: 'pagina-non-trovata',
-    component: PageNotFoundComponent
+    component: PageNotFoundComponent,
   },
 ];
 
@@ -105,7 +105,7 @@ const routes: Routes = [
     VideoTutorialModule,
     DocumentazioneModule,
     ParticolariEsecutiviModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes, {useHash: true})
   ],
   exports: [RouterModule]
 })
