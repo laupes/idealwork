@@ -21,9 +21,9 @@ export class AuthService {
 
   // baseUrl = 'assets/utenti.json';
   // urlCodici = 'assets/codici.json';
-  loginUrl = '/login';
-  url = 'http://idea.idealwork.it:3000/';
-  // url = 'http://10.52.1.120:3000/';
+  // loginUrl = '/login';
+  // static url = 'http://idea.idealwork.it:3000/';
+   static url = 'http://10.52.1.120:3000/';
 
   currentUser: Utente;
 
@@ -84,7 +84,7 @@ export class AuthService {
   getSoluzioni(): Observable<any[]> {
     const header = new HttpHeaders()
     .set('Access-Token', sessionStorage.getItem('token'));
-    return this.http.get<any[]>(this.url + 'soluzioni/' + (this.staticLingua ? this.staticLingua
+    return this.http.get<any[]>(AuthService.url + 'soluzioni/' + (this.staticLingua ? this.staticLingua
     : sessionStorage.getItem('lingua')), { headers: header })
     .pipe(
       tap(resData => {
@@ -96,7 +96,7 @@ export class AuthService {
   getSoluzioniDettaglio(soluzione: string): Observable<any[]> {
     const header = new HttpHeaders()
     .set('Access-Token', sessionStorage.getItem('token'));
-    return this.http.get<any[]>(this.url + 'soluzioni/' + (this.staticLingua ? this.staticLingua
+    return this.http.get<any[]>(AuthService.url + 'soluzioni/' + (this.staticLingua ? this.staticLingua
     : sessionStorage.getItem('lingua')) + '/' + soluzione, { headers: header })
     .pipe(
       tap(resData => {
@@ -108,7 +108,7 @@ export class AuthService {
   getSoluzioneColore(): Observable<any[]> {
     const header = new HttpHeaders()
     .set('Access-Token', sessionStorage.getItem('token'));
-    return this.http.get<any[]>(this.url + 'soluzioni/' + sessionStorage.getItem('lingua') + '/' +
+    return this.http.get<any[]>(AuthService.url + 'soluzioni/' + sessionStorage.getItem('lingua') + '/' +
     sessionStorage.getItem('soluzione') + '/' + 'colori'
     , { headers: header })
     .pipe(
@@ -121,7 +121,7 @@ export class AuthService {
   getSoluzioneCartelle(): Observable<any[]> {
     const header = new HttpHeaders()
     .set('Access-Token', sessionStorage.getItem('token'));
-    return this.http.get<any[]>(this.url + 'soluzioni/' + sessionStorage.getItem('lingua') + '/' +
+    return this.http.get<any[]>(AuthService.url + 'soluzioni/' + sessionStorage.getItem('lingua') + '/' +
     sessionStorage.getItem('soluzione') + '/' + 'cartelle'
     , { headers: header })
     .pipe(
@@ -134,7 +134,7 @@ export class AuthService {
   getSoluzioneSottoCartelle(): Observable<any[]> {
     const header = new HttpHeaders()
     .set('Access-Token', sessionStorage.getItem('token'));
-    return this.http.get<any[]>(this.url + 'soluzioni/' + sessionStorage.getItem('lingua') + '/' +
+    return this.http.get<any[]>(AuthService.url + 'soluzioni/' + sessionStorage.getItem('lingua') + '/' +
      sessionStorage.getItem('soluzione') + '/' + 'cartelle'
     + '/' + sessionStorage.getItem('cartella'), { headers: header })
     .pipe(
@@ -147,7 +147,7 @@ export class AuthService {
   richiestaAccesso(credentials: {[x: string]: string; }): Observable<any> {
     const header = new HttpHeaders()
     .set('Content-Type', 'application/x-www-form-urlencoded');
-    const urlR = this.url + 'request';
+    const urlR = AuthService.url + 'request';
     const body = new HttpParams()
     .set('nome', credentials['nome'].trim())
     .set('cognome', credentials['cognome'].trim())
@@ -178,7 +178,7 @@ export class AuthService {
       const body = new URLSearchParams();
       body.set('username', credentials['username']);
       body.set('password', credentials['password']);
-      const urlL = this.url + 'login';
+      const urlL = AuthService.url + 'login';
       http.open('POST', urlL, true);
       http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
       http.onreadystatechange = () => {
