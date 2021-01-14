@@ -22,7 +22,7 @@
             <div *ngIf="password.errors.minlength">La lunghezza deve essere almeno {{ password.errors.minlength.requiredLength }} caratteri</div>
         </div>
         <br/>
-        <button class="pulsante-login" (click)="signIn(f.value)">Login</button>
+        <button class="pulsante-login" (click)="signIn(f.value)" [disabled] = "clicked">Login</button>
         <div class="richiedi-accesso">
             <h1>Richiedi accesso</h1>
             <i class="fa fa-chevron-down" style="font-size: 20px;"></i> 
