@@ -132,6 +132,19 @@ export class AuthService {
       );
   }
 
+  getSoluzioneDocumenti(): Observable<any[]> {
+    const header = new HttpHeaders()
+      .set('Access-Token', sessionStorage.getItem('token'));
+    return this.http.get<any[]>(AuthService.url + 'soluzioni/' + sessionStorage.getItem('lingua') + '/' +
+      sessionStorage.getItem('soluzione') + '/' + 'documenti'
+      , { headers: header })
+      .pipe(
+        tap(resData => {
+          console.log(resData);
+        })
+      );
+  }
+
   getSoluzioneSottoCartelle(): Observable<any[]> {
     const header = new HttpHeaders()
       .set('Access-Token', sessionStorage.getItem('token'));

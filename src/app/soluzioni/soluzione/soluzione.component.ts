@@ -18,7 +18,9 @@ export class SoluzioneComponent implements OnInit {
   soluzioni: Soluzione[];
 
   ngOnInit(): void {
-    this.dataService.getSoluzioni().subscribe((response: Soluzione[]) => this.soluzioni = response['soluzioni']);
+    this.dataService.getSoluzioni().subscribe((response: Soluzione[]) => this.soluzioni = response['soluzioni'].sort(function(a, b) {
+      return a.sequenza - b.sequenza;
+    }));
     this.dataService.getSoluzioni().subscribe((response: string[]) => SoluzioneComponent.titolo = response['intro']['titolo']);
     this.dataService.getSoluzioni().subscribe((response: string[]) => SoluzioneComponent.descrizione = response['intro']['descrizione']);
     // console.log(localStorage.getItem('lingua'));
