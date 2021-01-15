@@ -1,3 +1,4 @@
+import { Router, RouterModule } from '@angular/router';
 import { AuthService } from 'src/app/core/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Colore } from 'src/app/interfaces/colore.interface';
@@ -9,12 +10,19 @@ import { Colore } from 'src/app/interfaces/colore.interface';
 })
 export class ListaColoriComponent implements OnInit {
 
-  constructor(private dataService: AuthService) { }
+  constructor(private dataService: AuthService, private routes: Router) { }
 
   colori: Colore[];
 
   ngOnInit(): void {
     this.dataService.getSoluzioneColore().subscribe((response: Colore[]) => this.colori = response);
+  }
+  selezioneMateriale(codiceMateriale: string, descrizione: string, img: string, testo: string): void {
+    sessionStorage.setItem('codiceMateriale', codiceMateriale);
+    sessionStorage.setItem('descrizioneMateriale', descrizione);
+    sessionStorage.setItem('imgMateriale', img);
+    sessionStorage.setItem('testoMateriale', testo);
+    this.routes.navigate(['prodotto']);
   }
 
 }

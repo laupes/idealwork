@@ -114,6 +114,7 @@ export class AuthService {
       , { headers: header })
       .pipe(
         tap(resData => {
+          console.log(resData[0]['materiale']);
           console.log(resData);
         })
       );
