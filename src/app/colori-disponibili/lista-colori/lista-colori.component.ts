@@ -22,6 +22,7 @@ export class ListaColoriComponent implements OnInit {
     sessionStorage.setItem('descrizioneMateriale', descrizione);
     sessionStorage.setItem('imgMateriale', img);
     sessionStorage.setItem('testoMateriale', testo);
+    console.log(descrizione);
     this.routes.navigate(['prodotto']);
   }
 

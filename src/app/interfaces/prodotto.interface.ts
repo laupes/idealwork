@@ -1,4 +1,4 @@
-import { Materiale } from "./materiale.interface";
+import { Materiale } from './materiale.interface';
 
 export class Prodotto {
     img: string;

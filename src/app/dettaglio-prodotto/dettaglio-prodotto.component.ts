@@ -17,9 +17,9 @@ export class DettaglioProdottoComponent implements OnInit {
 
   ngOnInit(): void {
     this.codice_materiale = sessionStorage.getItem('codiceMateriale');
-    this.descrizione = sessionStorage.getItem('descrizioneMateriale') != null ? sessionStorage.getItem('descrizioneMateriale') : ' ';
+    this.descrizione = sessionStorage.getItem('descrizioneMateriale') !== 'null' ? sessionStorage.getItem('descrizioneMateriale') : ' ';
     this.img = sessionStorage.getItem('imgMateriale');
-    this.testo = sessionStorage.getItem('testo') != null ? sessionStorage.getItem('testo') : ' ';
+    this.testo = sessionStorage.getItem('testoMateriale') != null ? sessionStorage.getItem('testoMateriale') : ' ';
   }
 
 

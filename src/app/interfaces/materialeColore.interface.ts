@@ -1,4 +1,4 @@
-class MaterialeColore {
+export class MaterialeColore {
     abilitato: number;
     codice_confezione: string;
     codice_materiale: string;
