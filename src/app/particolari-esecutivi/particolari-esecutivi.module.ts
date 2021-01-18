@@ -1,21 +1,25 @@
 import { ParticolariEsecutiviRoutingModule } from './particolari-esecutivi-routing.module';
-
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 import { CategoriaParticolariComponent } from './categoria-particolari/categoria-particolari.component';
-
-import { RouterModule } from '@angular/router';
+import { CaroselloComponent } from './carosello/carosello.component';
 
 
 @NgModule({
   declarations: [
-    CategoriaParticolariComponent
+    CategoriaParticolariComponent,
+    CaroselloComponent
   ],
   imports: [
     ParticolariEsecutiviRoutingModule,
     CommonModule,
     RouterModule
+  ],
+  exports: [
+    CategoriaParticolariComponent,
+    CaroselloComponent
   ]
 })
 
