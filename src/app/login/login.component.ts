@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   constructor(private dataService: AuthService, private http: HttpClient, private route: ActivatedRoute,
               private router: Router, private emitter: EventEmitterService, private data: DataService, private encrDecr: EncrDecrService) {
     this.route.queryParams.subscribe(params => {
-      console.log(params);
+      // console.log(params);
     });
   }
 
@@ -81,22 +81,22 @@ export class LoginComponent implements OnInit {
         catchError(() => of(false))
       );
     } else {
-      console.log('No token found!');
+      // console.log('No token found!');
       return of(false);
     }
   } */
 
   signIn(credentials: any): any {
     this.clicked = true;
-    // console.log(credentials);
+    // // console.log(credentials);
     this.dataService.logIn(credentials)
       .subscribe((result: string) => {
         if (!result.includes('incorrect')) {
           // setTimeout(() => {
           const key = '123456$#@$^@1ERF';
           const token = result.split(',')[12].split(':')[1].replace('\"', '').replace('\"', '').replace('}', '');
-          // console.log('questo è token ' + token);
-          // console.log('questo è tokenE ' + this.encrDecr.set(key, token));
+          // // console.log('questo è token ' + token);
+          // // console.log('questo è tokenE ' + this.encrDecr.set(key, token));
           sessionStorage.setItem('token', this.encrDecr.set(key, token));
           setTimeout(() => {
             sessionStorage.removeItem('token');
@@ -118,7 +118,7 @@ export class LoginComponent implements OnInit {
   richiestaAccesso(credentials: any): any {
     this.dataService.richiestaAccesso(credentials)
       .subscribe((result: string) => {
-        console.log(result);
+        // console.log(result);
         if (result.includes('esistente')) {
           // this.router.navigate(['reimposta-password']);
           return alert('utente esistente');

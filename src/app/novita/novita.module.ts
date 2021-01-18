@@ -11,7 +11,7 @@ import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
-    TitoloComponent, 
+    TitoloComponent,
     NuovoProdottoComponent
   ],
   imports: [

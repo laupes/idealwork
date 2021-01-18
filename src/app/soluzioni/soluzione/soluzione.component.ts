@@ -23,7 +23,7 @@ export class SoluzioneComponent implements OnInit {
     }));
     this.dataService.getSoluzioni().subscribe((response: string[]) => SoluzioneComponent.titolo = response['intro']['titolo']);
     this.dataService.getSoluzioni().subscribe((response: string[]) => SoluzioneComponent.descrizione = response['intro']['descrizione']);
-    // console.log(localStorage.getItem('lingua'));
+    // // console.log(localStorage.getItem('lingua'));
     // this.dataService.getSoluzioni().subscribe((intro: Intro[]) => this.titolo = intro[0].titolo);
 
 

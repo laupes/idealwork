@@ -1,3 +1,4 @@
+import { AuthGuardService as AuthGuard} from './auth-guard.service';
 import { PageFormAccessoComponent } from './page-form-accesso/page-form-accesso.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -10,7 +11,7 @@ import { ElencoOrdiniModule } from './elenco-ordini/elenco-ordini.module';
 import { NovitaModule } from './novita/novita.module';
 import { ColoriDisponibiliModule } from './colori-disponibili/colori-disponibili.module';
 import { TipologieModule } from './tipologie/tipologie.module';
-import { DocumentazioneModule } from './documentazione/documentazione.module'
+import { DocumentazioneModule } from './documentazione/documentazione.module';
 
 import { DettaglioProdottoComponent } from './dettaglio-prodotto/dettaglio-prodotto.component';
 import { LoginComponent } from './login/login.component';
@@ -25,8 +26,8 @@ const routes: Routes = [
   },
   {
     path: 'soluzioni',
-    loadChildren: 'src/app/soluzioni/soluzioni.module#SoluzioniModule',
-    pathMatch: 'full'
+    loadChildren: sessionStorage.getItem('token') !== null ? 'src/app/soluzioni/soluzioni.module#SoluzioniModule' : 'src/app/404/404.module#TornaLoginModule',
+    pathMatch: 'full',
   },
   {
     path: '',
@@ -47,7 +48,7 @@ const routes: Routes = [
   },
   {
     path: 'prodotto',
-    component: DettaglioProdottoComponent
+    component: sessionStorage.getItem('token') ? DettaglioProdottoComponent : PageNotFoundComponent
   },
   {
     path: 'riepilogo-ordine',

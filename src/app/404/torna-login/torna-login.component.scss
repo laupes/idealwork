@@ -1,0 +1,32 @@
+#torna-al-login-wrapper {
+    padding-top: 100px;
+    font-family: 'Roboto Condensed', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    img {
+        width: 100px;
+        margin-bottom: 30px;
+    }
+
+    h1 {
+        text-transform: uppercase;
+    }
+
+    p {
+        font-size: 20px;
+    }
+
+    #torna-al-login {
+        background: black; 
+        color: white;
+        padding: 20px 40px;
+        font-size: 25px;
+        margin-top: 40px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+}
+

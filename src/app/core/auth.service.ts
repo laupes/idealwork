@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, throwError, from } from 'rxjs';
 import { tap, } from 'rxjs/operators';
 import { map } from 'rxjs/operators';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import * as CryptoJS from 'crypto-js';
 
 import { Utente } from '../interfaces/utente.interface';
@@ -15,7 +16,7 @@ import { Utente } from '../interfaces/utente.interface';
 })
 export class AuthService {
 
-  constructor(private http: HttpClient, private encrDecr: EncrDecrService) { 
+  constructor(private http: HttpClient, private encrDecr: EncrDecrService) {
   }
   static lingua: string;
   static token: string;
@@ -40,6 +41,13 @@ export class AuthService {
     return AuthService.token;
   }
 
+  public isAuthenticated(): boolean {
+    if (sessionStorage.getItem('token')) {
+        return false;
+    } else {
+      return false;
+    }
+  }
   /*
     login(credentials): Observable<any> {
       const header = new HttpHeaders()
@@ -50,11 +58,11 @@ export class AuthService {
       const options = {
         headers: header,
       };
-      // console.log(body);
+      // // console.log(body);
       return this.http.post<any>(this.loginUrl, body, {headers: header , observe: 'response', withCredentials: true} )
         .pipe(
           map(response => {
-            console.log(response);
+            // console.log(response);
             if (response['result'] !== 'incorrect') {
             localStorage.setItem('token', response.headers.get('Set-Cookie'));
             // sessionStorage.setItem('utente', response.hash);
@@ -63,7 +71,7 @@ export class AuthService {
             // tslint:disable-next-line: max-line-length
             // this.cookies.set('SessionID', 'connect.sid=s%3Ah6IrMz8LleceoWqazuerK8pyxHNLiop9.0GxvAYjPnrX%2BWTGIKnZWd8ioCQYnKCptw%2FjDmzcdqmc');
             const cookie  = response.headers.keys();
-            console.log('cookie: ' + cookie);
+            // console.log('cookie: ' + cookie);
             // this.currentUser = response;
             return response;
             } else {
@@ -82,7 +90,7 @@ export class AuthService {
       : sessionStorage.getItem('lingua')), { headers: header })
       .pipe(
         tap(resData => {
-          console.log(resData);
+          // console.log(resData);
         })
       );
   }
@@ -96,7 +104,7 @@ export class AuthService {
       : sessionStorage.getItem('lingua')) + '/' + soluzione, { headers: header })
       .pipe(
         tap(resData => {
-          console.log(resData);
+          // console.log(resData);
         })
       );
   }
@@ -111,7 +119,7 @@ export class AuthService {
       , { headers: header })
       .pipe(
         tap(resData => {
-          console.log(resData);
+          // console.log(resData);
         })
       );
   }
@@ -126,7 +134,7 @@ export class AuthService {
       , { headers: header })
       .pipe(
         tap(resData => {
-          console.log(resData);
+          // console.log(resData);
         })
       );
   }
@@ -141,7 +149,7 @@ export class AuthService {
       , { headers: header })
       .pipe(
         tap(resData => {
-          console.log(resData);
+          // console.log(resData);
         })
       );
   }
@@ -156,7 +164,7 @@ export class AuthService {
       + '/' + sessionStorage.getItem('cartella'), { headers: header })
       .pipe(
         tap(resData => {
-          console.log(resData);
+          // console.log(resData);
         })
       );
   }
@@ -173,7 +181,7 @@ export class AuthService {
       .set('note', credentials['note'] ? credentials['note'] : '');
     return this.http.post(urlR, body, { headers: header, observe: 'response', withCredentials: true })
       .pipe(map(response => {
-        console.log(response);
+        // console.log(response);
         if (response['body']['result'].toString().includes('existing')) {
           return 'esistente';
         } else if (response['body']['result'].toString().includes('not_found')) {
@@ -195,7 +203,7 @@ export class AuthService {
       .set('password', credentials['password']);
     return this.http.post(urlP, body, { headers: header, observe: 'response', withCredentials: true })
       .pipe(map(response => {
-        console.log(response.body['result']);
+        // console.log(response.body['result']);
         return response.body['result'];
       })
       );
@@ -223,20 +231,20 @@ export class AuthService {
           if (http.responseText.length > 30) {
             // tslint:disable-next-line: max-line-length           
             const token = http.responseText.split(',')[12].split(':')[1].replace('\"', '').replace('\"', '').replace('}', '');
-            console.log(http.responseText.split(',')[0].split(':')[1].replace('\"', '').replace('\"', ''));
-            console.log(http.responseText);
+            // console.log(http.responseText.split(',')[0].split(':')[1].replace('\"', '').replace('\"', ''));
+            // console.log(http.responseText);
             AuthService.lingua = http.responseText.split(',')[7].split(':')[1].replace('\"', '').replace('\"', '');
             AuthService.token = token;
             sessionStorage.setItem('lingua', http.responseText.split(',')[7].split(':')[1].replace('\"', '').replace('\"', ''));
             // sessionStorage.setItem('token', token);
           }
-          // console.log(http.responseText.split(',')[7].split(':')[1].replace('\"', '').replace('\"', ''));
-          // console.log(http.responseText.split(',')[12].split(':')[1].replace('\"', '').replace('\"', '').replace('}', ''));
-          // console.log(http.getResponseHeader('Set-Cookie'));
+          // // console.log(http.responseText.split(',')[7].split(':')[1].replace('\"', '').replace('\"', ''));
+          // // console.log(http.responseText.split(',')[12].split(':')[1].replace('\"', '').replace('\"', '').replace('}', ''));
+          // // console.log(http.getResponseHeader('Set-Cookie'));
         }
       };
       body.forEach(x => {
-        console.log(x);
+        // console.log(x);
       });
       http.send(body);
     });
@@ -247,7 +255,7 @@ export class AuthService {
     http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     http.onreadystatechange = () => {
       if (http.readyState === 4 && http.status === 200) {
-        console.log(http.responseText);
+        // console.log(http.responseText);
       }
     };
     return http.send(params); */
@@ -259,7 +267,7 @@ export class AuthService {
       .pipe(
         catchError(this.handleError),
         tap(resData => {
-          console.log(resData);
+          // console.log(resData);
         })
       );
   }
@@ -269,7 +277,7 @@ export class AuthService {
       .pipe(
         catchError(this.handleError),
         tap(resData => {
-          console.log(resData);
+          // console.log(resData);
         })
       );
   }

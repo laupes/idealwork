@@ -11,7 +11,7 @@ export class PageFormAccessoComponent implements OnInit {
 
   constructor(private dataService: AuthService, private router: Router, private route: ActivatedRoute) {
     this.route.queryParams.subscribe(params => {
-      console.log(params);
+      // console.log(params);
       this.email = params['email'];
       this.hash = params['hash'];
   });

@@ -1,4 +1,3 @@
-import { EncrDecrService } from './encr-decr-service.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { EventEmitter, NgModule } from '@angular/core';
 
@@ -26,6 +25,8 @@ import { FormsModule } from '@angular/forms';
 import { TipologieModule } from './tipologie/tipologie.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { PageFormAccessoComponent } from './page-form-accesso/page-form-accesso.component';
+import { EncrDecrService } from './encr-decr-service.service';
+import { TornaLoginComponent } from './404/torna-login/torna-login.component';
 
 
 
@@ -37,6 +38,7 @@ import { PageFormAccessoComponent } from './page-form-accesso/page-form-accesso.
     LoginComponent,
     PageNotFoundComponent,
     PageFormAccessoComponent,
+    TornaLoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,7 +62,7 @@ import { PageFormAccessoComponent } from './page-form-accesso/page-form-accesso.
     EventEmitter,
     DataService,
     ChildrenOutletContexts,
-    EncrDecrService
+    EncrDecrService,
   ],
   bootstrap: [AppComponent]
 })
