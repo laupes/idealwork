@@ -1,3 +1,4 @@
+import { EncrDecrService } from './encr-decr-service.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { EventEmitter, NgModule } from '@angular/core';
 
@@ -58,7 +59,8 @@ import { PageFormAccessoComponent } from './page-form-accesso/page-form-accesso.
   providers: [
     EventEmitter,
     DataService,
-    ChildrenOutletContexts
+    ChildrenOutletContexts,
+    EncrDecrService
   ],
   bootstrap: [AppComponent]
 })

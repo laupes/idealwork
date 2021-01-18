@@ -1,9 +1,8 @@
-import { Observable } from 'rxjs';
+import { EncrDecrService } from './../encr-decr-service.service';
 import { HttpClient } from '@angular/common/http';
-import { EventEmitter, Input, Output, Component, OnInit, Inject, InjectionToken } from '@angular/core';
+import { EventEmitter, Input, Output, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { Utente } from 'src/app/interfaces/utente.interface';
 import { AuthService } from '../core/auth.service';
 import { DataService } from '../data.service';
 import { Soluzione } from '../interfaces/soluzione.interface';
@@ -15,6 +14,14 @@ import { EventEmitterService } from './../event-emitter.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+
+  // tslint:disable-next-line: max-line-length
+  constructor(private dataService: AuthService, private http: HttpClient, private route: ActivatedRoute,
+              private router: Router, private emitter: EventEmitterService, private data: DataService, private encrDecr: EncrDecrService) {
+    this.route.queryParams.subscribe(params => {
+      console.log(params);
+    });
+  }
 
   nomeUtente: string;
   // utenti: Utente[];
@@ -28,14 +35,6 @@ export class LoginComponent implements OnInit {
   @Input() nome: string;
   @Input() password: string;
   @Output() checkEvent: EventEmitter<boolean> = new EventEmitter();
-
-  // tslint:disable-next-line: max-line-length
-  constructor(private dataService: AuthService, private http: HttpClient, private route: ActivatedRoute,
-              private router: Router, private emitter: EventEmitterService, private data: DataService) {
-                this.route.queryParams.subscribe(params => {
-                  console.log(params);
-              });
-  }
 
   ngOnInit(): void {
     // this.dataService.getUtenti().subscribe((utenti: Utente[]) => this.utenti = utenti);
@@ -61,13 +60,13 @@ export class LoginComponent implements OnInit {
 
     $('.alert-danger').hide();
 
-    $('.richiedi-accesso').click(function() {
+    $('.richiedi-accesso').click(function () {
       $('.richiedi-accesso-down').toggle();
     });
   }
 
   sendCheck(): void {
-   this.checkEvent.emit(this.loginFatto);
+    this.checkEvent.emit(this.loginFatto);
   }
 
   changeCheck(): void {
@@ -94,9 +93,19 @@ export class LoginComponent implements OnInit {
       .subscribe((result: string) => {
         if (!result.includes('incorrect')) {
           // setTimeout(() => {
-            this.router.navigate(['soluzioni']);
-            // this.dataService.getSoluzioni().subscribe((soluzioni: Soluzione[]) => this.soluzioni = soluzioni);
-        // }, 2000);
+          const key = '123456$#@$^@1ERF';
+          const token = result.split(',')[12].split(':')[1].replace('\"', '').replace('\"', '').replace('}', '');
+          // console.log('questo è token ' + token);
+          // console.log('questo è tokenE ' + this.encrDecr.set(key, token));
+          sessionStorage.setItem('token', this.encrDecr.set(key, token));
+          setTimeout(() => {
+            sessionStorage.removeItem('token');
+            alert('Sessione scaudta. Prego rifare il login');
+            this.router.navigate(['']);
+       }, 600000);
+          this.router.navigate(['soluzioni']);
+          // this.dataService.getSoluzioni().subscribe((soluzioni: Soluzione[]) => this.soluzioni = soluzioni);
+          // }, 2000);
         }
         else {
           // return alert('username e/o password sbagliati');
@@ -108,24 +117,23 @@ export class LoginComponent implements OnInit {
 
   richiestaAccesso(credentials: any): any {
     this.dataService.richiestaAccesso(credentials)
-    .subscribe((result: string) => {
-      console.log(result);
-      if (result.includes('esistente')) {
-       // this.router.navigate(['reimposta-password']);
-       return alert('utente esistente');
-      } else if (result.includes('non trovato')) {
-        alert('codice non trovato, verrai reindirizzato verso la pagina contatti di IdealWork');
-        this.goToLink('https://www.idealwork.it/contatti/');
-       // this.router.navigate(['reimposta-password']);
-      } else {
-        return alert('Invio richiesta riuscito. Controlla il tuo indirizzo mail');
-      }
-    });
+      .subscribe((result: string) => {
+        console.log(result);
+        if (result.includes('esistente')) {
+          // this.router.navigate(['reimposta-password']);
+          return alert('utente esistente');
+        } else if (result.includes('non trovato')) {
+          alert('codice non trovato, verrai reindirizzato verso la pagina contatti di IdealWork');
+          this.goToLink('https://www.idealwork.it/contatti/');
+          // this.router.navigate(['reimposta-password']);
+        } else {
+          return alert('Invio richiesta riuscito. Controlla il tuo indirizzo mail');
+        }
+      });
   }
 
   goToLink(url: string): void {
     window.open(url, '_self');
-}
-
+  }
 
 }

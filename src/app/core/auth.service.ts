@@ -1,12 +1,12 @@
+import { EncrDecrService } from './../encr-decr-service.service';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Observable, throwError, from, observable, of } from 'rxjs';
-import { catchError, tap, } from 'rxjs/operators';
-import { registerLocaleData } from '@angular/common';
+import { Observable, throwError, from } from 'rxjs';
+import { tap, } from 'rxjs/operators';
 import { map } from 'rxjs/operators';
+import * as CryptoJS from 'crypto-js';
 
 import { Utente } from '../interfaces/utente.interface';
-import { Soluzione } from '../interfaces/soluzione.interface';
 
 
 
@@ -15,27 +15,18 @@ import { Soluzione } from '../interfaces/soluzione.interface';
 })
 export class AuthService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private encrDecr: EncrDecrService) { 
+  }
   static lingua: string;
   static token: string;
-
   // baseUrl = 'assets/utenti.json';
   // urlCodici = 'assets/codici.json';
   // loginUrl = '/login';
   // static url = 'https://idea.idealwork.it:3000/';
   static url = 'https://10.52.1.120:3000/';
   // static url = './';
-
+  static secretKey = 'poiuyghj56789yghh';
   currentUser: Utente;
-
-  // tslint:disable-next-line: typedef
-  private handleError(error: any) {
-    if (error.error instanceof Error) {
-      const errMessage = error.error.message;
-      return throwError(errMessage);
-    }
-    return throwError(error);
-  }
 
   get staticLingua(): string {
     return AuthService.lingua;
@@ -83,8 +74,10 @@ export class AuthService {
     }
   */
   getSoluzioni(): Observable<any[]> {
+    const key = '123456$#@$^@1ERF';
+    const token = this.encrDecr.get(key, sessionStorage.getItem('token'));
     const header = new HttpHeaders()
-      .set('Access-Token', sessionStorage.getItem('token'));
+      .set('Access-Token', token);
     return this.http.get<any[]>(AuthService.url + 'soluzioni/' + (this.staticLingua ? this.staticLingua
       : sessionStorage.getItem('lingua')), { headers: header })
       .pipe(
@@ -95,8 +88,10 @@ export class AuthService {
   }
 
   getSoluzioniDettaglio(soluzione: string): Observable<any[]> {
+    const key = '123456$#@$^@1ERF';
+    const token = this.encrDecr.get(key, sessionStorage.getItem('token'));
     const header = new HttpHeaders()
-      .set('Access-Token', sessionStorage.getItem('token'));
+      .set('Access-Token', token);
     return this.http.get<any[]>(AuthService.url + 'soluzioni/' + (this.staticLingua ? this.staticLingua
       : sessionStorage.getItem('lingua')) + '/' + soluzione, { headers: header })
       .pipe(
@@ -107,8 +102,10 @@ export class AuthService {
   }
 
   getSoluzioneColore(): Observable<any[]> {
+    const key = '123456$#@$^@1ERF';
+    const token = this.encrDecr.get(key, sessionStorage.getItem('token'));
     const header = new HttpHeaders()
-      .set('Access-Token', sessionStorage.getItem('token'));
+      .set('Access-Token', token);
     return this.http.get<any[]>(AuthService.url + 'soluzioni/' + sessionStorage.getItem('lingua') + '/' +
       sessionStorage.getItem('soluzione') + '/' + 'colori'
       , { headers: header })
@@ -120,8 +117,10 @@ export class AuthService {
   }
 
   getSoluzioneCartelle(): Observable<any[]> {
+    const key = '123456$#@$^@1ERF';
+    const token = this.encrDecr.get(key, sessionStorage.getItem('token'));
     const header = new HttpHeaders()
-      .set('Access-Token', sessionStorage.getItem('token'));
+      .set('Access-Token', token);
     return this.http.get<any[]>(AuthService.url + 'soluzioni/' + sessionStorage.getItem('lingua') + '/' +
       sessionStorage.getItem('soluzione') + '/' + 'cartelle'
       , { headers: header })
@@ -133,8 +132,10 @@ export class AuthService {
   }
 
   getSoluzioneDocumenti(): Observable<any[]> {
+    const key = '123456$#@$^@1ERF';
+    const token = this.encrDecr.get(key, sessionStorage.getItem('token'));
     const header = new HttpHeaders()
-      .set('Access-Token', sessionStorage.getItem('token'));
+      .set('Access-Token', token);
     return this.http.get<any[]>(AuthService.url + 'soluzioni/' + sessionStorage.getItem('lingua') + '/' +
       sessionStorage.getItem('soluzione') + '/' + 'documenti'
       , { headers: header })
@@ -146,8 +147,10 @@ export class AuthService {
   }
 
   getSoluzioneSottoCartelle(): Observable<any[]> {
+    const key = '123456$#@$^@1ERF';
+    const token = this.encrDecr.get(key, sessionStorage.getItem('token'));
     const header = new HttpHeaders()
-      .set('Access-Token', sessionStorage.getItem('token'));
+      .set('Access-Token', token);
     return this.http.get<any[]>(AuthService.url + 'soluzioni/' + sessionStorage.getItem('lingua') + '/' +
       sessionStorage.getItem('soluzione') + '/' + 'cartelle'
       + '/' + sessionStorage.getItem('cartella'), { headers: header })
@@ -168,9 +171,6 @@ export class AuthService {
       .set('email', credentials['email'].trim())
       .set('codice', credentials['codice-azienda'])
       .set('note', credentials['note'] ? credentials['note'] : '');
-    const options = {
-      headers: header,
-    };
     return this.http.post(urlR, body, { headers: header, observe: 'response', withCredentials: true })
       .pipe(map(response => {
         console.log(response);
@@ -204,10 +204,10 @@ export class AuthService {
   logIn(credentials: { [x: string]: string; }): Observable<any> {
     const http = new XMLHttpRequest();
     const promise = new Promise(function (resolve, reject) {
-      http.onload = function(): void {
+      http.onload = function (): void {
         resolve(this.responseText);
       };
-      http.onerror = function(): void {
+      http.onerror = function (): void {
         reject(this.status);
       };
       // const params = 'username=' + credentials['username'] + '&passowrd=' + credentials['password'];
@@ -221,13 +221,14 @@ export class AuthService {
       http.onreadystatechange = () => {
         if (http.readyState === 4 && http.status === 200) {
           if (http.responseText.length > 30) {
+            // tslint:disable-next-line: max-line-length           
+            const token = http.responseText.split(',')[12].split(':')[1].replace('\"', '').replace('\"', '').replace('}', '');
             console.log(http.responseText.split(',')[0].split(':')[1].replace('\"', '').replace('\"', ''));
             console.log(http.responseText);
             AuthService.lingua = http.responseText.split(',')[7].split(':')[1].replace('\"', '').replace('\"', '');
-            AuthService.token = http.responseText.split(',')[12].split(':')[1].replace('\"', '').replace('\"', '').replace('}', '');
+            AuthService.token = token;
             sessionStorage.setItem('lingua', http.responseText.split(',')[7].split(':')[1].replace('\"', '').replace('\"', ''));
-            sessionStorage
-              .setItem('token', http.responseText.split(',')[12].split(':')[1].replace('\"', '').replace('\"', '').replace('}', ''));
+            // sessionStorage.setItem('token', token);
           }
           // console.log(http.responseText.split(',')[7].split(':')[1].replace('\"', '').replace('\"', ''));
           // console.log(http.responseText.split(',')[12].split(':')[1].replace('\"', '').replace('\"', '').replace('}', ''));
