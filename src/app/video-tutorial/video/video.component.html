@@ -1,19 +1,5 @@
 <div class="video-container" *ngFor = "let video of videos">
     <h1>{{ video.sequenza }}) {{ video.titolo }}</h1>
     <h2>{{ video.descrizione }}</h2>
-    <youtube-player videoId="{{ video.link | sublink }}"></youtube-player>
+    <youtube-player width=88% height:50vh videoId="{{ video.link | sublink }}"></youtube-player>
 </div>
-
-
-
-<!-- <div class="video-container">
-    <h1>1) Preparazione del supporto</h1>
-    <h2>Pulizia e levigatura</h2>
-    <img class="video" src="./assets/img/video-tutorial/video1.png">
-</div>
-
-<div class="video-container">
-    <h1>2) Strato di resina</h1>
-    <h2>Mescolare e applicare uno strato di resina</h2>
-    <img class="video" src="./assets/img/video-tutorial/video2.png">
-</div> -->
