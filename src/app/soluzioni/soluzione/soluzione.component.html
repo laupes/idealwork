@@ -4,8 +4,8 @@
 </div>
 
 
-    <a routerLink="/dettaglio-soluzione">
-    <div *ngFor = "let soluzione of soluzioni" class="list-group-item">
+    <a routerLink="/dettaglio-soluzione" autoscroll="false">
+    <div *ngFor = "let soluzione of soluzioni" class="list-group-item" autoscroll="false">
         <div class="soluzione" (click)="selezioneSoluzione(soluzione.soluzione)">
             <div class="immagine-soluzione" [ngStyle]="{background: (soluzione.img_sx) ? 'url('+soluzione.img_sx+')' : 'url(./assets/img/immagine-non-disponibile.jpg)', 'background-size' : 'cover', 'background-position' : 'center'}"></div>
             <div class="titolo-soluzione" [ngStyle]="{background: (soluzione.img_dx) ? 'url('+soluzione.img_dx+')' : 'url(./assets/img/immagine-non-disponibile-destra.jpg)', 'background-size' : 'cover', 'background-position' : 'center'}">
@@ -14,82 +14,3 @@
         </div>
     </div>
     </a>
-
-
-<!--
-<a routerLink="/dettaglio-soluzione">
-    <div class="soluzione">
-        <div class="immagine-soluzione" style="background-image: url(./assets/img/soluzioni/esempio-acidificato.png);"></div>
-        <div class="titolo-soluzione" style="background-image: url(./assets/img/soluzioni/acid-stain.png);">
-            <h1>Acidificato</h1>
-        </div>
-    </div>
-</a>
-
-<a routerLink="/dettaglio-soluzione">
-    <div class="soluzione">
-        <div class="immagine-soluzione" style="background-image: url(./assets/img/soluzioni/esempio-lixio.png);"></div>
-        <div class="titolo-soluzione" style="background-image: url(./assets/img/soluzioni/lixio.png);">
-            <h1>Lixio</h1>
-        </div>
-    </div>
-</a>
-
-<a routerLink="/dettaglio-soluzione">
-    <div class="soluzione">
-        <div class="immagine-soluzione" style="background-image: url(./assets/img/soluzioni/esempio-microtopping1.png);"></div>
-        <div class="titolo-soluzione" style="background-image: url(./assets/img/soluzioni/microtopping.png);">
-            <h1>Microtopping #1</h1>
-        </div>
-    </div>
-</a>
-
-<a routerLink="/dettaglio-soluzione">
-    <div class="soluzione">
-        <div class="immagine-soluzione" style="background-image: url(./assets/img/soluzioni/esempio-microtopping.png);"></div>
-        <div class="titolo-soluzione" style="background-image: url(./assets/img/soluzioni/microtopping1.png);">
-            <h1>Microtopping</h1>
-        </div>
-    </div>
-</a>
-
-
-<a routerLink="/dettaglio-soluzione">
-    <div class="soluzione">
-        <div class="immagine-soluzione" style="background-image: url(./assets/img/soluzioni/esempio-nuvolato.png);"></div>
-        <div class="titolo-soluzione" style="background-image: url(./assets/img/soluzioni/nuvolato.png);">
-            <h1>Nuvolato</h1>
-        </div>
-    </div>
-</a>
-
-
-<a routerLink="/dettaglio-soluzione">
-    <div class="soluzione">
-        <div class="immagine-soluzione" style="background-image: url(./assets/img/soluzioni/esempio-rasico.png);"></div>
-        <div class="titolo-soluzione" style="background-image: url(./assets/img/soluzioni/rasico.png);">
-            <h1>Rasico</h1>
-        </div>
-    </div>
-</a>
-
-
-<a routerLink="/dettaglio-soluzione">
-    <div class="soluzione">
-        <div class="immagine-soluzione" style="background-image: url(./assets/img/soluzioni/esempio-stamped-concred.png);"></div>
-        <div class="titolo-soluzione" style="background-image: url(./assets/img/soluzioni/stamped-concrete.png);">
-            <h1>Stamped Concrete</h1>
-        </div>
-    </div>
-</a>
-
-
-<a routerLink="/dettaglio-soluzione">
-    <div class="soluzione">
-        <div class="immagine-soluzione" style="background-image: url(./assets/img/soluzioni/esempio-sasso-italia.png);"></div>
-        <div class="titolo-soluzione" style="background-image: url(./assets/img/soluzioni/sassoitalia.png);">
-            <h1>Sassoitalia</h1>
-        </div>
-    </div>
-</a>
--->
