@@ -43,7 +43,7 @@ export class AuthService {
 
   public isAuthenticated(): boolean {
     if (sessionStorage.getItem('token')) {
-        return false;
+      return false;
     } else {
       return false;
     }
@@ -149,9 +149,20 @@ export class AuthService {
       , { headers: header })
       .pipe(
         tap(resData => {
-          // console.log(resData);
+          console.log(resData);
         })
       );
+  }
+
+  scaricaPdf(link: string): Observable<Blob> {
+    const key = '123456$#@$^@1ERF';
+    const token = this.encrDecr.get(key, sessionStorage.getItem('token'));
+    const header = new HttpHeaders()
+      .set('Access-Token', token)
+      .set('Accept', 'application/pdf');
+    return this.http.get<Blob>(link, { headers: header, responseType: 'blob' as 'json' }).pipe(tap(resData => {
+      console.log(resData);
+    }));
   }
 
   getSoluzioneSottoCartelle(): Observable<any[]> {

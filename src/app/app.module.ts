@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { EventEmitter, NgModule } from '@angular/core';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,6 +28,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { PageFormAccessoComponent } from './page-form-accesso/page-form-accesso.component';
 import { EncrDecrService } from './encr-decr-service.service';
 import { TornaLoginComponent } from './404/torna-login/torna-login.component';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 
 
@@ -57,6 +59,7 @@ import { TornaLoginComponent } from './404/torna-login/torna-login.component';
     DocumentazioneModule,
     ParticolariEsecutiviModule,
     CoreModule,
+    PdfViewerModule
   ],
   providers: [
     EventEmitter,
@@ -67,3 +70,5 @@ import { TornaLoginComponent } from './404/torna-login/torna-login.component';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+platformBrowserDynamic().bootstrapModule(AppModule);

@@ -1,3 +1,4 @@
+import { AuthService } from './../../core/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { DocumentazioneModule } from '../documentazione.module';
 
@@ -7,10 +8,13 @@ import { DocumentazioneModule } from '../documentazione.module';
   styleUrls: ['./titolo-pagina.component.scss']
 })
 export class TitoloPaginaComponent implements OnInit {
-  titolo = "Documentazione";
+
+  titolo: string;
+
   constructor() { }
 
   ngOnInit(): void {
+    this.titolo = sessionStorage.getItem('soluzione');
   }
 
 }

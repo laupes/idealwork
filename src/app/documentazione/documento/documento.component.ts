@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/core/auth.service';
 
 @Component({
   selector: 'app-documento',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DocumentoComponent implements OnInit {
 
-  constructor() { }
+  certificati: object[];
+
+  constructor(private dataService: AuthService) { }
 
   ngOnInit(): void {
+    this.dataService.getSoluzioneDocumenti()
+    .subscribe((response: object[]) => this.certificati = response['certificati'].sort(function(a, b) {
+      return a.sequenza - b.sequenza;
+    }));
+  }
+
+  scarica(link: string): any {
+    this.dataService.scaricaPdf(link);
   }
 
 }

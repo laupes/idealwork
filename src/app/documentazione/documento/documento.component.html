@@ -1,4 +1,22 @@
-<div class="documento">
+<div class="documento" *ngFor="let certificato of certificati">
+    <img class="anteprima-documento" src="./assets/img/documentazione/anteprima-documento.png">
+    <div class="descrizione-documento">
+        <h1 class="titolo-documento">{{ certificato.descrizione }}</h1>
+        <button type="submit" class="pulsante-scarica-documento" (click)="scarica(certificato.link)">
+            <img src="./assets/img/documentazione/icona-scarica.png" style="height: 30px;">
+            <h3>Scarica</h3>
+        </button>
+    </div>
+</div>
+
+<!-- <div *ngFor="let certificato of certificati">
+<pdf-viewer src="{{ certificato.link }}" [render-text]="true" style="display: block;" >
+    <h1 class="titolo-documento">{{ certificato.descrizione }}</h1> 
+</pdf-viewer>
+</div> -->
+
+
+<!-- <div class="documento">
     <img class="anteprima-documento" src="./assets/img/documentazione/anteprima-documento.png">
     <div class="descrizione-documento">
         <h1 class="titolo-documento">Documento1</h1>
@@ -54,4 +72,4 @@
             <h3>Scarica</h3>
         </button>
     </div>
-</div>
+</div> -->
