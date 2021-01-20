@@ -240,7 +240,7 @@ export class AuthService {
             // tslint:disable-next-line: max-line-length           
             const token = http.responseText.split(',')[12].split(':')[1].replace('\"', '').replace('\"', '').replace('}', '');
             // console.log(http.responseText.split(',')[0].split(':')[1].replace('\"', '').replace('\"', ''));
-            console.log(http.response);
+            // console.log(http.response);
             localStorage.setItem('titoloApp', http.responseText.split(',')[21].split(':')[2]
             .replace('\"', '').replace('\"', '').replace('}', '').replace('}', ''));
             localStorage.setItem('descrizioneApp', http.responseText.split(',')[22].split(':')[1]
