@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {
   check: boolean = this.loginFatto;
   clicked = false;
   param: string;
+  disabled: boolean;
 
   @Input() nome: string;
   @Input() password: string;
@@ -39,6 +40,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     // this.dataService.getUtenti().subscribe((utenti: Utente[]) => this.utenti = utenti);
     // this.dataService.getCodici().subscribe((codici: string[]) => this.codici = codici);
+    this.disabled = true;
 
     this.data.currentCheck.subscribe(check => this.check = check);
 
@@ -56,13 +58,13 @@ export class LoginComponent implements OnInit {
 
 
     $('.navigation').hide();
-    $('.richiedi-accesso-down').hide();
+    // $('.richiedi-accesso-down').hide();
 
     $('.alert-danger').hide();
 
-    $('.richiedi-accesso').click(function () {
+    /* $('.richiedi-accesso').click(function() {
       $('.richiedi-accesso-down').toggle();
-    });
+    }); */
   }
 
   sendCheck(): void {
@@ -71,6 +73,10 @@ export class LoginComponent implements OnInit {
 
   changeCheck(): void {
     this.data.changeCheck(true);
+  }
+
+  changeHidden(): void {
+    this.disabled = !this.disabled;
   }
 
   /* get isLoggedIn(): Observable<boolean> {

@@ -23,12 +23,13 @@
         </div>
         <br/>
         <button class="pulsante-login" (click)="signIn(f.value)" [disabled] = "clicked">Login</button>
+        
         <div class="richiedi-accesso">
             <h1>Richiedi accesso</h1>
-            <i class="fa fa-chevron-down" style="font-size: 20px;"></i> 
+            <i class="fa fa-chevron-down" style="font-size: 20px;" (click)="changeHidden()"></i> 
         </div>
 
-        <div class="richiedi-accesso-down">
+        <div class="richiedi-accesso-down" [hidden]="disabled">
             <input placeholder="Nome" required minlength="3" maxlength="50" ngModel name="nome" #nome="ngModel" id="nome" type="text" class="form-control space-down">
             <input placeholder="Cognome" required minlength="3" maxlength="50" ngModel name="cognome" #cognome="ngModel" id="cognome" type="text" class="form-control space-down">
             <input placeholder="E-mail" required minlength="10" maxlength="50" ngModel name="email" #email="ngModel" id="e-mail" type="text" class="form-control space-down">
