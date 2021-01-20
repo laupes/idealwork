@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ScaricaAppComponent implements OnInit {
 
+  titolo: string;
+  descrizione: string;
+
   constructor() { }
 
   ngOnInit(): void {
+    this.titolo = localStorage.getItem('titoloApp');
+    this.descrizione = localStorage.getItem('descrizioneApp');
   }
 
 }

@@ -27,8 +27,18 @@ export class DocumentoComponent implements OnInit {
 
   }
 
+  downloadFile(data: any): void {
+    const blob = new Blob([data], { type: 'application/pdf' });
+    const url = window.URL.createObjectURL(blob);
+    window.open(url);
+  }
+
   scarica(link: string): any {
-    this.dataService.scaricaPdf(link);
+    this.dataService.scaricaPdf(link).subscribe((response: Blob) => this.downloadFile(response));
+  }
+
+  goToLink(url: string): void {
+    window.open(url, 'blank');
   }
 
 }

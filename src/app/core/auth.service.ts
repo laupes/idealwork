@@ -154,10 +154,10 @@ export class AuthService {
       );
   }
 
-  scaricaPdf(link: string): Observable<Blob> {
+  scaricaPdf(link: string): Observable<any> {
     const header = new HttpHeaders()
       .set('Accept', 'application/pdf');
-    return this.http.get<Blob>(link, { headers: header, responseType: 'blob' as 'json' }).pipe(tap(resData => {
+    return this.http.get(link, { headers: header, observe: 'response', responseType: 'blob'}).pipe(tap(resData => {
       console.log(resData);
     }));
   }
@@ -240,7 +240,15 @@ export class AuthService {
             // tslint:disable-next-line: max-line-length           
             const token = http.responseText.split(',')[12].split(':')[1].replace('\"', '').replace('\"', '').replace('}', '');
             // console.log(http.responseText.split(',')[0].split(':')[1].replace('\"', '').replace('\"', ''));
-            // console.log(http.responseText);
+            console.log(http.response);
+            localStorage.setItem('titoloApp', http.responseText.split(',')[21].split(':')[2]
+            .replace('\"', '').replace('\"', '').replace('}', '').replace('}', ''));
+            localStorage.setItem('descrizioneApp', http.responseText.split(',')[22].split(':')[1]
+            .replace('\"', '').replace('\"', '').replace('}', '').replace('}', ''));
+            // console.log(http.responseText.split(',')[22].split(':')[1]
+            // .replace('\"', '').replace('\"', '').replace('}', '').replace('}', ''));
+            // console.log(http.responseText.split(',')[21].split(':')[2]
+            // .replace('\"', '').replace('\"', '').replace('}', '').replace('}', ''));
             AuthService.lingua = http.responseText.split(',')[7].split(':')[1].replace('\"', '').replace('\"', '');
             AuthService.token = token;
             sessionStorage.setItem('lingua', http.responseText.split(',')[7].split(':')[1].replace('\"', '').replace('\"', ''));
