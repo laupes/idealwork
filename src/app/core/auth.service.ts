@@ -155,10 +155,7 @@ export class AuthService {
   }
 
   scaricaPdf(link: string): Observable<Blob> {
-    const key = '123456$#@$^@1ERF';
-    const token = this.encrDecr.get(key, sessionStorage.getItem('token'));
     const header = new HttpHeaders()
-      .set('Access-Token', token)
       .set('Accept', 'application/pdf');
     return this.http.get<Blob>(link, { headers: header, responseType: 'blob' as 'json' }).pipe(tap(resData => {
       console.log(resData);

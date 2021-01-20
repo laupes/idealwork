@@ -19,4 +19,8 @@ export class OpzioneComponent implements OnInit {
     .subscribe((response: object[]) => this.dettaglioSoluzione = response);
   }
 
+  posaCertificato(nome: string): void {
+    sessionStorage.setItem('PosaOCertificato', nome);
+  }
+
 }
