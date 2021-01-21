@@ -177,7 +177,7 @@ export class AuthService {
       );
   }
 
-  richiestaAccesso(credentials: { [x: string]: string; }): Observable<string> {
+  richiestaAccesso(credentials: { [x: string]: string; }): Observable<any> {
     const header = new HttpHeaders()
       .set('Content-Type', 'application/x-www-form-urlencoded');
     const urlR = AuthService.url + 'request';
@@ -190,13 +190,14 @@ export class AuthService {
     return this.http.post(urlR, body, { headers: header, observe: 'response', withCredentials: true })
       .pipe(map(response => {
         // console.log(response);
-        if (response['body']['result'].toString().includes('existing')) {
+        /* if (response['body']['result'].toString().includes('existing')) {
           return 'esistente';
         } else if (response['body']['result'].toString().includes('not_found')) {
           return 'non trovato';
         } else {
           return 'corretto';
-        }
+        } */
+        return response['body'];
       })
       );
   }

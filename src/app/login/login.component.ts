@@ -124,9 +124,9 @@ export class LoginComponent implements OnInit {
 
   richiestaAccesso(credentials: any): any {
     this.dataService.richiestaAccesso(credentials)
-      .subscribe((result: string) => {
-        // console.log(result);
-        if (result.includes('esistente')) {
+      .subscribe((result: any) => {
+        console.log(result);
+        /* if (result.includes('esistente')) {
           // this.router.navigate(['reimposta-password']);
           return alert('utente esistente');
         } else if (result.includes('non trovato')) {
@@ -135,12 +135,22 @@ export class LoginComponent implements OnInit {
           // this.router.navigate(['reimposta-password']);
         } else {
           return alert('Invio richiesta riuscito. Controlla il tuo indirizzo mail');
+        } */
+        if (result['result'].includes('not_found')) {
+          alert(result['message']);
+          this.goToLink(result['redirect']);
+        } else if (result['result'].includes('success')) {
+          alert(result['result']);
+          this.disabled = !this.disabled;
+        } else {
+          alert(result['result']);
+          this.disabled = !this.disabled;
         }
       });
   }
 
   goToLink(url: string): void {
-    window.open(url, '_self');
+    window.open(url, '_blank');
   }
 
 }
