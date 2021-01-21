@@ -237,7 +237,7 @@ export class AuthService {
       http.onreadystatechange = () => {
         if (http.readyState === 4 && http.status === 200) {
           if (http.responseText.length > 30) {
-            // tslint:disable-next-line: max-line-length           
+            // tslint:disable-next-line: max-line-length
             const token = http.responseText.split(',')[12].split(':')[1].replace('\"', '').replace('\"', '').replace('}', '');
             // console.log(http.responseText.split(',')[0].split(':')[1].replace('\"', '').replace('\"', ''));
             // console.log(http.response);

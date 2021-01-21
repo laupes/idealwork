@@ -23,6 +23,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  static linguaBrowser: string;
   nomeUtente: string;
   // utenti: Utente[];
   // codici: string[];
@@ -41,11 +42,11 @@ export class LoginComponent implements OnInit {
     // this.dataService.getUtenti().subscribe((utenti: Utente[]) => this.utenti = utenti);
     // this.dataService.getCodici().subscribe((codici: string[]) => this.codici = codici);
     this.disabled = true;
-
     this.data.currentCheck.subscribe(check => this.check = check);
-
     const togglePassword = document.querySelector('#togglePassword');
     const password = document.querySelector('#password');
+    LoginComponent.linguaBrowser = navigator.language;
+    console.log(LoginComponent.linguaBrowser);
 
 
     togglePassword.addEventListener('click', function (e) {
