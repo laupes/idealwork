@@ -1,14 +1,16 @@
 <div class="esempio">
     <h1>L'effetto {{ soluzione | titlecase }}</h1>
-    <p>L'effetto ottenuto è quello di una superficie continua 
-        e senza giunti di dilatazione, brutale, contemporanea, 
-        graffiante che si crea con materiali robusti, forti, 
-        potenti, come il cemento.
+    <p> {{ testo | titlecase }}
     </p>
 </div>
 
+<div class="slider">
+  <div class="slides">
+    <div style="background-image: url({{immagine.link}})" *ngFor="let immagine of immagini"></div>
+  </div>
+</div>
 
-
+<!--
 <div class="slider">
     <div class="slides">
       <div id="slide-1" style="background-image: url(/assets/img/dettaglio-soluzioni/slide1.jpg); background-size: cover"></div>
@@ -17,3 +19,4 @@
       <div id="slide-4" style="background-image: url(/assets/img/dettaglio-soluzioni/slide4.png); background-size: cover"></div>
     </div>
   </div>
+-->

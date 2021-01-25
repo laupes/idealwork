@@ -18,4 +18,8 @@ export class CategoriaParticolariComponent implements OnInit {
     this.dataService.getSoluzioneDocumenti().subscribe((response: object[]) => this.cartelle = response['particolari']);
   }
 
+  salvaTitolo(testo: string): void {
+    sessionStorage.setItem('titoloEsecutvo', testo);
+  }
+
 }
