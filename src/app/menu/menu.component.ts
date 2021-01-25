@@ -12,6 +12,14 @@ export class MenuComponent implements OnInit {
 
   check: boolean;
 
+  lingue: Lingua[] = [
+    {value: 'IT-0', viewValue: 'IT'},
+    {value: 'EN-1', viewValue: 'EN'},
+    {value: 'FR-2', viewValue: 'FR'},
+    {value: 'DE-3', viewValue: 'DE'},
+    {value: 'NL-4', viewValue: 'NL'},
+  ];
+
   constructor(private data: DataService) { }
 
   ngOnInit(): void {
