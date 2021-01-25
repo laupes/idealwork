@@ -29,8 +29,9 @@ import { PageFormAccessoComponent } from './page-form-accesso/page-form-accesso.
 import { EncrDecrService } from './encr-decr-service.service';
 import { TornaLoginComponent } from './404/torna-login/torna-login.component';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,9 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
     DocumentazioneModule,
     ParticolariEsecutiviModule,
     CoreModule,
-    PdfViewerModule
+    PdfViewerModule,
+    NoopAnimationsModule,
+    MatSelectModule
   ],
   providers: [
     EventEmitter,

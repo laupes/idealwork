@@ -3,21 +3,27 @@
   <a routerLink="/soluzioni">
     <img class="logo" src="./assets/img/menu/logo-idealwork.png" style="height: 70px;">
   </a>
-  <button class="ham"></button>
-  <nav class="navbar">
-    <ul>
-      <li><a class="menuLink" routerLink="/soluzioni">Soluzioni</a></li>
-      <li><a class="menuLink" (click)="tornaApp()">Torna all'app</a></li>
-      <div class="dropdown">
-        <button onclick="myFunction()" class="dropbtn">Cambia lingua</button>
-        <div id="myDropdown" class="dropdown-content">
-          <a href="#">Inglese</a>
-          <a href="#">Francese</a>
-          <a href="#">Tedesco</a>
-        </div>
-      </div>
-    </ul>
-  </nav>
+
+  <div class="parte-destra">
+    <mat-form-field appearance="fill">
+      <mat-label>Lingua</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let lingua of lingue" [value]="lingua.value">
+          {{lingua.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+    <mat-slider min="1" max="100" step="1" value="1"></mat-slider>
+    
+    <button class="ham"></button>
+    <nav class="navbar">
+      <ul>
+        <li><a class="menuLink" routerLink="/soluzioni">Soluzioni</a></li>
+        <li><a class="menuLink">Torna all'app</a></li>
+      </ul>
+    </nav>
+  </div>
 
 </div>
 

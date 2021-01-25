@@ -12,6 +12,14 @@ export class MenuComponent implements OnInit {
 
   check: boolean;
 
+  lingue: Lingua[] = [
+    {value: 'IT-0', viewValue: 'IT'},
+    {value: 'EN-1', viewValue: 'EN'},
+    {value: 'FR-2', viewValue: 'FR'},
+    {value: 'DE-3', viewValue: 'DE'},
+    {value: 'NL-4', viewValue: 'NL'},
+  ];
+
   constructor(private data: DataService) { }
 
   ngOnInit(): void {
@@ -36,42 +44,5 @@ export class MenuComponent implements OnInit {
         menuLink.addEventListener('click', toggleHamburger);
       }
     );
-
-
-    // DROPDOWN MENU
-    /* When the user clicks on the button,
-    toggle between hiding and showing the dropdown content */
-    function myFunction() {
-      document.getElementById("myDropdown").classList.toggle("show");
-    }
-
-    // Close the dropdown menu if the user clicks outside of it
-    window.onclick = function(event) {
-      if (event.target.matches('.dropbtn')) {
-        var dropdowns = document.getElementsByClassName("dropdown-content");
-        var i;
-        for (i = 0; i < dropdowns.length; i++) {
-          var openDropdown = dropdowns[i];
-          if (openDropdown.classList.contains('show')) {
-            openDropdown.classList.remove('show');
-          }
-        }
-      }
-    };
-
-  }
-
-  openWindow(): void {
-    window.open('http://localhost:4200/#/', '_self');
-  }
-
-  closeWindow(): void {
-    window.close();
-  }
-
-  tornaApp(): void {
-    this.openWindow();
-    this.closeWindow();
-  }
-
+  };
 }
