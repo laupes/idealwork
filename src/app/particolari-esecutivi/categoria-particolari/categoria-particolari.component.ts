@@ -1,3 +1,4 @@
+import { AuthService } from './../../core/auth.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,11 +9,13 @@ import { Component, OnInit } from '@angular/core';
 export class CategoriaParticolariComponent implements OnInit {
 
   soluzione: string;
+  cartelle: object[];
 
-  constructor() { }
+  constructor(private dataService: AuthService) { }
 
   ngOnInit(): void {
     this.soluzione = sessionStorage.getItem('soluzione');
+    this.dataService.getSoluzioneDocumenti().subscribe((response: object[]) => this.cartelle = response['particolari']);
   }
 
 }

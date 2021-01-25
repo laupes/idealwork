@@ -36,4 +36,3 @@ export class MenuComponent implements OnInit {
         menuLink.addEventListener('click', toggleHamburger);
       }
     );
-

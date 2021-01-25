@@ -3,7 +3,7 @@
     <div class="descrizione-documento">
         <h1 class="titolo-documento">{{ certificato.descrizione }}</h1>
         <h2>{{ certificato.titolo }}</h2>
-        <button type="submit" class="pulsante-scarica-documento" (click)="scarica(certificato.link)">
+        <button type="submit" class="pulsante-scarica-documento" (click)="goToLink(certificato.link)">
             <img src="./assets/img/documentazione/icona-scarica.png" style="height: 30px;">
             <h3>Scarica</h3>
         </button>
