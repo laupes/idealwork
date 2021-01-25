@@ -1,7 +1,7 @@
 <a routerLink="/preparazioni" class="opzione" id="opzione-preparazioni-architop" *ngFor="let cartella of cartelle" [ngStyle]="{background: (cartella.link) ? 'url('+cartella.link+')' : 'url(./assets/img/immagine-non-disponibile.jpg)', 'background-size' : 'cover', 'background-position' : 'center'}">
     <div class="spazio-vuoto"></div>
     <div class="titolo-opzione">
-        <h1>{{ cartella.titolo }}</h1>
+        <h1>{{ cartella.titolo | titlecase }}</h1>
         <i class="fa fa-chevron-right" style="font-size: 20px;"></i>
     </div>
 </a>
