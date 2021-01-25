@@ -16,8 +16,12 @@
       width: 90px;
     }
 
+    .mat-form-field-appearance-fill .mat-form-field-underline::before {
+      background-color: red !important;
+    }
+
     .mat-form-field-appearance-fill .mat-form-field-flex {
-      background-color: none !important;
+      background-color: red !important;
     }
 
     .ham {
@@ -36,7 +40,6 @@
       background-size: 100%;
     }
   }
-
   
   /* change ham image to close */
   .showClose {
