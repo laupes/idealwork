@@ -26,7 +26,7 @@ const routes: Routes = [
   },
   {
     path: 'soluzioni',
-    loadChildren: sessionStorage.getItem('token') !== null ? 'src/app/soluzioni/soluzioni.module#SoluzioniModule' : 'src/app/404/404.module#TornaLoginModule',
+    loadChildren: 'src/app/soluzioni/soluzioni.module#SoluzioniModule',
     pathMatch: 'full',
   },
   {
@@ -48,7 +48,7 @@ const routes: Routes = [
   },
   {
     path: 'prodotto',
-    component: sessionStorage.getItem('token') ? DettaglioProdottoComponent : PageNotFoundComponent
+    component: DettaglioProdottoComponent
   },
   {
     path: 'riepilogo-ordine',

@@ -18,9 +18,7 @@ export class LoginComponent implements OnInit {
   // tslint:disable-next-line: max-line-length
   constructor(private dataService: AuthService, private http: HttpClient, private route: ActivatedRoute,
               private router: Router, private emitter: EventEmitterService, private data: DataService, private encrDecr: EncrDecrService) {
-    this.route.queryParams.subscribe(params => {
-      // console.log(params);
-    });
+
   }
 
   static linguaBrowser: string;
@@ -33,6 +31,8 @@ export class LoginComponent implements OnInit {
   clicked = false;
   param: string;
   disabled: boolean;
+  // credenziali: { [x: string]: string; };
+
 
   @Input() nome: string;
   @Input() password: string;
@@ -41,12 +41,25 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     // this.dataService.getUtenti().subscribe((utenti: Utente[]) => this.utenti = utenti);
     // this.dataService.getCodici().subscribe((codici: string[]) => this.codici = codici);
+    // console.log(typeof(this.disabled));
+    // console.log(typeof(this.credenziali));
+    this.route.queryParams.subscribe(params => {
+      if (params['username']) {
+        // console.log(params['username'] + ' ' + params['password']);
+        // this.credentials['username'] = params['username'];
+        // this.credentials['password'] = params['password'];
+        this.signInApp(params['username'].replace('"', '').replace('"', ''), params['password'].replace('"', '').replace('"', ''));
+      } else {
+        // console.log('no_data');
+      }
+  });
+
     this.disabled = true;
     this.data.currentCheck.subscribe(check => this.check = check);
     const togglePassword = document.querySelector('#togglePassword');
     const password = document.querySelector('#password');
     LoginComponent.linguaBrowser = navigator.language;
-    console.log(LoginComponent.linguaBrowser);
+    // console.log(LoginComponent.linguaBrowser);
 
 
     togglePassword.addEventListener('click', function (e) {
@@ -97,6 +110,35 @@ export class LoginComponent implements OnInit {
     this.clicked = true;
     // // console.log(credentials);
     this.dataService.logIn(credentials)
+      .subscribe((result: string) => {
+        if (!result.includes('incorrect')) {
+          // setTimeout(() => {
+          const key = '123456$#@$^@1ERF';
+          const token = result.split(',')[12].split(':')[1].replace('\"', '').replace('\"', '').replace('}', '');
+          // // console.log('questo è token ' + token);
+          // // console.log('questo è tokenE ' + this.encrDecr.set(key, token));
+          sessionStorage.setItem('token', this.encrDecr.set(key, token));
+          setTimeout(() => {
+            sessionStorage.removeItem('token');
+            alert('Sessione scaudta. Prego rifare il login');
+            this.router.navigate(['']);
+       }, 600000);
+          this.router.navigate(['soluzioni']);
+          // this.dataService.getSoluzioni().subscribe((soluzioni: Soluzione[]) => this.soluzioni = soluzioni);
+          // }, 2000);
+        }
+        else {
+          // return alert('username e/o password sbagliati');
+          this.clicked = false;
+          $('.alert-danger').show();
+        }
+      });
+  }
+
+  signInApp(username: string, password: string): any {
+    this.clicked = true;
+    // // console.log(credentials);
+    this.dataService.logInApp(username, password)
       .subscribe((result: string) => {
         if (!result.includes('incorrect')) {
           // setTimeout(() => {

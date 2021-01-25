@@ -38,8 +38,7 @@ export class MenuComponent implements OnInit {
     );
 
 
-    //DROPDOWN MENU
-    
+    // DROPDOWN MENU
     /* When the user clicks on the button,
     toggle between hiding and showing the dropdown content */
     function myFunction() {
@@ -58,7 +57,21 @@ export class MenuComponent implements OnInit {
           }
         }
       }
-    }
+    };
 
   }
+
+  openWindow(): void {
+    window.open('http://localhost:4200/#/', '_self');
+  }
+
+  closeWindow(): void {
+    window.close();
+  }
+
+  tornaApp(): void {
+    this.openWindow();
+    this.closeWindow();
+  }
+
 }

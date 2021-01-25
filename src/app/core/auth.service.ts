@@ -9,7 +9,7 @@ import * as CryptoJS from 'crypto-js';
 
 import { Utente } from '../interfaces/utente.interface';
 
-
+// IN.p4v1m3nt020
 
 @Injectable({
   providedIn: 'root'
@@ -23,8 +23,8 @@ export class AuthService {
   // baseUrl = 'assets/utenti.json';
   // urlCodici = 'assets/codici.json';
   // loginUrl = '/login';
-  // static url = 'https://idea.idealwork.it:3000/';
-  static url = 'https://10.52.1.120:3000/';
+  static url = 'https://idea.idealwork.it:3000/';
+  // static url = 'https://10.52.1.120:3000/';
   // static url = './';
   static secretKey = 'poiuyghj56789yghh';
   currentUser: Utente;
@@ -232,6 +232,66 @@ export class AuthService {
       const body = new URLSearchParams();
       body.set('username', credentials['username']);
       body.set('password', credentials['password']);
+      const urlL = AuthService.url + 'login';
+      http.open('POST', urlL, true);
+      http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+      http.onreadystatechange = () => {
+        if (http.readyState === 4 && http.status === 200) {
+          if (http.responseText.length > 30) {
+            // tslint:disable-next-line: max-line-length
+            const token = http.responseText.split(',')[12].split(':')[1].replace('\"', '').replace('\"', '').replace('}', '');
+            // console.log(http.responseText.split(',')[0].split(':')[1].replace('\"', '').replace('\"', ''));
+            // console.log(http.response);
+            localStorage.setItem('titoloApp', http.responseText.split(',')[21].split(':')[2]
+            .replace('\"', '').replace('\"', '').replace('}', '').replace('}', ''));
+            localStorage.setItem('descrizioneApp', http.responseText.split(',')[22].split(':')[1]
+            .replace('\"', '').replace('\"', '').replace('}', '').replace('}', ''));
+            // console.log(http.responseText.split(',')[22].split(':')[1]
+            // .replace('\"', '').replace('\"', '').replace('}', '').replace('}', ''));
+            // console.log(http.responseText.split(',')[21].split(':')[2]
+            // .replace('\"', '').replace('\"', '').replace('}', '').replace('}', ''));
+            AuthService.lingua = http.responseText.split(',')[7].split(':')[1].replace('\"', '').replace('\"', '');
+            AuthService.token = token;
+            sessionStorage.setItem('lingua', http.responseText.split(',')[7].split(':')[1].replace('\"', '').replace('\"', ''));
+            // sessionStorage.setItem('token', token);
+          }
+          // // console.log(http.responseText.split(',')[7].split(':')[1].replace('\"', '').replace('\"', ''));
+          // // console.log(http.responseText.split(',')[12].split(':')[1].replace('\"', '').replace('\"', '').replace('}', ''));
+          // // console.log(http.getResponseHeader('Set-Cookie'));
+        }
+      };
+      body.forEach(x => {
+        // console.log(x);
+      });
+      http.send(body);
+    });
+    return from(promise);
+    /*const params = 'username=' + credentials['username'] + '&passowrd=' + credentials['password'];
+    const url = '/login';
+    http.open('POST', url, true);
+    http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    http.onreadystatechange = () => {
+      if (http.readyState === 4 && http.status === 200) {
+        // console.log(http.responseText);
+      }
+    };
+    return http.send(params); */
+  }
+
+  logInApp(username: string, password: string): Observable<any> {
+    const http = new XMLHttpRequest();
+    const promise = new Promise(function (resolve, reject) {
+      http.onload = function (): void {
+        resolve(this.responseText);
+      };
+      http.onerror = function (): void {
+        reject(this.status);
+      };
+      // const params = 'username=' + credentials['username'] + '&passowrd=' + credentials['password'];
+      // const params = JSON.stringify({ username : credentials['username'], password : credentials['password'] });
+      const body = new URLSearchParams();
+      body.set('username', username);
+      body.set('password', password);
       const urlL = AuthService.url + 'login';
       http.open('POST', urlL, true);
       http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
