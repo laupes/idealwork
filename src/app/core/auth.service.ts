@@ -1,3 +1,4 @@
+import { TitoloComponent } from './../video-tutorial/titolo/titolo.component';
 import { EncrDecrService } from './../encr-decr-service.service';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
@@ -237,22 +238,29 @@ export class AuthService {
       http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
       http.onreadystatechange = () => {
         if (http.readyState === 4 && http.status === 200) {
+          const res = JSON.parse(http.response);
+          // console.log(res.lingue);
+          // console.log(JSON.parse(http.response));
+          // console.log(JSON.parse(http.response['lingue']));
           if (http.responseText.length > 30) {
             // tslint:disable-next-line: max-line-length
-            const token = http.responseText.split(',')[12].split(':')[1].replace('\"', '').replace('\"', '').replace('}', '');
+            // const token = http.responseText.split(',')[12].split(':')[1].replace('\"', '').replace('\"', '').replace('}', '');
+            const token = res.token;
             // console.log(http.responseText.split(',')[0].split(':')[1].replace('\"', '').replace('\"', ''));
             // console.log(http.response);
-            localStorage.setItem('titoloApp', http.responseText.split(',')[21].split(':')[2]
-            .replace('\"', '').replace('\"', '').replace('}', '').replace('}', ''));
-            localStorage.setItem('descrizioneApp', http.responseText.split(',')[22].split(':')[1]
-            .replace('\"', '').replace('\"', '').replace('}', '').replace('}', ''));
+            // localStorage.setItem('titoloApp', http.responseText.split(',')[21].split(':')[2]
+            // .replace('\"', '').replace('\"', '').replace('}', '').replace('}', ''));
+            localStorage.setItem('titoloApp', res.download.titolo);
+            // localStorage.setItem('descrizioneApp', http.responseText.split(',')[22].split(':')[1]
+            // .replace('\"', '').replace('\"', '').replace('}', '').replace('}', ''));
+            localStorage.setItem('descrizioneApp', res.download.descrizione);
             // console.log(http.responseText.split(',')[22].split(':')[1]
             // .replace('\"', '').replace('\"', '').replace('}', '').replace('}', ''));
             // console.log(http.responseText.split(',')[21].split(':')[2]
             // .replace('\"', '').replace('\"', '').replace('}', '').replace('}', ''));
-            AuthService.lingua = http.responseText.split(',')[7].split(':')[1].replace('\"', '').replace('\"', '');
+            AuthService.lingua = res.utente.lingua ;
             AuthService.token = token;
-            sessionStorage.setItem('lingua', http.responseText.split(',')[7].split(':')[1].replace('\"', '').replace('\"', ''));
+            sessionStorage.setItem('lingua', res.utente.lingua);
             // sessionStorage.setItem('token', token);
           }
           // // console.log(http.responseText.split(',')[7].split(':')[1].replace('\"', '').replace('\"', ''));

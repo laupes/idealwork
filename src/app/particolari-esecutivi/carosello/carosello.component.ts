@@ -14,7 +14,7 @@ export class CaroselloComponent implements OnInit {
   titolo: string;
 
   ngOnInit(): void {
-    this.titolo = sessionStorage.getItem('soluzione');
+    this.titolo = sessionStorage.getItem('titoloEsecutvo');
     this.showSlides(this.slideIndex);
   }
 

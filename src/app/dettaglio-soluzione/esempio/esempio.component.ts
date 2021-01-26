@@ -14,10 +14,16 @@ export class EsempioComponent implements OnInit {
 
   dettaglioSoluzione: object[];
   soluzione: string;
+  testo: string;
+  immagini: object[];
 
   ngOnInit(): void {
     this.dataService.getSoluzioniDettaglio(sessionStorage.getItem('soluzione'))
     .subscribe((response: object[]) => this.dettaglioSoluzione = response);
     this.soluzione = sessionStorage.getItem('soluzione');
+    this.dataService.getSoluzioneDocumenti()
+    .subscribe((response: object[]) => this.testo = response['effetto']['testo']['descrizione']);
+    this.dataService.getSoluzioneDocumenti()
+    .subscribe((response: object[]) => this.immagini = response['effetto']['immagini']);
   }
 }

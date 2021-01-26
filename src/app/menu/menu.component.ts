@@ -12,7 +12,7 @@ export class MenuComponent implements OnInit {
 
   check: boolean;
 
-  lingue: Lingua[] = [
+  lingue: object[] = [
     {value: 'IT-0', viewValue: 'IT'},
     {value: 'EN-1', viewValue: 'EN'},
     {value: 'FR-2', viewValue: 'FR'},
