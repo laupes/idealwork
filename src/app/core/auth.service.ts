@@ -312,6 +312,15 @@ export class AuthService {
             AuthService.lingua = res.utente.lingua ;
             AuthService.token = token;
             sessionStorage.setItem('lingua', res.utente.lingua);
+            AuthService.lingue.forEach((x) => {
+              if (x['lingua'] !== res.utente.lingua) {
+                if (!localStorage.getItem('linguaArray')) {
+                  localStorage.setItem('linguaArray', x['lingua']);
+                } else {
+                  localStorage.setItem('linguaArray', localStorage.getItem('linguaArray') + ' ' + x['lingua']);
+                }
+              }
+            });
           }
         }
       };
