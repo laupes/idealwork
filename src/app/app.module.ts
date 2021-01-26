@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { EventEmitter, NgModule } from '@angular/core';
+import { EventEmitter, NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -30,6 +30,8 @@ import { EncrDecrService } from './encr-decr-service.service';
 import { TornaLoginComponent } from './404/torna-login/torna-login.component';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import {MatSelectModule} from '@angular/material/select';
+
 
 
 
@@ -62,6 +64,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     CoreModule,
     PdfViewerModule,
     NoopAnimationsModule,
+    MatSelectModule
   ],
   providers: [
     EventEmitter,
@@ -69,7 +72,10 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     ChildrenOutletContexts,
     EncrDecrService,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA,
+  ]
 })
 export class AppModule { }
 
