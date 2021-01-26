@@ -6,10 +6,10 @@
 
   <div class="parte-destra">
     <mat-form-field appearance="fill">
-      <mat-label>Lingua</mat-label>
+      <mat-label>{{ linguaSelezionata }}</mat-label>
       <mat-select>
-        <mat-option *ngFor="let lingua of lingue" [value]="lingua.value">
-          {{lingua.viewValue}}
+        <mat-option *ngFor="let lingua of lingue" (click)="setLingua(lingua)">
+          {{ lingua }}
         </mat-option>
       </mat-select>
     </mat-form-field>

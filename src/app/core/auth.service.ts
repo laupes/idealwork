@@ -1,3 +1,4 @@
+import { Utente } from './../interfaces/utente.interface';
 import { TitoloComponent } from './../video-tutorial/titolo/titolo.component';
 import { EncrDecrService } from './../encr-decr-service.service';
 import { Injectable } from '@angular/core';
@@ -8,7 +9,7 @@ import { map } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import * as CryptoJS from 'crypto-js';
 
-import { Utente } from '../interfaces/utente.interface';
+
 
 // IN.p4v1m3nt020
 
@@ -19,16 +20,14 @@ export class AuthService {
 
   constructor(private http: HttpClient, private encrDecr: EncrDecrService) {
   }
-  static lingua: string;
-  static token: string;
-  // baseUrl = 'assets/utenti.json';
-  // urlCodici = 'assets/codici.json';
-  // loginUrl = '/login';
-  static url = 'https://idea.idealwork.it:3000/';
-  // static url = 'https://10.52.1.120:3000/';
-  // static url = './';
-  static secretKey = 'poiuyghj56789yghh';
-  currentUser: Utente;
+
+  get staticLingue(): object[] {
+    return AuthService.lingue;
+  }
+
+  set staticLingue(lingue: object[]) {
+    AuthService.lingue = lingue;
+  }
 
   get staticLingua(): string {
     return AuthService.lingua;
@@ -41,6 +40,18 @@ export class AuthService {
   get staticToken(): string {
     return AuthService.token;
   }
+
+  static lingua: string;
+  static token: string;
+  // baseUrl = 'assets/utenti.json';
+  // urlCodici = 'assets/codici.json';
+  // loginUrl = '/login';
+  static url = 'https://idea.idealwork.it:3000/';
+  // static url = 'https://10.52.1.120:3000/';
+  // static url = './';
+  static secretKey = 'poiuyghj56789yghh';
+  static lingue: object[];
+  currentUser: Utente;
 
   public isAuthenticated(): boolean {
     if (sessionStorage.getItem('token')) {
@@ -220,6 +231,7 @@ export class AuthService {
   }
 
   logIn(credentials: { [x: string]: string; }): Observable<any> {
+    localStorage.clear();
     const http = new XMLHttpRequest();
     const promise = new Promise(function (resolve, reject) {
       http.onload = function (): void {
@@ -246,6 +258,21 @@ export class AuthService {
             AuthService.lingua = res.utente.lingua ;
             AuthService.token = token;
             sessionStorage.setItem('lingua', res.utente.lingua);
+            AuthService.lingue = res.lingue;
+            AuthService.lingue.forEach((x) => {
+              // localStorage.removeItem('linguaArray');
+              // console.log(x['lingua']);
+              if (x['lingua'] !== res.utente.lingua) {
+                if (!localStorage.getItem('linguaArray')) {
+                  localStorage.setItem('linguaArray', x['lingua']);
+                } else {
+                  localStorage.setItem('linguaArray', localStorage.getItem('linguaArray') + ' ' + x['lingua']);
+                }
+              }
+            });
+            // console.log(AuthService.lingue);
+            // console.log(res.lingue);
+            // console.log(AuthService.lingue);
           }
         }
       };
