@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/auth.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 // import { $ } from 'protractor';
 import * as $ from 'jquery';
 import { DataService } from '../data.service';
@@ -26,10 +26,13 @@ export class MenuComponent implements OnInit {
     this.data.currentCheck.subscribe(check => this.check = check);
 
     // this.lingue = this.dataService.staticLingue;
-    this.lingue = localStorage.getItem('linguaArray').split(' ');
-    // console.log(this.lingue);
     // console.log(this.dataService.staticLingue);
-    // console.log(AuthService.lingue[0]['lingua']);
+    this.lingue = localStorage.getItem('linguaArray').split(' ');
+    /* if (this.dataService.staticLingue) {
+      this.dataService.staticLingue.forEach((x) => {
+        this.lingue.push(x['lingua']);
+      });
+    } */
     this.linguaSelezionata = sessionStorage.getItem('lingua');
 
     // toggles hamburger menu in and out when clicking on the hamburger

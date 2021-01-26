@@ -1,7 +1,7 @@
 import { Utente } from './../interfaces/utente.interface';
 import { TitoloComponent } from './../video-tutorial/titolo/titolo.component';
 import { EncrDecrService } from './../encr-decr-service.service';
-import { Injectable } from '@angular/core';
+import { Injectable, Output } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, throwError, from } from 'rxjs';
 import { tap, } from 'rxjs/operators';
@@ -253,6 +253,7 @@ export class AuthService {
           const res = JSON.parse(http.response);
           if (http.responseText.length > 30) {
             const token = res.token;
+            // console.log(res.download.titolo);
             localStorage.setItem('titoloApp', res.download.titolo);
             localStorage.setItem('descrizioneApp', res.download.descrizione);
             AuthService.lingua = res.utente.lingua ;
@@ -311,6 +312,15 @@ export class AuthService {
             AuthService.lingua = res.utente.lingua ;
             AuthService.token = token;
             sessionStorage.setItem('lingua', res.utente.lingua);
+            AuthService.lingue.forEach((x) => {
+              if (x['lingua'] !== res.utente.lingua) {
+                if (!localStorage.getItem('linguaArray')) {
+                  localStorage.setItem('linguaArray', x['lingua']);
+                } else {
+                  localStorage.setItem('linguaArray', localStorage.getItem('linguaArray') + ' ' + x['lingua']);
+                }
+              }
+            });
           }
         }
       };
