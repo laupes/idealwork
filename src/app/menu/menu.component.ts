@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/core/auth.service';
 import { Component, OnInit } from '@angular/core';
 // import { $ } from 'protractor';
 import * as $ from 'jquery';
@@ -12,20 +14,23 @@ export class MenuComponent implements OnInit {
 
   check: boolean;
 
-  lingue: object[] = [
-    {value: 'IT-0', viewValue: 'IT'},
-    {value: 'EN-1', viewValue: 'EN'},
-    {value: 'FR-2', viewValue: 'FR'},
-    {value: 'DE-3', viewValue: 'DE'},
-    {value: 'NL-4', viewValue: 'NL'},
-  ];
+  lingue: string[];
+  linguaSelezionata: string;
 
-  constructor(private data: DataService) { }
+  constructor(private data: DataService, private dataService: AuthService, private router: Router) {
+  }
 
   ngOnInit(): void {
     var navbar = document.querySelector('.navbar');
     var ham = document.querySelector('.ham');
     this.data.currentCheck.subscribe(check => this.check = check);
+
+    // this.lingue = this.dataService.staticLingue;
+    this.lingue = localStorage.getItem('linguaArray').split(' ');
+    // console.log(this.lingue);
+    // console.log(this.dataService.staticLingue);
+    // console.log(AuthService.lingue[0]['lingua']);
+    this.linguaSelezionata = sessionStorage.getItem('lingua');
 
     // toggles hamburger menu in and out when clicking on the hamburger
     function toggleHamburger(){
@@ -44,5 +49,25 @@ export class MenuComponent implements OnInit {
         menuLink.addEventListener('click', toggleHamburger);
       }
     );
-  };
+  }
+
+  setLingua(lingua: string): void {
+    const linguaS = sessionStorage.getItem('lingua');
+    sessionStorage.setItem('lingua', lingua);
+    this.lingue.push(linguaS);
+    localStorage.removeItem('linguaArray');
+    this.lingue.forEach((x) => {
+      if (x !== lingua) {
+        if (!localStorage.getItem('linguaArray')) {
+          localStorage.setItem('linguaArray', x);
+        } else {
+          if (!localStorage.getItem('linguaArray').includes(x)) {
+            localStorage.setItem('linguaArray', localStorage.getItem('linguaArray') + ' ' + x);
+          }
+        }
+      }
+    });
+    // this.router.navigate(['soluzioni']);
+    window.location.reload();
+  }
 }
