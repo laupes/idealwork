@@ -26,12 +26,13 @@ export class MenuComponent implements OnInit {
     this.data.currentCheck.subscribe(check => this.check = check);
 
     // this.lingue = this.dataService.staticLingue;
-    console.log(this.dataService.staticLingue);
-    if (this.dataService.staticLingue) {
+    // console.log(this.dataService.staticLingue);
+    this.lingue = localStorage.getItem('linguaArray').split(' ');
+    /* if (this.dataService.staticLingue) {
       this.dataService.staticLingue.forEach((x) => {
         this.lingue.push(x['lingua']);
       });
-    }
+    } */
     this.linguaSelezionata = sessionStorage.getItem('lingua');
 
     // toggles hamburger menu in and out when clicking on the hamburger
