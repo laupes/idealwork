@@ -239,33 +239,14 @@ export class AuthService {
       http.onreadystatechange = () => {
         if (http.readyState === 4 && http.status === 200) {
           const res = JSON.parse(http.response);
-          // console.log(res.lingue);
-          // console.log(JSON.parse(http.response));
-          // console.log(JSON.parse(http.response['lingue']));
           if (http.responseText.length > 30) {
-            // tslint:disable-next-line: max-line-length
-            // const token = http.responseText.split(',')[12].split(':')[1].replace('\"', '').replace('\"', '').replace('}', '');
             const token = res.token;
-            // console.log(http.responseText.split(',')[0].split(':')[1].replace('\"', '').replace('\"', ''));
-            // console.log(http.response);
-            // localStorage.setItem('titoloApp', http.responseText.split(',')[21].split(':')[2]
-            // .replace('\"', '').replace('\"', '').replace('}', '').replace('}', ''));
             localStorage.setItem('titoloApp', res.download.titolo);
-            // localStorage.setItem('descrizioneApp', http.responseText.split(',')[22].split(':')[1]
-            // .replace('\"', '').replace('\"', '').replace('}', '').replace('}', ''));
             localStorage.setItem('descrizioneApp', res.download.descrizione);
-            // console.log(http.responseText.split(',')[22].split(':')[1]
-            // .replace('\"', '').replace('\"', '').replace('}', '').replace('}', ''));
-            // console.log(http.responseText.split(',')[21].split(':')[2]
-            // .replace('\"', '').replace('\"', '').replace('}', '').replace('}', ''));
             AuthService.lingua = res.utente.lingua ;
             AuthService.token = token;
             sessionStorage.setItem('lingua', res.utente.lingua);
-            // sessionStorage.setItem('token', token);
           }
-          // // console.log(http.responseText.split(',')[7].split(':')[1].replace('\"', '').replace('\"', ''));
-          // // console.log(http.responseText.split(',')[12].split(':')[1].replace('\"', '').replace('\"', '').replace('}', ''));
-          // // console.log(http.getResponseHeader('Set-Cookie'));
         }
       };
       body.forEach(x => {
@@ -274,16 +255,6 @@ export class AuthService {
       http.send(body);
     });
     return from(promise);
-    /*const params = 'username=' + credentials['username'] + '&passowrd=' + credentials['password'];
-    const url = '/login';
-    http.open('POST', url, true);
-    http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    http.onreadystatechange = () => {
-      if (http.readyState === 4 && http.status === 200) {
-        // console.log(http.responseText);
-      }
-    };
-    return http.send(params); */
   }
 
   logInApp(username: string, password: string): Observable<any> {
@@ -304,28 +275,16 @@ export class AuthService {
       http.open('POST', urlL, true);
       http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
       http.onreadystatechange = () => {
+        const res = JSON.parse(http.response);
         if (http.readyState === 4 && http.status === 200) {
           if (http.responseText.length > 30) {
-            // tslint:disable-next-line: max-line-length
-            const token = http.responseText.split(',')[12].split(':')[1].replace('\"', '').replace('\"', '').replace('}', '');
-            // console.log(http.responseText.split(',')[0].split(':')[1].replace('\"', '').replace('\"', ''));
-            // console.log(http.response);
-            localStorage.setItem('titoloApp', http.responseText.split(',')[21].split(':')[2]
-            .replace('\"', '').replace('\"', '').replace('}', '').replace('}', ''));
-            localStorage.setItem('descrizioneApp', http.responseText.split(',')[22].split(':')[1]
-            .replace('\"', '').replace('\"', '').replace('}', '').replace('}', ''));
-            // console.log(http.responseText.split(',')[22].split(':')[1]
-            // .replace('\"', '').replace('\"', '').replace('}', '').replace('}', ''));
-            // console.log(http.responseText.split(',')[21].split(':')[2]
-            // .replace('\"', '').replace('\"', '').replace('}', '').replace('}', ''));
-            AuthService.lingua = http.responseText.split(',')[7].split(':')[1].replace('\"', '').replace('\"', '');
+            const token = res.token;
+            localStorage.setItem('titoloApp', res.download.titolo);
+            localStorage.setItem('descrizioneApp', res.download.descrizione);
+            AuthService.lingua = res.utente.lingua ;
             AuthService.token = token;
-            sessionStorage.setItem('lingua', http.responseText.split(',')[7].split(':')[1].replace('\"', '').replace('\"', ''));
-            // sessionStorage.setItem('token', token);
+            sessionStorage.setItem('lingua', res.utente.lingua);
           }
-          // // console.log(http.responseText.split(',')[7].split(':')[1].replace('\"', '').replace('\"', ''));
-          // // console.log(http.responseText.split(',')[12].split(':')[1].replace('\"', '').replace('\"', '').replace('}', ''));
-          // // console.log(http.getResponseHeader('Set-Cookie'));
         }
       };
       body.forEach(x => {
@@ -334,16 +293,6 @@ export class AuthService {
       http.send(body);
     });
     return from(promise);
-    /*const params = 'username=' + credentials['username'] + '&passowrd=' + credentials['password'];
-    const url = '/login';
-    http.open('POST', url, true);
-    http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    http.onreadystatechange = () => {
-      if (http.readyState === 4 && http.status === 200) {
-        // console.log(http.responseText);
-      }
-    };
-    return http.send(params); */
   }
 
   /*
