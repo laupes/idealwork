@@ -31,7 +31,7 @@ import { TornaLoginComponent } from './404/torna-login/torna-login.component';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-import {MatSelectModule} from '@angular/material/select';
+
 
 @NgModule({
   declarations: [
@@ -62,7 +62,6 @@ import {MatSelectModule} from '@angular/material/select';
     CoreModule,
     PdfViewerModule,
     NoopAnimationsModule,
-    MatSelectModule
   ],
   providers: [
     EventEmitter,
