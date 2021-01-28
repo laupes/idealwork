@@ -174,6 +174,14 @@ export class AuthService {
     }));
   }
 
+  getLingue(): Observable<any[]> {
+    return this.http.get<any[]>(AuthService.url + 'lingue').pipe(
+      tap (resData => {
+        // console.log(resData);
+      })
+    );
+  }
+
   getSoluzioneSottoCartelle(): Observable<any[]> {
     const key = '123456$#@$^@1ERF';
     const token = this.encrDecr.get(key, sessionStorage.getItem('token'));
@@ -312,7 +320,7 @@ export class AuthService {
             AuthService.lingua = res.utente.lingua ;
             AuthService.token = token;
             sessionStorage.setItem('lingua', res.utente.lingua);
-            AuthService.lingue.forEach((x) => {
+            /* AuthService.lingue.forEach((x) => {
               if (x['lingua'] !== res.utente.lingua) {
                 if (!localStorage.getItem('linguaArray')) {
                   localStorage.setItem('linguaArray', x['lingua']);
@@ -320,7 +328,7 @@ export class AuthService {
                   localStorage.setItem('linguaArray', localStorage.getItem('linguaArray') + ' ' + x['lingua']);
                 }
               }
-            });
+            }); */
           }
         }
       };

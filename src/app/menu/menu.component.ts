@@ -14,7 +14,7 @@ export class MenuComponent implements OnInit {
 
   check: boolean;
 
-  lingue: string[];
+  lingue: object[];
   linguaSelezionata: string;
 
   constructor(private data: DataService, private dataService: AuthService, private router: Router) {
@@ -25,9 +25,11 @@ export class MenuComponent implements OnInit {
     var ham = document.querySelector('.ham');
     this.data.currentCheck.subscribe(check => this.check = check);
 
+    this.dataService.getLingue().subscribe((response: object[]) => this.lingue = response);
+
     // this.lingue = this.dataService.staticLingue;
     // console.log(this.dataService.staticLingue);
-    this.lingue = localStorage.getItem('linguaArray').split(' ');
+    // this.lingue = localStorage.getItem('linguaArray').split(' ');
     /* if (this.dataService.staticLingue) {
       this.dataService.staticLingue.forEach((x) => {
         this.lingue.push(x['lingua']);
@@ -55,11 +57,11 @@ export class MenuComponent implements OnInit {
   }
 
   setLingua(lingua: string): void {
-    const linguaS = sessionStorage.getItem('lingua');
+    // const linguaS = sessionStorage.getItem('lingua');
     sessionStorage.setItem('lingua', lingua);
-    this.lingue.push(linguaS);
+    // this.lingue.push(linguaS);
     localStorage.removeItem('linguaArray');
-    this.lingue.forEach((x) => {
+    /* this.lingue.forEach((x) => {
       if (x !== lingua) {
         if (!localStorage.getItem('linguaArray')) {
           localStorage.setItem('linguaArray', x);
@@ -69,7 +71,7 @@ export class MenuComponent implements OnInit {
           }
         }
       }
-    });
+    }); */
     // this.router.navigate(['soluzioni']);
     window.location.reload();
   }
