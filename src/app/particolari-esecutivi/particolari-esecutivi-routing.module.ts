@@ -7,18 +7,14 @@ import { CaroselloComponent } from './carosello/carosello.component';
 const routes: Routes = [
     {
       path: 'particolari-esecutivi',
-      component: CategoriaParticolariComponent,
-    },
-    {
-      path: 'preparazioni',
       component: CaroselloComponent,
     },
     {
-      path: 'applicazioni',
+      path: 'particolari-esecutivi',
       component: CaroselloComponent,
     },
     {
-      path: 'protezioni',
+      path: 'particolari-esecutivi',
       component: CaroselloComponent,
     },
 ];
