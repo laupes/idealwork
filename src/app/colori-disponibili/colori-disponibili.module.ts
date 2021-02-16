@@ -9,7 +9,7 @@ import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
-    TitoloComponent, 
+    TitoloComponent,
     ListaColoriComponent],
   imports: [
     ColoriDisponibiliRoutingModule,

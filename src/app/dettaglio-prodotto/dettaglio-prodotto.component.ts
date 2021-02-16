@@ -11,14 +11,14 @@ import {MatDialog} from '@angular/material/dialog';
 })
 export class DettaglioProdottoComponent implements OnInit {
 
-  @ViewChild('modal', {static: false}) modal: ModalComponent;
+  // @ViewChild('modal', {static: false}) modal: ModalComponent;
 
-  constructor() { }
+  constructor(private dialog: MatDialog) { }
   codice_materiale: string;
   descrizione: string;
   img: string;
   testo: string;
-  isShow = false;
+  // isShow = false;
   // pdf: string[];
 
 
@@ -30,7 +30,7 @@ export class DettaglioProdottoComponent implements OnInit {
 
     // this.pdf = sessionStorage.getItem('pdfLink').split(' ');
   }
-
+/*
   openModal(): void {
     if (sessionStorage.getItem('pdfArray')){
       this.isShow = true;
@@ -42,6 +42,30 @@ export class DettaglioProdottoComponent implements OnInit {
 
   closeModal(): void {
     this.modal.close();
+  }
+*/
+  openDialog(): void {
+    this.dialog.open(ModComponent);
+  }
+
+}
+
+@Component({
+  selector: 'app-modal',
+  templateUrl: './mod.component.html',
+})
+export class ModComponent implements OnInit {
+
+  pdfArray: string[];
+
+  ngOnInit(): void {
+    this.pdfArray = sessionStorage.getItem('pdfArray') ? sessionStorage.getItem('pdfArray').split(' ') : [];
+    this.pdfArray.forEach((f) => {
+      if (f == null || f === 'null') {
+        this.pdfArray.splice(this.pdfArray.indexOf(f), 1);
+      }
+    });
+    // this.pdfArray.forEach((f) => console.log(f));
   }
 
 }

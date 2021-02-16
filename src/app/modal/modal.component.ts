@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 
 
+
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',

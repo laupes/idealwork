@@ -1,3 +1,4 @@
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { BrowserModule } from '@angular/platform-browser';
 import { EventEmitter, NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
@@ -20,7 +21,7 @@ import { VideoTutorialModule } from './video-tutorial/video-tutorial.module';
 import { DocumentazioneModule } from './documentazione/documentazione.module';
 import { ParticolariEsecutiviModule } from './particolari-esecutivi/particolari-esecutivi.module';
 
-import { DettaglioProdottoComponent } from './dettaglio-prodotto/dettaglio-prodotto.component';
+import { DettaglioProdottoComponent, ModComponent } from './dettaglio-prodotto/dettaglio-prodotto.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { TipologieModule } from './tipologie/tipologie.module';
@@ -37,6 +38,7 @@ import { ModalComponent } from './modal/modal.component';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,6 +49,7 @@ import { ModalComponent } from './modal/modal.component';
     PageFormAccessoComponent,
     TornaLoginComponent,
     ModalComponent,
+    ModComponent
   ],
   imports: [
     BrowserModule,
@@ -68,12 +71,14 @@ import { ModalComponent } from './modal/modal.component';
     PdfViewerModule,
     NoopAnimationsModule,
     MatSelectModule,
+    MatDialogModule
   ],
   providers: [
     EventEmitter,
     DataService,
     ChildrenOutletContexts,
     EncrDecrService,
+    MatDialog
   ],
   bootstrap: [AppComponent],
   schemas: [
