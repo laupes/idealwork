@@ -1,0 +1,12 @@
+
+ <div #myModal class="container">
+    <button type="button" class="close" aria-label="Close" (click)="close()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    <div class="content">
+        <div class="pdf" *ngFor="let pdf of pdfArray">
+            <a href="{{ pdf }}" target="_blank" >{{ pdf }}</a>
+            <br>
+        </div>
+    </div>
+</div>

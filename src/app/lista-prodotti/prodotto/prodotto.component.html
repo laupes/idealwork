@@ -5,7 +5,7 @@
             <img class="immagine-prodotto" src="{{ materiale.img }}">
             <h2 class="titolo-prodotto">{{ materiale.descrizione }}</h2>
             <p class="descrizione-prodotto">{{ materiale.testo }}</p>
-            <a class="pulsante-vedi-prodotto" routerLink="/prodotto" (click) = "selezioneMateriale(materiale.codice_materiale,materiale.descrizione,materiale.img,materiale.testo)"><img src="/assets/img/lista-prodotti/search.png"></a>
+            <a class="pulsante-vedi-prodotto" routerLink="/prodotto" (click) = "selezioneMateriale(materiale.codice_materiale,materiale.descrizione,materiale.img,materiale.testo,materiale.pdf_link)"><img src="/assets/img/lista-prodotti/search.png"></a>
         </div>
     </div>
 </div>

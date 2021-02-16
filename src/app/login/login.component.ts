@@ -122,7 +122,7 @@ export class LoginComponent implements OnInit {
             sessionStorage.removeItem('token');
             alert('Sessione scaudta. Prego rifare il login');
             this.router.navigate(['']);
-       }, 600000);
+       }, 3600000);
           this.router.navigate(['soluzioni']);
           // this.dataService.getSoluzioni().subscribe((soluzioni: Soluzione[]) => this.soluzioni = soluzioni);
           // }, 2000);
@@ -151,7 +151,7 @@ export class LoginComponent implements OnInit {
             sessionStorage.removeItem('token');
             alert('Sessione scaudta. Prego rifare il login');
             this.router.navigate(['']);
-       }, 600000);
+       }, 3600000);
           this.router.navigate(['soluzioni']);
           // this.dataService.getSoluzioni().subscribe((soluzioni: Soluzione[]) => this.soluzioni = soluzioni);
           // }, 2000);

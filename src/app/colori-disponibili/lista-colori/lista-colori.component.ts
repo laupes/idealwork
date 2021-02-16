@@ -17,13 +17,23 @@ export class ListaColoriComponent implements OnInit {
   ngOnInit(): void {
     this.dataService.getSoluzioneColore().subscribe((response: Colore[]) => this.colori = response);
   }
-  selezioneMateriale(codiceMateriale: string, descrizione: string, img: string, testo: string): void {
+  selezioneMateriale(codiceMateriale: string, descrizione: string, img: string, testo: string, pdf: string[]): void {
     sessionStorage.setItem('codiceMateriale', codiceMateriale);
     sessionStorage.setItem('descrizioneMateriale', descrizione);
     sessionStorage.setItem('imgMateriale', img);
     sessionStorage.setItem('testoMateriale', testo);
+    this.storePdf(pdf);
     // console.log(descrizione);
     this.routes.navigate(['prodotto']);
+  }
+
+  storePdf(pdf: string[]): void {
+    sessionStorage.removeItem('pdfArray');
+    if (pdf) {
+      pdf.forEach((f) => {
+        sessionStorage.setItem('pdfArray', sessionStorage.getItem('pdfArray') + ' ' + f);
+      });
+    }
   }
 
 }

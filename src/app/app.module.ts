@@ -31,6 +31,8 @@ import { TornaLoginComponent } from './404/torna-login/torna-login.component';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSelectModule} from '@angular/material/select';
+import { ModalComponent } from './modal/modal.component';
+
 
 
 
@@ -44,6 +46,7 @@ import {MatSelectModule} from '@angular/material/select';
     PageNotFoundComponent,
     PageFormAccessoComponent,
     TornaLoginComponent,
+    ModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,7 +67,7 @@ import {MatSelectModule} from '@angular/material/select';
     CoreModule,
     PdfViewerModule,
     NoopAnimationsModule,
-    MatSelectModule
+    MatSelectModule,
   ],
   providers: [
     EventEmitter,
