@@ -16,19 +16,21 @@ export class ProdottoComponent implements OnInit {
     this.dataService.getSoluzioneSottoCartelle().subscribe((response: Materiale[]) => this.materiali = response);
   }
 
-  selezioneMateriale(codiceMateriale: string, descrizione: string, img: string, testo: string, pdf: string[]): void {
+  selezioneMateriale(codiceMateriale: string, descrizione: string, img: string, testo: string, pdf: object[]): void {
     sessionStorage.setItem('codiceMateriale', codiceMateriale);
     sessionStorage.setItem('descrizioneMateriale', descrizione);
     sessionStorage.setItem('imgMateriale', img);
     sessionStorage.setItem('testoMateriale', testo);
-    this.storePdf(pdf);
+    this.storePdf(pdf.sort(function(a, b) {
+      return a['sequenza'] - b['sequenza'];
+    }));
   }
 
-  storePdf(pdf: string[]): void {
+  storePdf(pdf: object[]): void {
     sessionStorage.removeItem('pdfArray');
     if (pdf) {
       pdf.forEach((f) => {
-        sessionStorage.setItem('pdfArray', sessionStorage.getItem('pdfArray') + ' ' + f);
+        sessionStorage.setItem('pdfArray', sessionStorage.getItem('pdfArray') + ' ' + f['pdf_link']);
       });
     }
   }
