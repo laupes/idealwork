@@ -1,6 +1,6 @@
 <p mat-dialog-title>PDF</p>
 <div mat-dialog-content>
     <div class="pdf" *ngFor="let pdf of pdfArray" >  
-        <a href="{{ pdf }}" target="_blank">{{ pdf }}</a> 
+        <a *ngIf="pdfArray.length > 0" href="{{ pdf }}" target="_blank">{{ pdf }}</a> 
     </div>
 </div>
