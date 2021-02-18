@@ -7,14 +7,14 @@ import { SoluzioniRoutingModule } from './soluzioni-routing.module';
 
 @NgModule({
   declarations: [
-    SoluzioneComponent
+    SoluzioneComponent,
   ],
   imports: [
     CommonModule,
-    SoluzioniRoutingModule
+    SoluzioniRoutingModule,
   ],
   exports: [
     SoluzioneComponent
-  ]
+  ],
 })
 export class SoluzioniModule { }

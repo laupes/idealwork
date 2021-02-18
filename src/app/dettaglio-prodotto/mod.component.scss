@@ -1,0 +1,28 @@
+.documento {
+    display: flex;
+    align-items: center;
+    margin-left: 35px;
+    margin-top: 30px;
+
+    .anteprima-documento {
+        width: 100px;
+    }
+
+    .descrizione-documento {
+        font-family: 'Roboto Condensed', sans-serif;
+        margin-left: 30px;
+
+        .titolo-documento {
+            font-size: 20px;
+        }
+
+        .pulsante-scarica-documento {
+            display: flex;
+            align-items: center;
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+        }
+    }
+}

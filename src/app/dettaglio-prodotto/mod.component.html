@@ -1,6 +1,16 @@
 <p mat-dialog-title>PDF</p>
 <div mat-dialog-content>
-    <div class="pdf" *ngFor="let pdf of pdfArray" >  
-        <a *ngIf="pdfArray.length > 0" href="{{ pdf }}" target="_blank">{{ pdf }}</a> 
+    <div class="documento" *ngFor="let pdf of pdfArray" >  
+        <img class="anteprima-documento" src="./assets/img/documentazione/anteprima-documento.png">
+        <div class="descrizione-documento">
+            <h1 class="titolo-documento">{{ titolo }}</h1>
+            <!-- <button type="submit" class="pulsante-scarica-documento" (click)="goToLink(pdf)">
+                <img src="./assets/img/documentazione/icona-scarica.png" style="height: 20px;">
+            </button> -->
+            <button mat-button mat-dialog-close type="submit" class="pulsante-scarica-documento" (click)="goToLink(pdf)">
+                <img src="./assets/img/documentazione/icona-scarica.png" style="height: 20px;">
+            </button>
+            <!-- <a href="{{ pdf }}" target="_blank">{{ pdf }}</a> -->
+        </div> 
     </div>
 </div>

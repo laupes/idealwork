@@ -53,12 +53,15 @@ export class DettaglioProdottoComponent implements OnInit {
 @Component({
   selector: 'app-modal',
   templateUrl: './mod.component.html',
+  styleUrls: ['./mod.component.scss']
 })
 export class ModComponent implements OnInit {
 
   pdfArray: string[];
+  titolo: string;
 
   ngOnInit(): void {
+    this.titolo = sessionStorage.getItem('codiceMateriale');
     this.pdfArray = sessionStorage.getItem('pdfArray') ? sessionStorage.getItem('pdfArray').split(' ') : [];
     this.pdfArray.forEach((f) => {
       if (f == null || f === 'null') {
@@ -66,6 +69,10 @@ export class ModComponent implements OnInit {
       }
     });
     // this.pdfArray.forEach((f) => console.log(f));
+  }
+
+  goToLink(url: string): void {
+    window.open(url, 'blank');
   }
 
 }

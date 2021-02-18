@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
 
   // tslint:disable-next-line: max-line-length
   constructor(private dataService: AuthService, private http: HttpClient, private route: ActivatedRoute,
-              private router: Router, private emitter: EventEmitterService, private data: DataService, private encrDecr: EncrDecrService) {
+    private router: Router, private emitter: EventEmitterService, private data: DataService, private encrDecr: EncrDecrService) {
 
   }
 
@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
       } else {
         // console.log('no_data');
       }
-  });
+    });
 
     this.disabled = true;
     this.data.currentCheck.subscribe(check => this.check = check);
@@ -106,6 +106,10 @@ export class LoginComponent implements OnInit {
     }
   } */
 
+  newLinguaSelezionata(l: string): void {
+    this.data.changeLingua(l);
+  }
+
   signIn(credentials: any): any {
     this.clicked = true;
     // // console.log(credentials);
@@ -113,8 +117,11 @@ export class LoginComponent implements OnInit {
       .subscribe((result: string) => {
         if (!result.includes('incorrect')) {
           // setTimeout(() => {
+          const res = JSON.parse(result);
+          // console.log(res.utente.lingua);
+          // console.log(res.token);
           const key = '123456$#@$^@1ERF';
-          const token = result.split(',')[12].split(':')[1].replace('\"', '').replace('\"', '').replace('}', '');
+          const token = res.token;
           // // console.log('questo è token ' + token);
           // // console.log('questo è tokenE ' + this.encrDecr.set(key, token));
           sessionStorage.setItem('token', this.encrDecr.set(key, token));
@@ -122,7 +129,8 @@ export class LoginComponent implements OnInit {
             sessionStorage.removeItem('token');
             alert('Sessione scaudta. Prego rifare il login');
             this.router.navigate(['']);
-       }, 3600000);
+          }, 3600000);
+          this.newLinguaSelezionata(res.utente.lingua);
           this.router.navigate(['soluzioni']);
           // this.dataService.getSoluzioni().subscribe((soluzioni: Soluzione[]) => this.soluzioni = soluzioni);
           // }, 2000);
@@ -133,6 +141,8 @@ export class LoginComponent implements OnInit {
           $('.alert-danger').show();
         }
       });
+    this.changeCheck();
+    // this.refreshGridInAnotherComponent();
   }
 
   signInApp(username: string, password: string): any {
@@ -141,9 +151,10 @@ export class LoginComponent implements OnInit {
     this.dataService.logInApp(username, password)
       .subscribe((result: string) => {
         if (!result.includes('incorrect')) {
+          const res = JSON.parse(result);
           // setTimeout(() => {
           const key = '123456$#@$^@1ERF';
-          const token = result.split(',')[12].split(':')[1].replace('\"', '').replace('\"', '').replace('}', '');
+          const token = res.token;
           // // console.log('questo è token ' + token);
           // // console.log('questo è tokenE ' + this.encrDecr.set(key, token));
           sessionStorage.setItem('token', this.encrDecr.set(key, token));
@@ -151,7 +162,8 @@ export class LoginComponent implements OnInit {
             sessionStorage.removeItem('token');
             alert('Sessione scaudta. Prego rifare il login');
             this.router.navigate(['']);
-       }, 3600000);
+          }, 3600000);
+          this.newLinguaSelezionata(res.utente.lingua);
           this.router.navigate(['soluzioni']);
           // this.dataService.getSoluzioni().subscribe((soluzioni: Soluzione[]) => this.soluzioni = soluzioni);
           // }, 2000);
@@ -162,6 +174,8 @@ export class LoginComponent implements OnInit {
           $('.alert-danger').show();
         }
       });
+    this.changeCheck();
+    // this.refreshGridInAnotherComponent();
   }
 
   richiestaAccesso(credentials: any): any {

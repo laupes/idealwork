@@ -242,10 +242,10 @@ export class AuthService {
     localStorage.clear();
     const http = new XMLHttpRequest();
     const promise = new Promise(function (resolve, reject) {
-      http.onload = function (): void {
+      http.onload = function(): void {
         resolve(this.responseText);
       };
-      http.onerror = function (): void {
+      http.onerror = function(): void {
         reject(this.status);
       };
       // const params = 'username=' + credentials['username'] + '&passowrd=' + credentials['password'];
@@ -271,13 +271,6 @@ export class AuthService {
             AuthService.lingue.forEach((x) => {
               // localStorage.removeItem('linguaArray');
               // console.log(x['lingua']);
-              if (x['lingua'] !== res.utente.lingua) {
-                if (!localStorage.getItem('linguaArray')) {
-                  localStorage.setItem('linguaArray', x['lingua']);
-                } else {
-                  localStorage.setItem('linguaArray', localStorage.getItem('linguaArray') + ' ' + x['lingua']);
-                }
-              }
             });
             // console.log(AuthService.lingue);
             // console.log(res.lingue);
@@ -294,6 +287,8 @@ export class AuthService {
   }
 
   logInApp(username: string, password: string): Observable<any> {
+    localStorage.removeItem('username');
+    localStorage.removeItem('password');
     const http = new XMLHttpRequest();
     const promise = new Promise(function (resolve, reject) {
       http.onload = function (): void {

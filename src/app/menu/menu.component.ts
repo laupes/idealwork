@@ -1,4 +1,4 @@
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { AuthService } from 'src/app/core/auth.service';
 import { Component, Input, OnInit } from '@angular/core';
 // import { $ } from 'protractor';
@@ -13,7 +13,7 @@ import { DataService } from '../data.service';
 export class MenuComponent implements OnInit {
 
   check: boolean;
-
+  mySubscription: any;
   lingue: object[];
   linguaSelezionata: string;
 
@@ -26,7 +26,6 @@ export class MenuComponent implements OnInit {
     this.data.currentCheck.subscribe(check => this.check = check);
 
     this.dataService.getLingue().subscribe((response: object[]) => this.lingue = response);
-
     // this.lingue = this.dataService.staticLingue;
     // console.log(this.dataService.staticLingue);
     // this.lingue = localStorage.getItem('linguaArray').split(' ');
@@ -35,10 +34,10 @@ export class MenuComponent implements OnInit {
         this.lingue.push(x['lingua']);
       });
     } */
-    this.linguaSelezionata = sessionStorage.getItem('lingua');
-
+    // this.linguaSelezionata = sessionStorage.getItem('lingua');
+    this.data.currentLingua.subscribe((response: string) => this.linguaSelezionata = response);
     // toggles hamburger menu in and out when clicking on the hamburger
-    function toggleHamburger(){
+    function toggleHamburger() {
       navbar.classList.toggle('showNav');
       ham.classList.toggle('showClose');
     }
@@ -50,10 +49,16 @@ export class MenuComponent implements OnInit {
     // METHOD 1
     var menuLinks = document.querySelectorAll('.menuLink');
     menuLinks.forEach(
-      function(menuLink) {
+      function (menuLink) {
         menuLink.addEventListener('click', toggleHamburger);
       }
     );
+
+    /* this.data.notifyObservable$.subscribe(res => {
+      if (res.refresh) {
+        this.linguaSelezionata = sessionStorage.getItem('lingua');
+      }
+    }); */
   }
 
   setLingua(lingua: string): void {
