@@ -1,10 +1,11 @@
+import { PageNotFoundComponent } from './../page-not-found/page-not-found.component';
 import { Utente } from './../interfaces/utente.interface';
 import { TitoloComponent } from './../video-tutorial/titolo/titolo.component';
 import { EncrDecrService } from './../encr-decr-service.service';
 import { Injectable, Output } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, throwError, from } from 'rxjs';
-import { tap, } from 'rxjs/operators';
+import { catchError, tap, } from 'rxjs/operators';
 import { map } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import * as CryptoJS from 'crypto-js';
@@ -93,6 +94,16 @@ export class AuthService {
           );
     }
   */
+
+  // tslint:disable-next-line: typedef
+  private handleError(error: Response) {
+    if (error.statusText === 'Unknow error') {
+    return Observable.throw(new PageNotFoundComponent());
+    } else {
+      throwError(new PageNotFoundComponent());
+    }
+  }
+
   getSoluzioni(): Observable<any[]> {
     const key = '123456$#@$^@1ERF';
     const token = this.encrDecr.get(key, sessionStorage.getItem('token'));
@@ -161,7 +172,7 @@ export class AuthService {
       , { headers: header })
       .pipe(
         tap(resData => {
-          console.log(resData);
+          // console.log(resData);
         })
       );
   }
@@ -169,16 +180,16 @@ export class AuthService {
   scaricaPdf(link: string): Observable<any> {
     const header = new HttpHeaders()
       .set('Accept', 'application/pdf');
-    return this.http.get(link, { headers: header, observe: 'response', responseType: 'blob'}).pipe(tap(resData => {
-      console.log(resData);
+    return this.http.get(link, { headers: header, observe: 'response', responseType: 'blob' }).pipe(tap(resData => {
+      // console.log(resData);
     }));
   }
 
   getLingue(): Observable<any[]> {
     return this.http.get<any[]>(AuthService.url + 'lingue').pipe(
-      tap (resData => {
+      tap(resData => {
         // console.log(resData);
-      })
+      }), catchError(this.handleError)
     );
   }
 
@@ -242,10 +253,10 @@ export class AuthService {
     localStorage.clear();
     const http = new XMLHttpRequest();
     const promise = new Promise(function (resolve, reject) {
-      http.onload = function(): void {
+      http.onload = function (): void {
         resolve(this.responseText);
       };
-      http.onerror = function(): void {
+      http.onerror = function (): void {
         reject(this.status);
       };
       // const params = 'username=' + credentials['username'] + '&passowrd=' + credentials['password'];
@@ -264,7 +275,7 @@ export class AuthService {
             // console.log(res.download.titolo);
             localStorage.setItem('titoloApp', res.download.titolo);
             localStorage.setItem('descrizioneApp', res.download.descrizione);
-            AuthService.lingua = res.utente.lingua ;
+            AuthService.lingua = res.utente.lingua;
             AuthService.token = token;
             sessionStorage.setItem('lingua', res.utente.lingua);
             AuthService.lingue = res.lingue;
@@ -312,7 +323,7 @@ export class AuthService {
             const token = res.token;
             localStorage.setItem('titoloApp', res.download.titolo);
             localStorage.setItem('descrizioneApp', res.download.descrizione);
-            AuthService.lingua = res.utente.lingua ;
+            AuthService.lingua = res.utente.lingua;
             AuthService.token = token;
             sessionStorage.setItem('lingua', res.utente.lingua);
             /* AuthService.lingue.forEach((x) => {

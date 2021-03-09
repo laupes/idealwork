@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/core/auth.service';
 
@@ -8,15 +9,22 @@ import { AuthService } from 'src/app/core/auth.service';
 })
 export class VideoComponent implements OnInit {
 
-  constructor(private dataService: AuthService) { }
+  constructor(private dataService: AuthService, private routes: Router) { }
 
   videos: object[];
 
   ngOnInit(): void {
     this.dataService.getSoluzioneDocumenti()
-    .subscribe((response: object[]) => this.videos = response['tutorial'].sort(function(a, b) {
-      return a.sequenza - b.sequenza;
-    }));
+    .subscribe((response: any) => {
+      if (response['message'] !== 'not_autorized') {
+        this.videos = response['tutorial'].sort(function(a, b) {
+          return a.sequenza - b.sequenza;
+        });
+      } else {
+        alert('Session Expired');
+        this.routes.navigate(['login']);
+      }
+    } );
     const tag = document.createElement('script');
     tag.src = 'https://www.youtube.com/iframe_api';
     document.body.appendChild(tag);

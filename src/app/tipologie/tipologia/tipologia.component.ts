@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/auth.service';
 import { Prodotto } from './../../interfaces/prodotto.interface';
 import { Component, OnInit } from '@angular/core';
@@ -9,13 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TipologiaComponent implements OnInit {
 
-  constructor(private dataService: AuthService) { }
+  constructor(private dataService: AuthService, private routes: Router) { }
 
   prodotti: Prodotto[];
   titolo: string;
 
   ngOnInit(): void {
-    this.dataService.getSoluzioneCartelle().subscribe((response: Prodotto[]) => this.prodotti = response);
+    this.dataService.getSoluzioneCartelle().subscribe((response: any) => {
+      if (response['message'] !== 'not_autorized') {
+        this.prodotti = response;
+      } else {
+        alert('Session Expired');
+        this.routes.navigate(['login']);
+      }
+    } );
     this.titolo = sessionStorage.getItem('soluzione');
   }
 

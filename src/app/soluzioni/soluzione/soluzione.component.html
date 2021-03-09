@@ -6,10 +6,10 @@
 
     <a routerLink="/dettaglio-soluzione" autoscroll="false">
     <div class="list-group-item" autoscroll="false">
-        <div class="soluzione" *ngFor = "let soluzione of soluzioni" (click)="selezioneSoluzione(soluzione.soluzione)">
+        <div class="soluzione" *ngFor = "let soluzione of soluzioni" (click)="selezioneSoluzione(soluzione.soluzione, soluzione.testo)">
             <div class="immagine-soluzione" [ngStyle]="{background: (soluzione.img_sx) ? 'url('+soluzione.img_sx+')' : 'url(./assets/img/immagine-non-disponibile.jpg)', 'background-size' : 'cover', 'background-position' : 'center'}"></div>
             <div class="titolo-soluzione" [ngStyle]="{background: (soluzione.img_dx) ? 'url('+soluzione.img_dx+')' : 'url(./assets/img/immagine-non-disponibile-destra.jpg)', 'background-size' : 'cover', 'background-position' : 'center'}">
-                <h1>{{ soluzione.soluzione }}</h1>
+                <h1>{{ soluzione.testo }}</h1>
             </div>
         </div>
     </div>

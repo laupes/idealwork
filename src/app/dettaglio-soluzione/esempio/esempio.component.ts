@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/auth.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EsempioComponent implements OnInit {
 
-  constructor(private dataService: AuthService) {
+  constructor(private dataService: AuthService, private routes: Router) {
 
   }
 
@@ -18,9 +19,18 @@ export class EsempioComponent implements OnInit {
   immagini: object[];
 
   ngOnInit(): void {
+    // this.dataService.getSoluzioniDettaglio(sessionStorage.getItem('soluzione'))
+    // .subscribe((response: object[]) => this.dettaglioSoluzione = response);
     this.dataService.getSoluzioniDettaglio(sessionStorage.getItem('soluzione'))
-    .subscribe((response: object[]) => this.dettaglioSoluzione = response);
-    this.soluzione = sessionStorage.getItem('soluzione');
+    .subscribe((response: any) => {
+      if (response['message'] !== 'not_autorized') {
+        this.dettaglioSoluzione = response;
+      } else {
+        alert('Session Expired');
+        this.routes.navigate(['login']);
+      }
+    });
+    this.soluzione = sessionStorage.getItem('soluzioneT');
     this.dataService.getSoluzioneDocumenti()
     .subscribe((response: object[]) => this.testo = response['effetto']['testo']['descrizione']);
     this.dataService.getSoluzioneDocumenti()

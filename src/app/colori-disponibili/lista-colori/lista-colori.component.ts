@@ -15,7 +15,15 @@ export class ListaColoriComponent implements OnInit {
   colori: Colore[];
 
   ngOnInit(): void {
-    this.dataService.getSoluzioneColore().subscribe((response: Colore[]) => this.colori = response);
+      // this.dataService.getSoluzioneColore().subscribe((response: any) => this.colori = response);
+      this.dataService.getSoluzioneColore().subscribe((response: any) => {
+        if (response['message'] !== 'not_autorized') {
+          this.colori = response;
+        } else {
+          alert('Session Expired');
+          this.routes.navigate(['login']);
+        }
+      });
   }
   selezioneMateriale(codiceMateriale: string, descrizione: string, img: string, testo: string, pdf: string[]): void {
     sessionStorage.setItem('codiceMateriale', codiceMateriale);

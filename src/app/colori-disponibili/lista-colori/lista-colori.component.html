@@ -1,6 +1,6 @@
 <div id="lista-colori" >
     <div class="colore" *ngFor = "let colore of colori"  (click)="selezioneMateriale(colore.codice_materiale, colore.materiale['descrizione'], colore.img, colore.materiale['testo'])">
-        <div class="cromia" [ngStyle]="{background: (colore.img) ? 'url('+colore.img+')' : 'url(./assets/img/immagine-non-disponibile-destra.jpg)'}"></div>
+        <div class="cromia" [ngStyle]="{background: (colore.img) ? 'url('+colore.img+')' : 'url(./assets/img/immagine-non-disponibile-destra.jpg)', 'background-size': 'cover'}"></div>
         <div class="descrizione-cromia">
             <p class="titolo-cromia"> {{ colore.testo }} </p>
             <p class="codice-cromia"> {{ colore.codice_materiale }} </p>

@@ -150,28 +150,32 @@ export class LoginComponent implements OnInit {
     // // console.log(credentials);
     this.dataService.logInApp(username, password)
       .subscribe((result: string) => {
-        if (!result.includes('incorrect')) {
-          const res = JSON.parse(result);
-          // setTimeout(() => {
-          const key = '123456$#@$^@1ERF';
-          const token = res.token;
-          // // console.log('questo è token ' + token);
-          // // console.log('questo è tokenE ' + this.encrDecr.set(key, token));
-          sessionStorage.setItem('token', this.encrDecr.set(key, token));
-          setTimeout(() => {
-            sessionStorage.removeItem('token');
-            alert('Sessione scaudta. Prego rifare il login');
-            this.router.navigate(['']);
-          }, 3600000);
-          this.newLinguaSelezionata(res.utente.lingua);
-          this.router.navigate(['soluzioni']);
-          // this.dataService.getSoluzioni().subscribe((soluzioni: Soluzione[]) => this.soluzioni = soluzioni);
-          // }, 2000);
-        }
-        else {
-          // return alert('username e/o password sbagliati');
-          this.clicked = false;
-          $('.alert-danger').show();
+        if (result) {
+          if (!result.includes('incorrect')) {
+            const res = JSON.parse(result);
+            // setTimeout(() => {
+            const key = '123456$#@$^@1ERF';
+            const token = res.token;
+            // // console.log('questo è token ' + token);
+            // // console.log('questo è tokenE ' + this.encrDecr.set(key, token));
+            sessionStorage.setItem('token', this.encrDecr.set(key, token));
+            setTimeout(() => {
+              sessionStorage.removeItem('token');
+              alert('Sessione scaudta. Prego rifare il login');
+              this.router.navigate(['']);
+            }, 3600000);
+            this.newLinguaSelezionata(res.utente.lingua);
+            this.router.navigate(['soluzioni']);
+            // this.dataService.getSoluzioni().subscribe((soluzioni: Soluzione[]) => this.soluzioni = soluzioni);
+            // }, 2000);
+          }
+          else {
+            // return alert('username e/o password sbagliati');
+            this.clicked = false;
+            $('.alert-danger').show();
+          }
+        } else {
+          return alert('A network error occurred');
         }
       });
     this.changeCheck();
@@ -181,7 +185,7 @@ export class LoginComponent implements OnInit {
   richiestaAccesso(credentials: any): any {
     this.dataService.richiestaAccesso(credentials)
       .subscribe((result: any) => {
-        console.log(result);
+        // console.log(result);
         /* if (result.includes('esistente')) {
           // this.router.navigate(['reimposta-password']);
           return alert('utente esistente');

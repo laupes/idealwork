@@ -21,9 +21,17 @@ export class SoluzioneComponent implements OnInit {
   soluzioni: Soluzione[];
 
   ngOnInit(): void {
-    this.dataService.getSoluzioni().subscribe((response: Soluzione[]) => this.soluzioni = response['soluzioni'].sort(function (a, b) {
+    /* this.dataService.getSoluzioni().subscribe((response: Soluzione[]) => this.soluzioni = response['soluzioni'].sort(function (a, b) {
       return a.sequenza - b.sequenza;
-    }));
+    })); */
+    this.dataService.getSoluzioni().subscribe((response: any) => {
+      if (response['message'] !== 'not_autorized') {
+        this.soluzioni = response['soluzioni'].sort(function(a,b) { return a.sequenza - b.sequenza; });
+      } else {
+        alert('Session Expired');
+        this.router.navigate(['login']);
+      }
+    });
     this.dataService.getSoluzioni().subscribe((response: string[]) => SoluzioneComponent.titolo = response['intro']['titolo']);
     this.dataService.getSoluzioni().subscribe((response: string[]) => SoluzioneComponent.descrizione = response['intro']['descrizione']);
     // // console.log(localStorage.getItem('lingua'));
@@ -41,8 +49,9 @@ export class SoluzioneComponent implements OnInit {
     return SoluzioneComponent.descrizione;
   }
 
-  selezioneSoluzione(soluzione: string): void {
+  selezioneSoluzione(soluzione: string, soluzioneT: string): void {
     sessionStorage.setItem('soluzione', soluzione);
+    sessionStorage.setItem('soluzioneT', soluzioneT);
   }
 
 }

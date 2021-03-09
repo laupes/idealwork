@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/core/auth.service';
 import { Materiale } from 'src/app/interfaces/materiale.interface';
@@ -9,11 +10,18 @@ import { Materiale } from 'src/app/interfaces/materiale.interface';
 })
 export class ProdottoComponent implements OnInit {
 
-  constructor(private dataService: AuthService) { }
+  constructor(private dataService: AuthService, private routes: Router) { }
   materiali: Materiale[];
 
   ngOnInit(): void {
-    this.dataService.getSoluzioneSottoCartelle().subscribe((response: Materiale[]) => this.materiali = response);
+    this.dataService.getSoluzioneSottoCartelle().subscribe((response: Materiale[]) => {
+      if (response['message'] !== 'not_autorized') {
+        this.materiali = response;
+      } else {
+        alert('Session Expired');
+        this.routes.navigate(['login']);
+      }
+    });
   }
 
   selezioneMateriale(codiceMateriale: string, descrizione: string, img: string, testo: string, pdf: object[]): void {

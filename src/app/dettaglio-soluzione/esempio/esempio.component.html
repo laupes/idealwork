@@ -6,7 +6,8 @@
 
 <div class="slider">
   <div class="slides">
-    <div style="background-image: url({{immagine.link}})" *ngFor="let immagine of immagini"></div>
+    <!-- <div style="background-image: url({{immagine.link}}); background-size: cover;" *ngFor="let immagine of immagini"></div> -->
+    <img src="{{ immagine.link }}" width="100%" height="300px" style="margin-right: 10px;" *ngFor="let immagine of immagini">
   </div>
 </div>
 

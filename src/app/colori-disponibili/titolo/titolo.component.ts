@@ -9,11 +9,11 @@ import { Component, OnInit } from '@angular/core';
 export class TitoloComponent implements OnInit {
 
   constructor(private dataService: AuthService) { }
-  colori: any[];
+  // colori: any[];
   titolo: string;
 
   ngOnInit(): void {
-    this.dataService.getSoluzioneColore().subscribe((response: any[]) => this.colori = response);
+    // this.dataService.getSoluzioneColore().subscribe((response: any[]) => this.colori = response);
     this.titolo = sessionStorage.getItem('soluzione');
   }
 

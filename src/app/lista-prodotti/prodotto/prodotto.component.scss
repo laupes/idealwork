@@ -20,6 +20,7 @@
             text-transform: uppercase;
             letter-spacing: 3px;
             font-weight: 400;
+            font-size: 1.5em;
         }
 
         .contenuto-prodotto {
@@ -59,6 +60,9 @@
                 text-decoration: none;
                 font-weight: 400;
                 letter-spacing: 3px;
+                img {
+                    background-position: center;
+                }
             }
         }
     }

@@ -25,7 +25,13 @@ export class MenuComponent implements OnInit {
     var ham = document.querySelector('.ham');
     this.data.currentCheck.subscribe(check => this.check = check);
 
-    this.dataService.getLingue().subscribe((response: object[]) => this.lingue = response);
+    this.dataService.getLingue().subscribe((response: object[]) => {
+      if (response.toString().includes('Unknown Error')) {
+        return alert('An network error occured');
+      } else {
+        this.lingue = response;
+      }
+    });
     // this.lingue = this.dataService.staticLingue;
     // console.log(this.dataService.staticLingue);
     // this.lingue = localStorage.getItem('linguaArray').split(' ');

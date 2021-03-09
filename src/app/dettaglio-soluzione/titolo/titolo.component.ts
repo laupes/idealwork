@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/auth.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TitoloComponent implements OnInit {
 
-  constructor(private dataService: AuthService) { }
+  constructor(private dataService: AuthService, private routes: Router) { }
 
   dettaglioSoluzione: object[];
   titolo: string;
@@ -16,11 +17,32 @@ export class TitoloComponent implements OnInit {
 
   ngOnInit(): void {
     this.dataService.getSoluzioniDettaglio(sessionStorage.getItem('soluzione'))
-    .subscribe((response: object[]) => this.dettaglioSoluzione = response);
+    .subscribe((response: object[]) => {
+      if (response['message'] !== 'not_autorized') {
+        this.dettaglioSoluzione = response;
+      } else {
+        alert('Session Expired');
+        this.routes.navigate(['login']);
+      }
+    } );
     this.dataService.getSoluzioniDettaglio(sessionStorage.getItem('soluzione'))
-    .subscribe((response: object[]) => this.titolo = response['soluzione']);
+    .subscribe((response: object[]) => {
+      if (response['message'] !== 'not_autorized') {
+        this.titolo = response['testo'];
+      } else {
+        alert('Session Expired');
+        this.routes.navigate(['login']);
+      }
+    });
     this.dataService.getSoluzioniDettaglio(sessionStorage.getItem('soluzione'))
-    .subscribe((response: object[]) => this.descrizione = response['descrizione']);
+    .subscribe((response: object[]) => {
+      if (response['message'] !== 'not_autorized') {
+        this.descrizione = response['descrizione'];
+      } else {
+        alert('Session Expired');
+        this.routes.navigate(['login']);
+      }
+    } );
   }
 
 }

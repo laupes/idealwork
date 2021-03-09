@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/core/auth.service';
 
@@ -8,7 +9,7 @@ import { AuthService } from 'src/app/core/auth.service';
 })
 export class OpzioneComponent implements OnInit {
 
-  constructor(private dataService: AuthService) {
+  constructor(private dataService: AuthService, private routes: Router) {
 
   }
 
@@ -16,7 +17,14 @@ export class OpzioneComponent implements OnInit {
 
   ngOnInit(): void {
     this.dataService.getSoluzioniDettaglio(sessionStorage.getItem('soluzione'))
-    .subscribe((response: object[]) => this.dettaglioSoluzione = response);
+    .subscribe((response: object[]) => {
+      if (response['message'] !== 'not_autorized') {
+        this.dettaglioSoluzione = response;
+      } else {
+        alert('Session Expired');
+        this.routes.navigate(['login']);
+      }
+    } );
   }
 
   posaCertificato(nome: string): void {
