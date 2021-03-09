@@ -18,7 +18,7 @@ export class OpzioneComponent implements OnInit {
   ngOnInit(): void {
     this.dataService.getSoluzioniDettaglio(sessionStorage.getItem('soluzione'))
     .subscribe((response: object[]) => {
-      if (response['message'] !== 'not_autorized') {
+      if (response['message'] === null) {
         this.dettaglioSoluzione = response;
       } else {
         alert('Session Expired');

@@ -17,7 +17,7 @@ export class TipologiaComponent implements OnInit {
 
   ngOnInit(): void {
     this.dataService.getSoluzioneCartelle().subscribe((response: any) => {
-      if (response['message'] !== 'not_autorized') {
+      if (response['message'] === null) {
         this.prodotti = response;
       } else {
         alert('Session Expired');

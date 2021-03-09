@@ -17,7 +17,7 @@ export class DocumentoComponent implements OnInit {
     if (sessionStorage.getItem('PosaOCertificato') === 'certificato') {
       this.dataService.getSoluzioneDocumenti()
       .subscribe((response: object[]) => {
-        if (response['message'] !== 'not_autorized') {
+        if (response['message'] === null) {
           this.certificati = response['certificati'].sort(function(a, b) {
             return a.sequenza - b.sequenza;
           });
@@ -29,7 +29,7 @@ export class DocumentoComponent implements OnInit {
     } else {
       this.dataService.getSoluzioneDocumenti()
       .subscribe((response: object[]) => {
-        if (response['message'] !== 'not_autorized') {
+        if (response['message'] === null) {
           this.certificati = response['posa'].sort(function(a, b) {
             return a.sequenza - b.sequenza;
           });

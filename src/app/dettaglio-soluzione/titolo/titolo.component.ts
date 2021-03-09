@@ -18,7 +18,7 @@ export class TitoloComponent implements OnInit {
   ngOnInit(): void {
     this.dataService.getSoluzioniDettaglio(sessionStorage.getItem('soluzione'))
     .subscribe((response: object[]) => {
-      if (response['message'] !== 'not_autorized') {
+      if (response['message'] === null) {
         this.dettaglioSoluzione = response;
       } else {
         alert('Session Expired');
@@ -27,7 +27,7 @@ export class TitoloComponent implements OnInit {
     } );
     this.dataService.getSoluzioniDettaglio(sessionStorage.getItem('soluzione'))
     .subscribe((response: object[]) => {
-      if (response['message'] !== 'not_autorized') {
+      if (response['message'] === null) {
         this.titolo = response['testo'];
       } else {
         alert('Session Expired');
@@ -36,7 +36,7 @@ export class TitoloComponent implements OnInit {
     });
     this.dataService.getSoluzioniDettaglio(sessionStorage.getItem('soluzione'))
     .subscribe((response: object[]) => {
-      if (response['message'] !== 'not_autorized') {
+      if (response['message'] === null) {
         this.descrizione = response['descrizione'];
       } else {
         alert('Session Expired');
