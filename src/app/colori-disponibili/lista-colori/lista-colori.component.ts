@@ -17,6 +17,7 @@ export class ListaColoriComponent implements OnInit {
   ngOnInit(): void {
       // this.dataService.getSoluzioneColore().subscribe((response: any) => this.colori = response);
       this.dataService.getSoluzioneColore().subscribe((response: any) => {
+        console.log(response);
         if (response['message'] === undefined) {
           this.colori = response;
         } else {
