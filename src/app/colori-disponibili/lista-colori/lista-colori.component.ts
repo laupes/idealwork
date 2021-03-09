@@ -17,7 +17,7 @@ export class ListaColoriComponent implements OnInit {
   ngOnInit(): void {
       // this.dataService.getSoluzioneColore().subscribe((response: any) => this.colori = response);
       this.dataService.getSoluzioneColore().subscribe((response: any) => {
-        if (response['message'] === null) {
+        if (response['message'] === undefined) {
           this.colori = response;
         } else {
           alert('Session Expired');

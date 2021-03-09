@@ -15,7 +15,7 @@ export class ProdottoComponent implements OnInit {
 
   ngOnInit(): void {
     this.dataService.getSoluzioneSottoCartelle().subscribe((response: Materiale[]) => {
-      if (response['message'] === null) {
+      if (response['message'] === undefined) {
         this.materiali = response;
       } else {
         alert('Session Expired');

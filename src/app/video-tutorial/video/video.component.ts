@@ -16,7 +16,7 @@ export class VideoComponent implements OnInit {
   ngOnInit(): void {
     this.dataService.getSoluzioneDocumenti()
     .subscribe((response: any) => {
-      if (response['message'] === null) {
+      if (response['message'] === undefined) {
         this.videos = response['tutorial'].sort(function(a, b) {
           return a.sequenza - b.sequenza;
         });

@@ -25,7 +25,7 @@ export class SoluzioneComponent implements OnInit {
       return a.sequenza - b.sequenza;
     })); */
     this.dataService.getSoluzioni().subscribe((response: any) => {
-      if (response['message'] === null) {
+      if (response['message'] === undefined) {
         this.soluzioni = response['soluzioni'].sort(function(a,b) { return a.sequenza - b.sequenza; });
       } else {
         alert('Session Expired');

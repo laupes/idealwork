@@ -23,7 +23,7 @@ export class EsempioComponent implements OnInit {
     // .subscribe((response: object[]) => this.dettaglioSoluzione = response);
     this.dataService.getSoluzioniDettaglio(sessionStorage.getItem('soluzione'))
     .subscribe((response: any) => {
-      if (response['message'] === null) {
+      if (response['message'] === undefined) {
         this.dettaglioSoluzione = response;
       } else {
         alert('Session Expired');

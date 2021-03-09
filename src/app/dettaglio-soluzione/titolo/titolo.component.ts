@@ -18,29 +18,29 @@ export class TitoloComponent implements OnInit {
   ngOnInit(): void {
     this.dataService.getSoluzioniDettaglio(sessionStorage.getItem('soluzione'))
     .subscribe((response: object[]) => {
-      if (response['message'] === null) {
+      if (response['message'] === undefined) {
         this.dettaglioSoluzione = response;
       } else {
-        alert('Session Expired');
-        this.routes.navigate(['login']);
+        // alert('Session Expired');
+        // this.routes.navigate(['login']);
       }
     } );
     this.dataService.getSoluzioniDettaglio(sessionStorage.getItem('soluzione'))
     .subscribe((response: object[]) => {
-      if (response['message'] === null) {
+      if (response['message'] === undefined) {
         this.titolo = response['testo'];
       } else {
-        alert('Session Expired');
-        this.routes.navigate(['login']);
+        // alert('Session Expired');
+        // this.routes.navigate(['login']);
       }
     });
     this.dataService.getSoluzioniDettaglio(sessionStorage.getItem('soluzione'))
     .subscribe((response: object[]) => {
-      if (response['message'] === null) {
+      if (response['message'] === undefined) {
         this.descrizione = response['descrizione'];
       } else {
-        alert('Session Expired');
-        this.routes.navigate(['login']);
+        // alert('Session Expired');
+        // this.routes.navigate(['login']);
       }
     } );
   }

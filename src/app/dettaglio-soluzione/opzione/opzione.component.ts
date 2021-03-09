@@ -18,11 +18,11 @@ export class OpzioneComponent implements OnInit {
   ngOnInit(): void {
     this.dataService.getSoluzioniDettaglio(sessionStorage.getItem('soluzione'))
     .subscribe((response: object[]) => {
-      if (response['message'] === null) {
+      if (response['message'] === undefined) {
         this.dettaglioSoluzione = response;
       } else {
-        alert('Session Expired');
-        this.routes.navigate(['login']);
+        // alert('Session Expired');
+        // this.routes.navigate(['login']);
       }
     } );
   }

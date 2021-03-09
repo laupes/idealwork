@@ -17,7 +17,7 @@ export class CategoriaParticolariComponent implements OnInit {
   ngOnInit(): void {
     this.soluzione = sessionStorage.getItem('soluzione');
     this.dataService.getSoluzioneDocumenti().subscribe((response: object[]) => {
-      if (response['message'] === null) {
+      if (response['message'] === undefined) {
         this.cartelle = response['particolari'];
       } else {
         alert('Session Expired');
