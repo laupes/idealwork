@@ -34,14 +34,14 @@
             }
 
             .titolo-prodotto, .descrizione-prodotto {
-                text-align: center;
+                text-align: left;
                 margin-bottom: 15px;
             }
 
             .titolo-prodotto {
-                letter-spacing: 3px;
-                text-transform: uppercase;
-                font-size: 20px;
+                color: #666666;
+                letter-spacing: 1px;
+                font-size: 15px;
                 font-weight: 400;
             }
 

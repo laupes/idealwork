@@ -203,7 +203,7 @@ export class AuthService {
       + '/' + sessionStorage.getItem('cartella'), { headers: header })
       .pipe(
         tap(resData => {
-          // console.log(resData);
+         console.log(resData);
         })
       );
   }
