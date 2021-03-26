@@ -6,7 +6,7 @@
             <img class="immagine-prodotto" src="{{ materiale.img }}">
             <div class="pulsante-vedi-prodotto" routerLink="/prodotto" (click) = "selezioneMateriale(materiale.codice_materiale,materiale.descrizione,materiale.img,materiale.testo,materiale.pdf_link)"><img src="/assets/img/lista-prodotti/search.png"></div>
             <br><br>
-            <h2 class="descrizione-prodotto">{{ materiale.descrizione }}</h2>
+            <h2 class="descrizione-prodotto" [innerHtml] = "materiale.descrizione"></h2>
         </div>
     </div>
 </div>
