@@ -1,12 +1,14 @@
 <div class="dettaglio-prodotto">
-    <div class="sinistra">
+    <div class="sinistra">      
         <p class="codice">{{ codice_materiale }}</p>
         <img class="immagine-prodotto" src="{{ img }}">
     </div>
 
     <div class="destra">
+        <!-- <img class="chiudi" src="/assets/img/left-arrow.png"> -->
+        <!-- <img class="chiudi" src="/assets/img/close.png"> -->
         <h1 class="titolo-prodotto">{{ testo }}</h1>
-        <p class="descrizione-prodotto">{{ descrizione }}</p>
+        <p class="descrizione-prodotto" [innerHtml]="descrizione"></p>
         <br>
         <button class="btn" (click)="openDialog()">PDF</button>
     </div>
