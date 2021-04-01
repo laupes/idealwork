@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TitoloComponent implements OnInit {
 
+  soluzione: string;
+
   constructor() { }
 
   ngOnInit(): void {
+    this.soluzione = sessionStorage.getItem('soluzione');
   }
 
 }

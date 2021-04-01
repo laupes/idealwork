@@ -1,103 +1,130 @@
 .wrapper {
-    background: #f0edea;
-    padding-top: 10%;
-    padding-bottom: 10%;
-    min-height: 100vh;
-}
-
-.categoria-prodotto {
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 10vh;
-    margin: 2% 7% 0% 7%;
-    padding: 13% 5%;
-    background: white;
-    text-decoration: none;
-    cursor: pointer;
+    flex-wrap: wrap;
+    background: #f0edea;
+    min-height: 70vh;
+    padding: 60px 10%;
 
-    .titolo-e-freccia {
-        display: flex;
-        align-items: center;
-        text-align: right;
+    .prodotto {
+        background: white;
+        box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        font-family: 'Roboto', sans-serif;
+        font-weight: 200;
+        width: 100%;
+        padding: 30px 30px 80px 30px;
+        margin-bottom: 10px;
 
-        .titolo-categoria-prodotto {
-            font-family: 'Roboto', sans-serif;
-            font-weight: 200;
-            font-size: 35px;
-            color: #666666;
+        .codice {
+            text-align: left;
+            border-bottom: solid 1.3px black;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 400;
+            font-size: 1.5em;
         }
 
-        .freccia-categoria-prodotto {
-            height: 20px;
-            margin-left: 20px;
+        .contenuto-prodotto {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .immagine-prodotto {
+                height: 150px;
+                margin: 10% 0% 10% 0%;
+            }
+
+            .titolo-prodotto, .descrizione-prodotto {
+                text-align: left;
+                margin-bottom: 15px;
+            }
+
+            .titolo-prodotto {
+                color: #666666;
+                letter-spacing: 1px;
+                
+                font-weight: 400;
+            }
+
+            .descrizione-prodotto {
+                font-size: 15px;
+                color: #666666;
+            }
+
+            .pulsante-vedi-prodotto {
+                margin-top: 20px;
+                text-transform: uppercase;
+                cursor: pointer;
+                font-size: 20px;
+                border: solid 2px black;
+                color: black;
+                padding: 10px;
+                text-decoration: none;
+                font-weight: 400;
+                letter-spacing: 3px;
+                img {
+                    background-position: center;
+                }
+            }
         }
-
-    }
-
-    img {
-        height: 100px;
     }
 }
 
 
-//MEDIA QUERIES
 
-    //DIMENSIONI WRAPPER
+// MEDIA QUERIES 
 
-@media screen and (min-width: 915px) {
+    // PULSANTE ACCEDI PER PREZZO
+
+@media screen and (min-width: 950px) {
+
+    .contenuto-prodotto {
+        .pulsante-vedi-prodotto {
+            padding: 3% 6%;
+        }
+    }
+}
+
+@media screen and (min-width: 1300px) {
+
+    .contenuto-prodotto {
+        .pulsante-vedi-prodotto {
+            padding: 1% 1%;
+        }
+    }
+}
+
+
+    // DISPOSIZIONE ELEMENTI
+    
+
+@media screen and (min-width: 780px) {
+
     .wrapper {
-        padding-top: 6%;
+        .prodotto {
+            width: 48%;
+            margin-right: 10px;
+        }
     }
+
 }
 
+@media screen and (min-width: 1230px) {
 
-@media screen and (min-width: 1020px) {
     .wrapper {
-        padding-top: 4%;
-    }
-}
-
-
-    //DIMENSIONI CATEGORIE
-
-@media screen and (min-width: 700px) {
-    .categoria-prodotto {
-        padding: 10% 5%;
-
-        img {
-            height: 120px;
+        .prodotto {
+            width: 32%;
+            margin-right: 10px;
         }
     }
+
 }
 
-@media screen and (min-width: 1000px) {
-    .categoria-prodotto {
-        padding: 8% 5%;
-        margin: 3% 20% 0% 7%;
-    }
+@media screen and (min-width: 1660px) {
 
-    img {
-        height: 130px;
-    }
-}
-
-
-@media screen and (min-width: 1020px) {
-    .categoria-prodotto {
-        padding: 7% 5%;
-        margin: 2% 20% 0% 7%;
-    }
-}
-
-@media screen and (min-width: 1560px) {
-    .categoria-prodotto {
-        padding: 5% 5%;
-        margin: 1% 20% 0% 7%;
-
-        img {
-            height: 150px;
+    .wrapper {
+        .prodotto {
+            width: 24%;
         }
     }
+
 }

@@ -1,49 +1,12 @@
 <div class="wrapper">
-    <a class="categoria-prodotto" routerLink="/lista-prodotti">
-        <img class="immagine-categoria-prodotto" src="../assets/img/categorie-prodotto/prodotto.png">
-        <div class="titolo-e-freccia">
-            <h1 class="titolo-categoria-prodotto">Color Hardener</h1>
-            <img class="freccia-categoria-prodotto" src="../assets/img/categorie-prodotto/freccia.png">
+    <div class="prodotto" *ngFor = "let materiale of materiali">
+        <p class="codice" [ngStyle]="{'font-size': (materiale.codice_materiale.length > 18) ? '1.2em' : '1.5em'}">{{ materiale.codice_materiale }}</p>
+        <div class="contenuto-prodotto">
+        <p class="titolo-prodotto">{{ materiale.testo }}</p>
+            <img class="immagine-prodotto" src="{{ materiale.img }}">
+            <div class="pulsante-vedi-prodotto" routerLink="/prodotto" (click) = "selezioneMateriale(materiale.codice_materiale,materiale.descrizione,materiale.img,materiale.testo,materiale.pdf_link)"><img src="/assets/img/lista-prodotti/search.png"></div>
+            <br><br>
+            <h2 class="descrizione-prodotto" [innerHtml] = "materiale.descrizione"></h2>
         </div>
-    </a>
-
-    <a class="categoria-prodotto" routerLink="/lista-prodotti">
-        <img class="immagine-categoria-prodotto" src="../assets/img/categorie-prodotto/antievaporanti.jpg">
-        <div class="titolo-e-freccia">
-            <h1 class="titolo-categoria-prodotto">Antievaporante</h1>
-            <img class="freccia-categoria-prodotto" src="../assets/img/categorie-prodotto/freccia.png">
-        </div>
-    </a>
-
-    <a class="categoria-prodotto" routerLink="/lista-prodotti">
-        <img class="immagine-categoria-prodotto" src="../assets/img/categorie-prodotto/quarzo-per-spolvero.png">
-        <div class="titolo-e-freccia">
-            <h1 class="titolo-categoria-prodotto">Quarzo per spolvero</h1>
-            <img class="freccia-categoria-prodotto" src="../assets/img/categorie-prodotto/freccia.png">
-        </div>
-    </a>
-
-    <a class="categoria-prodotto" routerLink="/lista-prodotti">
-        <img class="immagine-categoria-prodotto" src="../assets/img/categorie-prodotto/primer.png">
-        <div class="titolo-e-freccia">
-            <h1 class="titolo-categoria-prodotto">Primer Epoxy-Coat</h1>
-            <img class="freccia-categoria-prodotto" src="../assets/img/categorie-prodotto/freccia.png">
-        </div>
-    </a>
-
-    <a class="categoria-prodotto" routerLink="/lista-prodotti">
-        <img class="immagine-categoria-prodotto" src="../assets/img/categorie-prodotto/idealpuwb-easy.png">
-        <div class="titolo-e-freccia">
-            <h1 class="titolo-categoria-prodotto">Idealpubwb Easy</h1>
-            <img class="freccia-categoria-prodotto" src="../assets/img/categorie-prodotto/freccia.png">
-        </div>
-    </a>
-
-    <a class="categoria-prodotto" routerLink="/lista-prodotti">
-        <img class="immagine-categoria-prodotto" src="../assets/img/categorie-prodotto/wb-primer.png">
-        <div class="titolo-e-freccia">
-            <h1 class="titolo-categoria-prodotto">Wb Primer</h1>
-            <img class="freccia-categoria-prodotto" src="../assets/img/categorie-prodotto/freccia.png">
-        </div>
-    </a>
+    </div>
 </div>
