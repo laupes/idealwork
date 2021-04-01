@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { AuthService } from '../core/auth.service';
 import { Materiale } from '../interfaces/materiale.interface';
 import { ModalComponent } from '../modal/modal.component';
+import { Location } from '@angular/common';
 import {MatDialog} from '@angular/material/dialog';
 
 @Component({
@@ -13,7 +14,7 @@ export class DettaglioProdottoComponent implements OnInit {
 
   // @ViewChild('modal', {static: false}) modal: ModalComponent;
 
-  constructor(private dialog: MatDialog) { }
+  constructor(private dialog: MatDialog, private location: Location) { }
   codice_materiale: string;
   descrizione: string;
   img: string;
@@ -46,6 +47,10 @@ export class DettaglioProdottoComponent implements OnInit {
 */
   openDialog(): void {
     this.dialog.open(ModComponent);
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 
 }

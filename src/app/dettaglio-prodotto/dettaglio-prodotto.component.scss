@@ -1,74 +1,78 @@
+.sup {
+    padding-right: 5%;;
+  .chiudi {
+    width: 30px;
+    height: 30px;
+    float: right;
+    cursor: pointer;
+  }
+}
+
 .dettaglio-prodotto {
-    padding: 10% 10% 20% 10%;
-    display: flex;
-    flex-direction: column;
+  padding: 10% 10% 20% 10%;
+  display: flex;
+  flex-direction: column;
 
-    .codice {
-        font-family: 'Roboto Condensed', sans-serif;
-        font-size: 30px;
-        text-align: left;
-        width: 40%;
-        border-bottom: solid 2px black;
-        text-transform: uppercase;
-        letter-spacing: 3px;
-        font-weight: 400;
-        margin-bottom: 50px;
-        padding-bottom: 10px;
-    }
+  .codice {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 30px;
+    text-align: left;
+    width: 40%;
+    border-bottom: solid 2px black;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 400;
+    margin-bottom: 50px;
+    padding-bottom: 10px;
+  }
 
-    .immagine-prodotto {
-        height: 250px;
-    }
+  .immagine-prodotto {
+    height: 250px;
+  }
 
-    .chiudi {
-        width: 30px;
-        height: 30px;
-        float: right;
-    }
+  .titolo-prodotto {
+    margin: 5% 0%;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-size: 30px;
+    font-weight: 400;
+  }
 
-    .titolo-prodotto {
-        margin: 5% 0%;
-        letter-spacing: 3px;
-        text-transform: uppercase;
-        font-size: 30px;
-        font-weight: 400;
-    }
+  .descrizione-prodotto {
+    color: #666666;
+    font-size: 20px;
+  }
 
-    .descrizione-prodotto {
-        color: #666666;
-        font-size: 20px;
-    }
-
-    .pulsante-accedi {
-        margin-top: 20px;
-        text-transform: uppercase;
-        cursor: pointer;
-        font-size: 20px;
-        border: solid 2px black;
-        padding: 3% 8%;
-        text-decoration: none;
-        font-weight: 500;
-        letter-spacing: 3px;
-        background: white;
-    }
+  .pulsante-accedi {
+    margin-top: 20px;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-size: 20px;
+    border: solid 2px black;
+    padding: 3% 8%;
+    text-decoration: none;
+    font-weight: 500;
+    letter-spacing: 3px;
+    background: white;
+  }
 
 }
 
 
 @media screen and (min-width: 1000px) {
-    .dettaglio-prodotto {
-        padding: 5%;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
+  .dettaglio-prodotto {
+    padding: 5%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
 
-        .codice {
-            width: 50%;
-        }
+    .codice {
+      width: 50%;
+    }
 
-        .immagine-prodotto {
-            height: 400px;
-            margin-right: 50px;
-        }
-    }    
+    .immagine-prodotto {
+      height: 400px;
+      margin-right: 50px;
+    }
+  }
 }
