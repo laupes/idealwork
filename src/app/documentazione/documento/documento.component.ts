@@ -26,7 +26,7 @@ export class DocumentoComponent implements OnInit {
           this.routes.navigate(['login']);
         }
       });
-    } else {
+    } else if (sessionStorage.getItem('PosaOCertificato') === 'posa') {
       this.dataService.getSoluzioneDocumenti()
       .subscribe((response: object[]) => {
         if (response['message'] === undefined) {
@@ -38,6 +38,18 @@ export class DocumentoComponent implements OnInit {
           this.routes.navigate(['login']);
         }
       });
+      } else {
+        this.dataService.getSoluzioneDocumenti()
+        .subscribe((response: object[]) => {
+          if (response['message'] === undefined) {
+            this.certificati = response['sistema'].sort(function(a, b) {
+              return a.sequenza - b.sequenza;
+            });
+          } else {
+            alert('Session Expired');
+            this.routes.navigate(['login']);
+          }
+        });
       }
     }
 
