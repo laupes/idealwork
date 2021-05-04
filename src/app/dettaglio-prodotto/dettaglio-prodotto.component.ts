@@ -64,8 +64,10 @@ export class ModComponent implements OnInit {
 
   pdfArray: string[];
   titolo: string;
+  check: any;
 
   ngOnInit(): void {
+    this.check = sessionStorage.getItem('browser');
     this.titolo = sessionStorage.getItem('codiceMateriale');
     this.pdfArray = sessionStorage.getItem('pdfArray') ? sessionStorage.getItem('pdfArray').split(' ') : [];
     this.pdfArray.forEach((f) => {

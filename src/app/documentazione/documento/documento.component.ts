@@ -11,10 +11,12 @@ export class DocumentoComponent implements OnInit {
 
   certificati: object[];
   pdfSource = 'https://www.idealwork.it/wp-content/REPOSITORYFILE/CATALOGHI/cat_architop.pdf';
+  check: any;
 
   constructor(private dataService: AuthService, private routes: Router) { }
 
   ngOnInit(): void {
+    this.check = sessionStorage.getItem('browser');
     if (sessionStorage.getItem('PosaOCertificato') === 'certificato') {
       this.dataService.getSoluzioneDocumenti()
       .subscribe((response: object[]) => {
