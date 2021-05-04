@@ -14,10 +14,22 @@ export class TitoloComponent implements OnInit {
   dettaglioSoluzione: object[];
   titolo: string;
   descrizione: string;
-  isIEorEdge = /msie\s|trident\/|edge\//i.test(window.navigator.userAgent);
+
 
   ngOnInit(): void {
-    console.log(this.isIEorEdge);
+    var browser = (function (agent) {
+      switch (true) {
+          case agent.indexOf("edge") > -1: return "edge";
+          case agent.indexOf("edg/") > -1: return "chromium based edge (dev or canary)";
+          case agent.indexOf("opr") > -1  : return "opera";
+          case agent.indexOf("chrome") > -1  : return "chrome";
+          case agent.indexOf("trident") > -1: return "ie";
+          case agent.indexOf("firefox") > -1: return "firefox";
+          case agent.indexOf("safari") > -1: return "safari";
+          default: return "other";
+      }
+  })(window.navigator.userAgent.toLowerCase());
+  console.log(browser);
     this.dataService.getSoluzioniDettaglio(sessionStorage.getItem('soluzione'))
     .subscribe((response: object[]) => {
       if (response['message'] === undefined) {
@@ -46,5 +58,7 @@ export class TitoloComponent implements OnInit {
       }
     } );
   }
+
+
 
 }

@@ -17,7 +17,7 @@ import { RouterModule } from '@angular/router';
     DocumentazioneRoutingModule,
     CommonModule,
     RouterModule,
-    PdfViewerModule
+    PdfViewerModule,
   ],
   exports: [
     TitoloPaginaComponent,
