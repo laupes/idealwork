@@ -10,6 +10,7 @@ import { AuthService } from 'src/app/core/auth.service';
 export class DocumentoComponent implements OnInit {
 
   certificati: object[];
+  pdfSource = 'https://www.idealwork.it/wp-content/REPOSITORYFILE/CATALOGHI/cat_architop.pdf';
 
   constructor(private dataService: AuthService, private routes: Router) { }
 
@@ -64,6 +65,7 @@ export class DocumentoComponent implements OnInit {
     goToLink(url: string): void {
       window.open(url, 'blank');
     }
+
 
   }
 

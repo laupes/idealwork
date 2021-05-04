@@ -1,3 +1,4 @@
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { DocumentazioneRoutingModule } from './documentazione.routing.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -15,7 +16,8 @@ import { RouterModule } from '@angular/router';
   imports: [
     DocumentazioneRoutingModule,
     CommonModule,
-    RouterModule
+    RouterModule,
+    PdfViewerModule
   ],
   exports: [
     TitoloPaginaComponent,

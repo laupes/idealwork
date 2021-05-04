@@ -14,8 +14,10 @@ export class TitoloComponent implements OnInit {
   dettaglioSoluzione: object[];
   titolo: string;
   descrizione: string;
+  isIEorEdge = /msie\s|trident\/|edge\//i.test(window.navigator.userAgent);
 
   ngOnInit(): void {
+    console.log(this.isIEorEdge);
     this.dataService.getSoluzioniDettaglio(sessionStorage.getItem('soluzione'))
     .subscribe((response: object[]) => {
       if (response['message'] === undefined) {

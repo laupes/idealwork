@@ -1,5 +1,7 @@
 <div class="documento" *ngFor="let certificato of certificati">
-    <img class="anteprima-documento" src="./assets/img/documentazione/anteprima-documento.png">
+    <div class="anteprima-documento">
+        <pdf-viewer [src]="certificato.link" [original-size]="false" [page]="1" [show-all]="false"></pdf-viewer>
+    </div>
     <div class="descrizione-documento">
         <h1 class="titolo-documento">{{ certificato.descrizione }}</h1>
         <h2>{{ certificato.titolo }}</h2>
