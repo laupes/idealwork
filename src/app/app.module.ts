@@ -33,10 +33,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSelectModule} from '@angular/material/select';
 import { ModalComponent } from './modal/modal.component';
-
-
-
-
+import { CheckUrlPipe } from './check-url.pipe';
 
 
 @NgModule({
@@ -49,7 +46,8 @@ import { ModalComponent } from './modal/modal.component';
     PageFormAccessoComponent,
     TornaLoginComponent,
     ModalComponent,
-    ModComponent
+    ModComponent,
+    CheckUrlPipe,
   ],
   imports: [
     BrowserModule,

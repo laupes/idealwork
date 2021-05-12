@@ -1,7 +1,8 @@
 <p mat-dialog-title>PDF</p>
 <div mat-dialog-content>
     <div class="documento" *ngFor="let pdf of pdfArray" >  
-        <img class="anteprima-documento" src="./assets/img/documentazione/anteprima-documento.png">
+        <!-- <img class="anteprima-documento" src="./assets/img/documentazione/anteprima-documento.png"> -->
+        <object [data]="pdf + '#toolbar=1&amp;navpanes=0&amp;scrollbar=1&amp;page=1&amp;view=FitH' | checkUrl" type="application/pdf" width="80%" height="200px"></object>
         <!-- <div class="anteprima-documento">
             <pdf-viewer *ngIf="browser==='chrome'"
                         [src]="pdf"
