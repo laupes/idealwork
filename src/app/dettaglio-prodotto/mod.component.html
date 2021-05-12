@@ -1,15 +1,15 @@
 <p mat-dialog-title>PDF</p>
 <div mat-dialog-content>
     <div class="documento" *ngFor="let pdf of pdfArray" >  
-        <img *ngIf="browser!=='chrome'" class="anteprima-documento" src="./assets/img/documentazione/anteprima-documento.png">
-        <div class="anteprima-documento">
+        <img class="anteprima-documento" src="./assets/img/documentazione/anteprima-documento.png">
+        <!-- <div class="anteprima-documento">
             <pdf-viewer *ngIf="browser==='chrome'"
                         [src]="pdf"
                         [original-size]="false"
                         [page]="1"
                         [show-all]="false"
             ></pdf-viewer>
-          </div>
+          </div> -->
         <div class="descrizione-documento">
             <h1 class="titolo-documento">{{ titolo }} ( {{ pdf.split('_')[pdf.split('_').length - 1].replace('.pdf', '') }} )</h1>
             <!-- <button type="submit" class="pulsante-scarica-documento" (click)="goToLink(pdf)">
