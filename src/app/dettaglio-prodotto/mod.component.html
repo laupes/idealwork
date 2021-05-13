@@ -2,7 +2,8 @@
 <div mat-dialog-content>
     <div class="documento" *ngFor="let pdf of pdfArray" >  
         <!-- <img class="anteprima-documento" src="./assets/img/documentazione/anteprima-documento.png"> -->
-        <object [data]="pdf + '#toolbar=1&amp;navpanes=0&amp;scrollbar=1&amp;page=1&amp;view=FitH' | checkUrl" type="application/pdf" width="80%" height="200px"></object>
+        <object id="browser"  class="anteprima-documento" [data]="pdf + '#toolbar=1&amp;navpanes=0&amp;scrollbar=1&amp;page=1&amp;view=FitH' | checkUrl" type="application/pdf"></object>
+        <img id="mobile" class="anteprima-documento" src="assets/img/documentazione/pdf.png"> 
         <!-- <div class="anteprima-documento">
             <pdf-viewer *ngIf="browser==='chrome'"
                         [src]="pdf"
@@ -18,6 +19,7 @@
             </button> -->
             <button mat-button mat-dialog-close type="submit" class="pulsante-scarica-documento" (click)="goToLink(pdf)">
                 <img src="./assets/img/documentazione/icona-scarica.png" style="height: 20px;">
+                <h3>Download</h3>
             </button>
             <!-- <a href="{{ pdf }}" target="_blank">{{ pdf }}</a> -->
         </div> 

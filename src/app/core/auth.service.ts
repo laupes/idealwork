@@ -104,6 +104,20 @@ export class AuthService {
     }
   }
 
+  getParamentri(): Observable<any[]> {
+    const key = '123456$#@$^@1ERF';
+    const token = this.encrDecr.get(key, sessionStorage.getItem('token'));
+    const header = new HttpHeaders()
+      .set('Access-Token', token);
+    return this.http.get<any[]>(AuthService.url + 'parametri/' + (this.staticLingua ? this.staticLingua
+      : sessionStorage.getItem('lingua')), { headers: header })
+      .pipe(
+        tap(resData => {
+          // console.log(resData);
+        })
+      );
+  }
+
   getSoluzioni(): Observable<any[]> {
     const key = '123456$#@$^@1ERF';
     const token = this.encrDecr.get(key, sessionStorage.getItem('token'));

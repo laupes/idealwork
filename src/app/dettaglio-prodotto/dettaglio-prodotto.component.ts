@@ -14,16 +14,27 @@ export class DettaglioProdottoComponent implements OnInit {
 
   // @ViewChild('modal', {static: false}) modal: ModalComponent;
 
-  constructor(private dialog: MatDialog, private location: Location) { }
+  constructor(private dialog: MatDialog, private location: Location, private auth: AuthService) { }
   codice_materiale: string;
   descrizione: string;
   img: string;
   testo: string;
+  button: string = "";
+  parametri: any[];
   // isShow = false;
   // pdf: string[];
 
 
   ngOnInit(): void {
+    this.auth.getParamentri().subscribe((res) => {
+      this.parametri = res;
+    }).add(() => {
+      this.parametri.forEach((x) => {
+        if(x.nome === 'Testo Pulsante PDF') {
+          this.button = x.val.toString();
+        }
+      });
+    });
     this.codice_materiale = sessionStorage.getItem('codiceMateriale');
     this.descrizione = sessionStorage.getItem('descrizioneMateriale') !== 'null' ? sessionStorage.getItem('descrizioneMateriale') : ' ';
     this.img = sessionStorage.getItem('imgMateriale');
@@ -79,7 +90,7 @@ export class ModComponent implements OnInit {
   }
 
   goToLink(url: string): void {
-    window.open(url, 'blank');
+    window.open(url, '_self');
   }
 
 }
