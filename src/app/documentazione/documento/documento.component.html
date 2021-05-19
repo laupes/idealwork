@@ -4,8 +4,8 @@
         <object [data]="certificato.link + '#toolbar=1&amp;navpanes=0&amp;scrollbar=1&amp;page=1&amp;view=FitH' | safeUrl" type="application/pdf" width="100%" height="200px"></object>
     </div>
     <div class="descrizione-documento">
-        <h1 class="titolo-documento" *ngIf="certificato.descrizione !== 'not_found'">{{ certificato.descrizione }}</h1>
-        <h2>{{ certificato.titolo }}</h2>
+        <h1>{{ certificato.titolo }}</h1>
+        <h2 class="titolo-documento" *ngIf="certificato.descrizione !== 'not_found'">{{ certificato.descrizione }}</h2>
         <button type="submit" class="pulsante-scarica-documento" (click)="goToLink(certificato.link)">
             <img src="./assets/img/documentazione/icona-scarica.png" style="height: 30px;">
             <h3>Scarica</h3>

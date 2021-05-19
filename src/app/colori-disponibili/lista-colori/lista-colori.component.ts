@@ -38,9 +38,10 @@ export class ListaColoriComponent implements OnInit {
 
   storePdf(pdf: string[]): void {
     sessionStorage.removeItem('pdfArray');
+    console.log(pdf);
     if (pdf) {
       pdf.forEach((f) => {
-        sessionStorage.setItem('pdfArray', sessionStorage.getItem('pdfArray') + ' ' + f);
+        sessionStorage.setItem('pdfArray', sessionStorage.getItem('pdfArray') + ' ' + f['pdf_link']);
       });
     }
   }
